@@ -1,0 +1,1257 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		359E3E8BDC1A0A3548FFD791 /* Pods_LoveSick2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A27461F1B4E25C92A7ADB186 /* Pods_LoveSick2UITests.framework */; };
+		76CCDD08F2C38A06C39970B2 /* Pods_LoveSick2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4B915B520EBBFE64C26622 /* Pods_LoveSick2Tests.framework */; };
+		810F7BA1202C643300B523AB /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7BA0202C643300B523AB /* CommentViewController.swift */; };
+		810F7BA3202C652500B523AB /* CommentTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7BA2202C652500B523AB /* CommentTitleTableViewCell.swift */; };
+		810F7BA5202C653400B523AB /* CommentTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7BA4202C653400B523AB /* CommentTextTableViewCell.swift */; };
+		810F7BA7202C937400B523AB /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7BA6202C937400B523AB /* CommentTableViewCell.swift */; };
+		811035EC2035C08300DE4172 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811035EB2035C08300DE4172 /* SearchViewController.swift */; };
+		81AAE74020150A1A004D0D31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */; };
+		81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */; };
+		81B27381202B1B8800DCCA8B /* ExtensionSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */; };
+		D89EA06470EE340E6181478C /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75367EB21DE57AB668E35AA2 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */; };
+		EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2BF9E92039B6BE0014D38C /* NMessenger.framework */; };
+		EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */; };
+		EFDD539C2013A32C00817F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD539B2013A32C00817F49 /* AppDelegate.swift */; };
+		EFDD539E2013A32C00817F49 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD539D2013A32C00817F49 /* LoginViewController.swift */; };
+		EFDD53A12013A32C00817F49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDD539F2013A32C00817F49 /* Main.storyboard */; };
+		EFDD53A32013A32C00817F49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFDD53A22013A32C00817F49 /* Assets.xcassets */; };
+		EFDD53A62013A32C00817F49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDD53A42013A32C00817F49 /* LaunchScreen.storyboard */; };
+		EFDD53B12013A32D00817F49 /* LoveSick2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53B02013A32D00817F49 /* LoveSick2Tests.swift */; };
+		EFDD53BC2013A32D00817F49 /* LoveSick2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53BB2013A32D00817F49 /* LoveSick2UITests.swift */; };
+		EFDD53D02013A57500817F49 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53CF2013A57500817F49 /* NotificationService.swift */; };
+		EFDD53D42013A57500817F49 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EFDD53CD2013A57500817F49 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EFDD53DF2013A75800817F49 /* MapperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53DA2013A75800817F49 /* MapperManager.swift */; };
+		EFDD53E02013A75800817F49 /* PostPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53DB2013A75800817F49 /* PostPaginator.swift */; };
+		EFDD53E12013A75800817F49 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53DC2013A75800817F49 /* PostManager.swift */; };
+		EFDD53E92013A76D00817F49 /* LoveSickError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53E52013A76D00817F49 /* LoveSickError.swift */; };
+		EFDD53EA2013A76D00817F49 /* Reply.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53E62013A76D00817F49 /* Reply.swift */; };
+		EFDD53EB2013A76D00817F49 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53E72013A76D00817F49 /* User.swift */; };
+		EFDD53EC2013A76D00817F49 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53E82013A76D00817F49 /* Post.swift */; };
+		EFDD53ED2013A7AF00817F49 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD53F82013A7AF00817F49 /* Alamofire.framework */; };
+		EFDD53EE2013A7AF00817F49 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD53F92013A7AF00817F49 /* AlamofireImage.framework */; };
+		EFDD53EF2013A7AF00817F49 /* AssistantKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD53FA2013A7AF00817F49 /* AssistantKit.framework */; };
+		EFDD53F02013A7AF00817F49 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD53FB2013A7AF00817F49 /* Bolts.framework */; };
+		EFDD53F12013A7AF00817F49 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD53FC2013A7AF00817F49 /* FBSDKCoreKit.framework */; };
+		EFDD53F22013A7AF00817F49 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD53FD2013A7AF00817F49 /* FBSDKLoginKit.framework */; };
+		EFDD53F32013A7AF00817F49 /* Hokusai.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD53FE2013A7AF00817F49 /* Hokusai.framework */; };
+		EFDD53F42013A7AF00817F49 /* ILLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD53FF2013A7AF00817F49 /* ILLoginKit.framework */; };
+		EFDD53F52013A7AF00817F49 /* JGProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD54002013A7AF00817F49 /* JGProgressHUD.framework */; };
+		EFDD53F62013A7AF00817F49 /* Lightbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD54012013A7AF00817F49 /* Lightbox.framework */; };
+		EFDD53F72013A7AF00817F49 /* UIEmptyState.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD54022013A7AF00817F49 /* UIEmptyState.framework */; };
+		EFDD54042013A9FE00817F49 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54032013A9FE00817F49 /* LoginCoordinator.swift */; };
+		EFDD54062013B00C00817F49 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54052013B00C00817F49 /* UserManager.swift */; };
+		EFDD540E2013B5BF00817F49 /* TopPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD540D2013B5BF00817F49 /* TopPostViewController.swift */; };
+		EFDD54102013B5CC00817F49 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD540F2013B5CC00817F49 /* NewPostViewController.swift */; };
+		EFDD54142014826300817F49 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54132014826300817F49 /* SessionManager.swift */; };
+		EFDD54162014AFEA00817F49 /* NewFeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54152014AFEA00817F49 /* NewFeedsViewController.swift */; };
+		EFDD54172014AFF300817F49 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD54182014AFF300817F49 /* XLPagerTabStrip.framework */; };
+		EFDD541D2014B57700817F49 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD541C2014B57700817F49 /* PostTableViewCell.swift */; };
+		EFDD541F2014BC4500817F49 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD541E2014BC4500817F49 /* TabBarController.swift */; };
+		EFDD54212014E0A000817F49 /* PostTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54202014E0A000817F49 /* PostTextViewController.swift */; };
+		EFDD54232014E14300817F49 /* ChooseCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54222014E14300817F49 /* ChooseCategoryTableViewCell.swift */; };
+		EFDD54252014E15100817F49 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54242014E15100817F49 /* TitleTableViewCell.swift */; };
+		EFDD54272014E15C00817F49 /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54262014E15C00817F49 /* ContentTableViewCell.swift */; };
+		EFF9A5D8201A2FA700CB4D6D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF9A5D7201A2FA700CB4D6D /* SettingViewController.swift */; };
+		EFF9A5DA201A363000CB4D6D /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF9A5D9201A362F00CB4D6D /* Extension.swift */; };
+		F45560E5E7599335466C36E9 /* Pods_LoveSick2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D13B41F4F0F6877D59141BF /* Pods_LoveSick2.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EFDD53AD2013A32D00817F49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFDD53902013A32C00817F49 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFDD53972013A32C00817F49;
+			remoteInfo = LoveSick2;
+		};
+		EFDD53B82013A32D00817F49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFDD53902013A32C00817F49 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFDD53972013A32C00817F49;
+			remoteInfo = LoveSick2;
+		};
+		EFDD53D22013A57500817F49 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFDD53902013A32C00817F49 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFDD53CC2013A57500817F49;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EFDD53D82013A57500817F49 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EFDD53D42013A57500817F49 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0DBC520EADA1117BC29EEDC9 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		0F1EA47E73CA4ED843E4F962 /* Pods-LoveSick2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2UITests/Pods-LoveSick2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		32F14CF221BE47464F9017F9 /* Pods-LoveSick2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2UITests/Pods-LoveSick2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		3D13B41F4F0F6877D59141BF /* Pods_LoveSick2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveSick2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		414F3316BFC8B5BC9DF1AA60 /* Pods-LoveSick2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2Tests/Pods-LoveSick2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		6308DDDB6923053E5D4A607A /* Pods-LoveSick2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2Tests/Pods-LoveSick2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		75367EB21DE57AB668E35AA2 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		810F7BA0202C643300B523AB /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		810F7BA2202C652500B523AB /* CommentTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTitleTableViewCell.swift; sourceTree = "<group>"; };
+		810F7BA4202C653400B523AB /* CommentTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextTableViewCell.swift; sourceTree = "<group>"; };
+		810F7BA6202C937400B523AB /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		811035EB2035C08300DE4172 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostViewController.swift; sourceTree = "<group>"; };
+		81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSwift.swift; sourceTree = "<group>"; };
+		878AC48364DF84E2B968C1DD /* Pods-LoveSick2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2.release.xcconfig"; sourceTree = "<group>"; };
+		8F4B915B520EBBFE64C26622 /* Pods_LoveSick2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveSick2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A27461F1B4E25C92A7ADB186 /* Pods_LoveSick2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveSick2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA4D1593277B8AE0AFFABE27 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		DD1EDA92ADBEC42B5B23CAC2 /* Pods-LoveSick2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2.debug.xcconfig"; sourceTree = "<group>"; };
+		EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		EF2BF9E72039A9E10014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF2BF9E92039B6BE0014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VHMessageContentNode.swift; sourceTree = "<group>"; };
+		EFDD53982013A32C00817F49 /* LoveSick2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoveSick2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD539B2013A32C00817F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EFDD539D2013A32C00817F49 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		EFDD53A02013A32C00817F49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EFDD53A22013A32C00817F49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EFDD53A52013A32C00817F49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EFDD53A72013A32C00817F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFDD53AC2013A32C00817F49 /* LoveSick2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoveSick2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD53B02013A32D00817F49 /* LoveSick2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveSick2Tests.swift; sourceTree = "<group>"; };
+		EFDD53B22013A32D00817F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFDD53B72013A32D00817F49 /* LoveSick2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoveSick2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD53BB2013A32D00817F49 /* LoveSick2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveSick2UITests.swift; sourceTree = "<group>"; };
+		EFDD53BD2013A32D00817F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFDD53CD2013A57500817F49 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD53CF2013A57500817F49 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		EFDD53D12013A57500817F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFDD53DA2013A75800817F49 /* MapperManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperManager.swift; sourceTree = "<group>"; };
+		EFDD53DB2013A75800817F49 /* PostPaginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPaginator.swift; sourceTree = "<group>"; };
+		EFDD53DC2013A75800817F49 /* PostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
+		EFDD53E52013A76D00817F49 /* LoveSickError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoveSickError.swift; sourceTree = "<group>"; };
+		EFDD53E62013A76D00817F49 /* Reply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reply.swift; sourceTree = "<group>"; };
+		EFDD53E72013A76D00817F49 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EFDD53E82013A76D00817F49 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		EFDD53F82013A7AF00817F49 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD53F92013A7AF00817F49 /* AlamofireImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AlamofireImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD53FA2013A7AF00817F49 /* AssistantKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AssistantKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD53FB2013A7AF00817F49 /* Bolts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Bolts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD53FC2013A7AF00817F49 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD53FD2013A7AF00817F49 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD53FE2013A7AF00817F49 /* Hokusai.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Hokusai.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD53FF2013A7AF00817F49 /* ILLoginKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ILLoginKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD54002013A7AF00817F49 /* JGProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JGProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD54012013A7AF00817F49 /* Lightbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lightbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD54022013A7AF00817F49 /* UIEmptyState.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = UIEmptyState.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD54032013A9FE00817F49 /* LoginCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		EFDD54052013B00C00817F49 /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		EFDD540D2013B5BF00817F49 /* TopPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPostViewController.swift; sourceTree = "<group>"; };
+		EFDD540F2013B5CC00817F49 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		EFDD54132014826300817F49 /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		EFDD54152014AFEA00817F49 /* NewFeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeedsViewController.swift; sourceTree = "<group>"; };
+		EFDD54182014AFF300817F49 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = XLPagerTabStrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFDD541C2014B57700817F49 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		EFDD541E2014BC4500817F49 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		EFDD54202014E0A000817F49 /* PostTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTextViewController.swift; sourceTree = "<group>"; };
+		EFDD54222014E14300817F49 /* ChooseCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		EFDD54242014E15100817F49 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		EFDD54262014E15C00817F49 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
+		EFF9A5D7201A2FA700CB4D6D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		EFF9A5D9201A362F00CB4D6D /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EFDD53952013A32C00817F49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */,
+				EFDD54172014AFF300817F49 /* XLPagerTabStrip.framework in Frameworks */,
+				EFDD53ED2013A7AF00817F49 /* Alamofire.framework in Frameworks */,
+				EFDD53EE2013A7AF00817F49 /* AlamofireImage.framework in Frameworks */,
+				EFDD53EF2013A7AF00817F49 /* AssistantKit.framework in Frameworks */,
+				EFDD53F02013A7AF00817F49 /* Bolts.framework in Frameworks */,
+				EFDD53F12013A7AF00817F49 /* FBSDKCoreKit.framework in Frameworks */,
+				EFDD53F22013A7AF00817F49 /* FBSDKLoginKit.framework in Frameworks */,
+				EFDD53F32013A7AF00817F49 /* Hokusai.framework in Frameworks */,
+				EFDD53F42013A7AF00817F49 /* ILLoginKit.framework in Frameworks */,
+				EFDD53F52013A7AF00817F49 /* JGProgressHUD.framework in Frameworks */,
+				EFDD53F62013A7AF00817F49 /* Lightbox.framework in Frameworks */,
+				EFDD53F72013A7AF00817F49 /* UIEmptyState.framework in Frameworks */,
+				F45560E5E7599335466C36E9 /* Pods_LoveSick2.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDD53A92013A32C00817F49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76CCDD08F2C38A06C39970B2 /* Pods_LoveSick2Tests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDD53B42013A32D00817F49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				359E3E8BDC1A0A3548FFD791 /* Pods_LoveSick2UITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDD53CA2013A57500817F49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D89EA06470EE340E6181478C /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		811035EA2035C06D00DE4172 /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				811035EB2035C08300DE4172 /* SearchViewController.swift */,
+			);
+			name = SearchViewController;
+			sourceTree = "<group>";
+		};
+		81DB7D042035A12400B2232C /* PostViewController */ = {
+			isa = PBXGroup;
+			children = (
+				81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */,
+				810F7BA0202C643300B523AB /* CommentViewController.swift */,
+			);
+			name = PostViewController;
+			sourceTree = "<group>";
+		};
+		81DB7D052035A14200B2232C /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD54032013A9FE00817F49 /* LoginCoordinator.swift */,
+				EFDD539D2013A32C00817F49 /* LoginViewController.swift */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		81DB7D062035A17400B2232C /* NewFeedViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD54152014AFEA00817F49 /* NewFeedsViewController.swift */,
+				EFDD540D2013B5BF00817F49 /* TopPostViewController.swift */,
+				EFDD540F2013B5CC00817F49 /* NewPostViewController.swift */,
+			);
+			path = NewFeedViewController;
+			sourceTree = "<group>";
+		};
+		BC100AB5276A9EB37EE03421 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF2BF9E92039B6BE0014D38C /* NMessenger.framework */,
+				EF2BF9E72039A9E10014D38C /* NMessenger.framework */,
+				EFDD54182014AFF300817F49 /* XLPagerTabStrip.framework */,
+				EFDD53F82013A7AF00817F49 /* Alamofire.framework */,
+				EFDD53F92013A7AF00817F49 /* AlamofireImage.framework */,
+				EFDD53FA2013A7AF00817F49 /* AssistantKit.framework */,
+				EFDD53FB2013A7AF00817F49 /* Bolts.framework */,
+				EFDD53FC2013A7AF00817F49 /* FBSDKCoreKit.framework */,
+				EFDD53FD2013A7AF00817F49 /* FBSDKLoginKit.framework */,
+				EFDD53FE2013A7AF00817F49 /* Hokusai.framework */,
+				EFDD53FF2013A7AF00817F49 /* ILLoginKit.framework */,
+				EFDD54002013A7AF00817F49 /* JGProgressHUD.framework */,
+				EFDD54012013A7AF00817F49 /* Lightbox.framework */,
+				EFDD54022013A7AF00817F49 /* UIEmptyState.framework */,
+				3D13B41F4F0F6877D59141BF /* Pods_LoveSick2.framework */,
+				8F4B915B520EBBFE64C26622 /* Pods_LoveSick2Tests.framework */,
+				A27461F1B4E25C92A7ADB186 /* Pods_LoveSick2UITests.framework */,
+				75367EB21DE57AB668E35AA2 /* Pods_OneSignalNotificationServiceExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF2BF9E22039A8970014D38C /* SettingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EFF9A5D7201A2FA700CB4D6D /* SettingViewController.swift */,
+			);
+			path = SettingViewController;
+			sourceTree = "<group>";
+		};
+		EF2BF9E32039A8B90014D38C /* ChatViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */,
+			);
+			path = ChatViewController;
+			sourceTree = "<group>";
+		};
+		EFDD538F2013A32C00817F49 = {
+			isa = PBXGroup;
+			children = (
+				EFDD539A2013A32C00817F49 /* LoveSick2 */,
+				EFDD53AF2013A32D00817F49 /* LoveSick2Tests */,
+				EFDD53BA2013A32D00817F49 /* LoveSick2UITests */,
+				EFDD53CE2013A57500817F49 /* OneSignalNotificationServiceExtension */,
+				EFDD53992013A32C00817F49 /* Products */,
+				F2547B410D3E288731033044 /* Pods */,
+				BC100AB5276A9EB37EE03421 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		EFDD53992013A32C00817F49 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD53982013A32C00817F49 /* LoveSick2.app */,
+				EFDD53AC2013A32C00817F49 /* LoveSick2Tests.xctest */,
+				EFDD53B72013A32D00817F49 /* LoveSick2UITests.xctest */,
+				EFDD53CD2013A57500817F49 /* OneSignalNotificationServiceExtension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EFDD539A2013A32C00817F49 /* LoveSick2 */ = {
+			isa = PBXGroup;
+			children = (
+				81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */,
+				EFDD54192014B55C00817F49 /* View */,
+				EFDD540C2013B5A900817F49 /* Controller */,
+				EFDD53D92013A75800817F49 /* Manager */,
+				EFDD53E42013A76400817F49 /* Model */,
+				EFDD539F2013A32C00817F49 /* Main.storyboard */,
+				EFDD53A22013A32C00817F49 /* Assets.xcassets */,
+				EFDD53A42013A32C00817F49 /* LaunchScreen.storyboard */,
+				EFDD53A72013A32C00817F49 /* Info.plist */,
+			);
+			path = LoveSick2;
+			sourceTree = "<group>";
+		};
+		EFDD53AF2013A32D00817F49 /* LoveSick2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD53B02013A32D00817F49 /* LoveSick2Tests.swift */,
+				EFDD53B22013A32D00817F49 /* Info.plist */,
+			);
+			path = LoveSick2Tests;
+			sourceTree = "<group>";
+		};
+		EFDD53BA2013A32D00817F49 /* LoveSick2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD53BB2013A32D00817F49 /* LoveSick2UITests.swift */,
+				EFDD53BD2013A32D00817F49 /* Info.plist */,
+			);
+			path = LoveSick2UITests;
+			sourceTree = "<group>";
+		};
+		EFDD53CE2013A57500817F49 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD53CF2013A57500817F49 /* NotificationService.swift */,
+				EFDD53D12013A57500817F49 /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
+		EFDD53D92013A75800817F49 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD54132014826300817F49 /* SessionManager.swift */,
+				EFDD54052013B00C00817F49 /* UserManager.swift */,
+				EFDD53DA2013A75800817F49 /* MapperManager.swift */,
+				EFDD53DB2013A75800817F49 /* PostPaginator.swift */,
+				EFDD53DC2013A75800817F49 /* PostManager.swift */,
+				81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		EFDD53E42013A76400817F49 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD539B2013A32C00817F49 /* AppDelegate.swift */,
+				EFDD53E52013A76D00817F49 /* LoveSickError.swift */,
+				EFDD53E82013A76D00817F49 /* Post.swift */,
+				EFDD53E62013A76D00817F49 /* Reply.swift */,
+				EFDD53E72013A76D00817F49 /* User.swift */,
+				EFF9A5D9201A362F00CB4D6D /* Extension.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EFDD540C2013B5A900817F49 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EF2BF9E32039A8B90014D38C /* ChatViewController */,
+				EF2BF9E22039A8970014D38C /* SettingViewController */,
+				811035EA2035C06D00DE4172 /* SearchViewController */,
+				81DB7D052035A14200B2232C /* LoginViewController */,
+				81DB7D062035A17400B2232C /* NewFeedViewController */,
+				81DB7D042035A12400B2232C /* PostViewController */,
+				EFDD541E2014BC4500817F49 /* TabBarController.swift */,
+				EFDD54202014E0A000817F49 /* PostTextViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EFDD54192014B55C00817F49 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD541C2014B57700817F49 /* PostTableViewCell.swift */,
+				EFDD54222014E14300817F49 /* ChooseCategoryTableViewCell.swift */,
+				EFDD54242014E15100817F49 /* TitleTableViewCell.swift */,
+				EFDD54262014E15C00817F49 /* ContentTableViewCell.swift */,
+				810F7BA2202C652500B523AB /* CommentTitleTableViewCell.swift */,
+				810F7BA4202C653400B523AB /* CommentTextTableViewCell.swift */,
+				810F7BA6202C937400B523AB /* CommentTableViewCell.swift */,
+				EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F2547B410D3E288731033044 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD1EDA92ADBEC42B5B23CAC2 /* Pods-LoveSick2.debug.xcconfig */,
+				878AC48364DF84E2B968C1DD /* Pods-LoveSick2.release.xcconfig */,
+				6308DDDB6923053E5D4A607A /* Pods-LoveSick2Tests.debug.xcconfig */,
+				414F3316BFC8B5BC9DF1AA60 /* Pods-LoveSick2Tests.release.xcconfig */,
+				32F14CF221BE47464F9017F9 /* Pods-LoveSick2UITests.debug.xcconfig */,
+				0F1EA47E73CA4ED843E4F962 /* Pods-LoveSick2UITests.release.xcconfig */,
+				0DBC520EADA1117BC29EEDC9 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				DA4D1593277B8AE0AFFABE27 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EFDD53972013A32C00817F49 /* LoveSick2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFDD53C02013A32D00817F49 /* Build configuration list for PBXNativeTarget "LoveSick2" */;
+			buildPhases = (
+				58A2F7376C20E6481CBB4638 /* [CP] Check Pods Manifest.lock */,
+				EFDD53942013A32C00817F49 /* Sources */,
+				EFDD53952013A32C00817F49 /* Frameworks */,
+				EFDD53962013A32C00817F49 /* Resources */,
+				EFDD53D82013A57500817F49 /* Embed App Extensions */,
+				01D03167A3D3322F2F0AA696 /* [CP] Embed Pods Frameworks */,
+				4E88976AEE74C7675F49AF32 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFDD53D32013A57500817F49 /* PBXTargetDependency */,
+			);
+			name = LoveSick2;
+			productName = LoveSick2;
+			productReference = EFDD53982013A32C00817F49 /* LoveSick2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EFDD53AB2013A32C00817F49 /* LoveSick2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFDD53C32013A32D00817F49 /* Build configuration list for PBXNativeTarget "LoveSick2Tests" */;
+			buildPhases = (
+				04E5785E29F1778BFB2C9E5B /* [CP] Check Pods Manifest.lock */,
+				EFDD53A82013A32C00817F49 /* Sources */,
+				EFDD53A92013A32C00817F49 /* Frameworks */,
+				EFDD53AA2013A32C00817F49 /* Resources */,
+				05AC60770068ACE7B9B1F282 /* [CP] Embed Pods Frameworks */,
+				8BB0A89FE2193497A1C34829 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFDD53AE2013A32D00817F49 /* PBXTargetDependency */,
+			);
+			name = LoveSick2Tests;
+			productName = LoveSick2Tests;
+			productReference = EFDD53AC2013A32C00817F49 /* LoveSick2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EFDD53B62013A32D00817F49 /* LoveSick2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFDD53C62013A32D00817F49 /* Build configuration list for PBXNativeTarget "LoveSick2UITests" */;
+			buildPhases = (
+				F1968A2BA2A9320EC7EC4F8E /* [CP] Check Pods Manifest.lock */,
+				EFDD53B32013A32D00817F49 /* Sources */,
+				EFDD53B42013A32D00817F49 /* Frameworks */,
+				EFDD53B52013A32D00817F49 /* Resources */,
+				31113EA55363737D10F9D93F /* [CP] Embed Pods Frameworks */,
+				249661142D1F411A8443C801 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFDD53B92013A32D00817F49 /* PBXTargetDependency */,
+			);
+			name = LoveSick2UITests;
+			productName = LoveSick2UITests;
+			productReference = EFDD53B72013A32D00817F49 /* LoveSick2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		EFDD53CC2013A57500817F49 /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFDD53D72013A57500817F49 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				D9E2E7E61A6956861D6FA3FF /* [CP] Check Pods Manifest.lock */,
+				EFDD53C92013A57500817F49 /* Sources */,
+				EFDD53CA2013A57500817F49 /* Frameworks */,
+				EFDD53CB2013A57500817F49 /* Resources */,
+				EE788C7A852EEB5F3E6DC610 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = EFDD53CD2013A57500817F49 /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EFDD53902013A32C00817F49 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "marky RE";
+				TargetAttributes = {
+					EFDD53972013A32C00817F49 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					EFDD53AB2013A32C00817F49 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EFDD53972013A32C00817F49;
+					};
+					EFDD53B62013A32D00817F49 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EFDD53972013A32C00817F49;
+					};
+					EFDD53CC2013A57500817F49 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = EFDD53932013A32C00817F49 /* Build configuration list for PBXProject "LoveSick2" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EFDD538F2013A32C00817F49;
+			productRefGroup = EFDD53992013A32C00817F49 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EFDD53972013A32C00817F49 /* LoveSick2 */,
+				EFDD53AB2013A32C00817F49 /* LoveSick2Tests */,
+				EFDD53B62013A32D00817F49 /* LoveSick2UITests */,
+				EFDD53CC2013A57500817F49 /* OneSignalNotificationServiceExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EFDD53962013A32C00817F49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFDD53A62013A32C00817F49 /* LaunchScreen.storyboard in Resources */,
+				81AAE74020150A1A004D0D31 /* GoogleService-Info.plist in Resources */,
+				EFDD53A32013A32C00817F49 /* Assets.xcassets in Resources */,
+				EFDD53A12013A32C00817F49 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDD53AA2013A32C00817F49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDD53B52013A32D00817F49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDD53CB2013A57500817F49 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01D03167A3D3322F2F0AA696 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/AssistantKit/AssistantKit.framework",
+				"${BUILT_PRODUCTS_DIR}/AsyncDisplayKit/AsyncDisplayKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Hokusai/Hokusai.framework",
+				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
+				"${BUILT_PRODUCTS_DIR}/ILLoginKit/ILLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
+				"${BUILT_PRODUCTS_DIR}/NMessenger/NMessenger.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
+				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
+				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
+				"${BUILT_PRODUCTS_DIR}/UIEmptyState/UIEmptyState.framework",
+				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
+				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
+				"${BUILT_PRODUCTS_DIR}/ZAlertView/ZAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AssistantKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hokusai.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ILLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMessenger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIEmptyState.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		04E5785E29F1778BFB2C9E5B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LoveSick2Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		05AC60770068ACE7B9B1F282 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2Tests/Pods-LoveSick2Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		249661142D1F411A8443C801 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2UITests/Pods-LoveSick2UITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		31113EA55363737D10F9D93F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2UITests/Pods-LoveSick2UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4E88976AEE74C7675F49AF32 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		58A2F7376C20E6481CBB4638 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LoveSick2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8BB0A89FE2193497A1C34829 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2Tests/Pods-LoveSick2Tests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9E2E7E61A6956861D6FA3FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE788C7A852EEB5F3E6DC610 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1968A2BA2A9320EC7EC4F8E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LoveSick2UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EFDD53942013A32C00817F49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				811035EC2035C08300DE4172 /* SearchViewController.swift in Sources */,
+				EFDD53EA2013A76D00817F49 /* Reply.swift in Sources */,
+				EFDD53EC2013A76D00817F49 /* Post.swift in Sources */,
+				EFDD53E92013A76D00817F49 /* LoveSickError.swift in Sources */,
+				EFDD54272014E15C00817F49 /* ContentTableViewCell.swift in Sources */,
+				EFDD541F2014BC4500817F49 /* TabBarController.swift in Sources */,
+				EFDD53DF2013A75800817F49 /* MapperManager.swift in Sources */,
+				EFDD53E02013A75800817F49 /* PostPaginator.swift in Sources */,
+				810F7BA7202C937400B523AB /* CommentTableViewCell.swift in Sources */,
+				EFDD540E2013B5BF00817F49 /* TopPostViewController.swift in Sources */,
+				810F7BA1202C643300B523AB /* CommentViewController.swift in Sources */,
+				EFDD54252014E15100817F49 /* TitleTableViewCell.swift in Sources */,
+				810F7BA3202C652500B523AB /* CommentTitleTableViewCell.swift in Sources */,
+				81B27381202B1B8800DCCA8B /* ExtensionSwift.swift in Sources */,
+				EFDD54042013A9FE00817F49 /* LoginCoordinator.swift in Sources */,
+				EFDD54212014E0A000817F49 /* PostTextViewController.swift in Sources */,
+				810F7BA5202C653400B523AB /* CommentTextTableViewCell.swift in Sources */,
+				EFDD54142014826300817F49 /* SessionManager.swift in Sources */,
+				EFDD54232014E14300817F49 /* ChooseCategoryTableViewCell.swift in Sources */,
+				EFDD541D2014B57700817F49 /* PostTableViewCell.swift in Sources */,
+				EFF9A5DA201A363000CB4D6D /* Extension.swift in Sources */,
+				81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */,
+				EFDD54062013B00C00817F49 /* UserManager.swift in Sources */,
+				EFDD53E12013A75800817F49 /* PostManager.swift in Sources */,
+				EFDD539E2013A32C00817F49 /* LoginViewController.swift in Sources */,
+				EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */,
+				EFF9A5D8201A2FA700CB4D6D /* SettingViewController.swift in Sources */,
+				EFDD539C2013A32C00817F49 /* AppDelegate.swift in Sources */,
+				EFDD53EB2013A76D00817F49 /* User.swift in Sources */,
+				EFDD54102013B5CC00817F49 /* NewPostViewController.swift in Sources */,
+				EFDD54162014AFEA00817F49 /* NewFeedsViewController.swift in Sources */,
+				EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDD53A82013A32C00817F49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFDD53B12013A32D00817F49 /* LoveSick2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDD53B32013A32D00817F49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFDD53BC2013A32D00817F49 /* LoveSick2UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFDD53C92013A57500817F49 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFDD53D02013A57500817F49 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EFDD53AE2013A32D00817F49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFDD53972013A32C00817F49 /* LoveSick2 */;
+			targetProxy = EFDD53AD2013A32D00817F49 /* PBXContainerItemProxy */;
+		};
+		EFDD53B92013A32D00817F49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFDD53972013A32C00817F49 /* LoveSick2 */;
+			targetProxy = EFDD53B82013A32D00817F49 /* PBXContainerItemProxy */;
+		};
+		EFDD53D32013A57500817F49 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFDD53CC2013A57500817F49 /* OneSignalNotificationServiceExtension */;
+			targetProxy = EFDD53D22013A57500817F49 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EFDD539F2013A32C00817F49 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFDD53A02013A32C00817F49 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EFDD53A42013A32C00817F49 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFDD53A52013A32C00817F49 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EFDD53BE2013A32D00817F49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EFDD53BF2013A32D00817F49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EFDD53C12013A32D00817F49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD1EDA92ADBEC42B5B23CAC2 /* Pods-LoveSick2.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6VW4SKG74;
+				INFOPLIST_FILE = LoveSick2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stella.LoveSick2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EFDD53C22013A32D00817F49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 878AC48364DF84E2B968C1DD /* Pods-LoveSick2.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6VW4SKG74;
+				INFOPLIST_FILE = LoveSick2/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stella.LoveSick2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EFDD53C42013A32D00817F49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6308DDDB6923053E5D4A607A /* Pods-LoveSick2Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6VW4SKG74;
+				INFOPLIST_FILE = LoveSick2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stella.LoveSick2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoveSick2.app/LoveSick2";
+			};
+			name = Debug;
+		};
+		EFDD53C52013A32D00817F49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 414F3316BFC8B5BC9DF1AA60 /* Pods-LoveSick2Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6VW4SKG74;
+				INFOPLIST_FILE = LoveSick2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stella.LoveSick2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoveSick2.app/LoveSick2";
+			};
+			name = Release;
+		};
+		EFDD53C72013A32D00817F49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32F14CF221BE47464F9017F9 /* Pods-LoveSick2UITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6VW4SKG74;
+				INFOPLIST_FILE = LoveSick2UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stella.LoveSick2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LoveSick2;
+			};
+			name = Debug;
+		};
+		EFDD53C82013A32D00817F49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F1EA47E73CA4ED843E4F962 /* Pods-LoveSick2UITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6VW4SKG74;
+				INFOPLIST_FILE = LoveSick2UITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stella.LoveSick2UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LoveSick2;
+			};
+			name = Release;
+		};
+		EFDD53D52013A57500817F49 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0DBC520EADA1117BC29EEDC9 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6VW4SKG74;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stella.LoveSick2.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EFDD53D62013A57500817F49 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA4D1593277B8AE0AFFABE27 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = N6VW4SKG74;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.stella.LoveSick2.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EFDD53932013A32C00817F49 /* Build configuration list for PBXProject "LoveSick2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFDD53BE2013A32D00817F49 /* Debug */,
+				EFDD53BF2013A32D00817F49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFDD53C02013A32D00817F49 /* Build configuration list for PBXNativeTarget "LoveSick2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFDD53C12013A32D00817F49 /* Debug */,
+				EFDD53C22013A32D00817F49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFDD53C32013A32D00817F49 /* Build configuration list for PBXNativeTarget "LoveSick2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFDD53C42013A32D00817F49 /* Debug */,
+				EFDD53C52013A32D00817F49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFDD53C62013A32D00817F49 /* Build configuration list for PBXNativeTarget "LoveSick2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFDD53C72013A32D00817F49 /* Debug */,
+				EFDD53C82013A32D00817F49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFDD53D72013A57500817F49 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFDD53D52013A57500817F49 /* Debug */,
+				EFDD53D62013A57500817F49 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EFDD53902013A32C00817F49 /* Project object */;
+}

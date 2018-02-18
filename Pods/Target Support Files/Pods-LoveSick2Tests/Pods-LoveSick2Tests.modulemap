@@ -1,0 +1,6 @@
+framework module Pods_LoveSick2Tests {
+  umbrella header "Pods-LoveSick2Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
