@@ -19,6 +19,8 @@ class PostTextViewController: UIViewController {
     weak var titleDelegate:PostTextViewDelegate?
     weak var contentDelegate:PostTextViewDelegate?
     
+    private var anonymously:Bool = false
+    
     var contentCell: UITableViewCell = UITableViewCell()
     
     override func viewDidLoad() {
@@ -39,13 +41,10 @@ class PostTextViewController: UIViewController {
     }
     
     @objc func post() {
-        guard let title = self.titleDelegate?.getText() else {
+        guard let title = self.titleDelegate?.getText(), let content = self.contentDelegate?.getText() else {
             return
         }
-        guard let content = self.contentDelegate?.getText() else {
-            return
-        }
-        PostManager.post(title: title, content: content, isAnonymous: false)
+        PostManager.post(title: title, content: content, isAnonymous: anonymously)
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -57,29 +56,39 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! ChooseCategoryTableViewCell
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! ChoosingTableViewCell
+            cell.style = .category
+            cell.delegate = self
             return cell
-        }
-        else if indexPath.row == 1 {
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell", for: indexPath) as!
             TitleTableViewCell
             self.titleDelegate = cell
             return cell
-        }
-        else{
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath) as!
             ContentTableViewCell
             self.contentDelegate = cell
             contentCell = cell
             cell.textView.delegate = self
             return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! ChoosingTableViewCell
+            cell.style = .anonymous
+            cell.delegate = self
+            return cell
         }
-
+    
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: false)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -87,7 +96,7 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
             return 44
         }
         else if indexPath.row == 1 {
-            return 100
+            return 44
         }
         else{
             return UITableViewAutomaticDimension
@@ -95,6 +104,17 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+}
+
+extension PostTextViewController: ChoosingStyleDelegate {
+    func anonymousChanged(_ value: Bool) {
+        self.anonymously = value
+    }
+    
+    func categorySelected(_ value: String) {
+        
     }
     
 }

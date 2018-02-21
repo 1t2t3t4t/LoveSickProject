@@ -29,10 +29,10 @@ class PostPaginator {
     }
     
     func refresh(completion: @escaping (LoveSickError?) -> Void) {
-        self.posts.removeAll()
         self.postManager.queryPostsFirstTen { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
+                self.posts.removeAll()
                 self.posts.append(contentsOf: posts)
                 completion(nil)
             }

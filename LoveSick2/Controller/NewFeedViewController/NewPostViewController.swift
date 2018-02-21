@@ -15,6 +15,12 @@ class NewPostViewController: UIViewController , IndicatorInfoProvider, UIEmptySt
     
     var type:PostQueryType!
     private var paginator:PostPaginator!
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(refresh),for: UIControlEvents.valueChanged)
+        return refreshControl
+    }()
     
     var emptyStateImage: UIImage? {
         return UIImage()
@@ -38,13 +44,25 @@ class NewPostViewController: UIViewController , IndicatorInfoProvider, UIEmptySt
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.addSubview(self.refreshControl)
         self.paginator = PostPaginator(withType: .mostRecent, { (posts, error) in
             self.tableView.reloadData()
         })
         tableView.tableFooterView = UIView()
+        self.reloadEmptyStateForTableView(tableView)
+        
+        
         self.emptyStateDataSource = self
         self.emptyStateDelegate = self
-        self.reloadEmptyStateForTableView(tableView)
+    }
+    
+    @objc func refresh() {
+        self.paginator.refresh { (error) in
+            if error == nil {
+                self.tableView.reloadData()
+            }
+            self.refreshControl.endRefreshing()
+        }
     }
 
 }

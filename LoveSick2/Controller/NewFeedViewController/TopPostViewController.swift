@@ -20,9 +20,7 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
-            #selector(refresh),
-                                 for: UIControlEvents.valueChanged)
-        refreshControl.tintColor = UIColor.red
+            #selector(refresh),for: UIControlEvents.valueChanged)
         return refreshControl
     }()
     
@@ -59,6 +57,7 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
             self.tableView.reloadData()
         })
         tableView.tableFooterView = UIView()
+        
         self.emptyStateDataSource = self
         self.emptyStateDelegate = self
         

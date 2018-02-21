@@ -58,7 +58,7 @@
 		EFDD541D2014B57700817F49 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD541C2014B57700817F49 /* PostTableViewCell.swift */; };
 		EFDD541F2014BC4500817F49 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD541E2014BC4500817F49 /* TabBarController.swift */; };
 		EFDD54212014E0A000817F49 /* PostTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54202014E0A000817F49 /* PostTextViewController.swift */; };
-		EFDD54232014E14300817F49 /* ChooseCategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54222014E14300817F49 /* ChooseCategoryTableViewCell.swift */; };
+		EFDD54232014E14300817F49 /* ChoosingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54222014E14300817F49 /* ChoosingTableViewCell.swift */; };
 		EFDD54252014E15100817F49 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54242014E15100817F49 /* TitleTableViewCell.swift */; };
 		EFDD54272014E15C00817F49 /* ContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD54262014E15C00817F49 /* ContentTableViewCell.swift */; };
 		EFF9A5D8201A2FA700CB4D6D /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF9A5D7201A2FA700CB4D6D /* SettingViewController.swift */; };
@@ -173,7 +173,7 @@
 		EFDD541C2014B57700817F49 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		EFDD541E2014BC4500817F49 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		EFDD54202014E0A000817F49 /* PostTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTextViewController.swift; sourceTree = "<group>"; };
-		EFDD54222014E14300817F49 /* ChooseCategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCategoryTableViewCell.swift; sourceTree = "<group>"; };
+		EFDD54222014E14300817F49 /* ChoosingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosingTableViewCell.swift; sourceTree = "<group>"; };
 		EFDD54242014E15100817F49 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		EFDD54262014E15C00817F49 /* ContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTableViewCell.swift; sourceTree = "<group>"; };
 		EFF9A5D7201A2FA700CB4D6D /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -418,7 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				EFDD541C2014B57700817F49 /* PostTableViewCell.swift */,
-				EFDD54222014E14300817F49 /* ChooseCategoryTableViewCell.swift */,
+				EFDD54222014E14300817F49 /* ChoosingTableViewCell.swift */,
 				EFDD54242014E15100817F49 /* TitleTableViewCell.swift */,
 				EFDD54262014E15C00817F49 /* ContentTableViewCell.swift */,
 				810F7BA2202C652500B523AB /* CommentTitleTableViewCell.swift */,
@@ -877,7 +877,7 @@
 				EFDD54212014E0A000817F49 /* PostTextViewController.swift in Sources */,
 				810F7BA5202C653400B523AB /* CommentTextTableViewCell.swift in Sources */,
 				EFDD54142014826300817F49 /* SessionManager.swift in Sources */,
-				EFDD54232014E14300817F49 /* ChooseCategoryTableViewCell.swift in Sources */,
+				EFDD54232014E14300817F49 /* ChoosingTableViewCell.swift in Sources */,
 				EFDD541D2014B57700817F49 /* PostTableViewCell.swift in Sources */,
 				EFF9A5DA201A363000CB4D6D /* Extension.swift in Sources */,
 				81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */,
