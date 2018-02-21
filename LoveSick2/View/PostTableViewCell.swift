@@ -55,6 +55,7 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
         self.title.text = self.post.title
         self.name.text = self.post.displayName
         let numLike = self.post.like >  999 ? "\(self.post.like/1000)k" : "\(self.post.like)"
+        addattributeText(button:comment,image: #imageLiteral(resourceName: "message"),text: " \(self.post.replies.count)")
         self.numvote.text = numLike
     }
     
