@@ -12,6 +12,8 @@ import Firebase
 class SearchViewController: UIViewController {
 
     private var searchBar:UISearchBar!
+    private var timer:Timer?
+    
     @IBOutlet weak var tableView: UITableView!
     
     var posts:[Post] = []
@@ -37,11 +39,15 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.posts.removeAll()
-        if searchText == "" {
-            self.tableView.reloadData()
-            return
+        if timer != nil {
+            if timer!.isValid { timer!.invalidate() }
         }
+        self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(fetchPost), userInfo: nil, repeats: false)
+    }
+    
+    @objc private func fetchPost() {
+        self.posts.removeAll()
+        guard let searchText = self.searchBar.text else { return }
         Database.database().reference().child("Posts").queryOrdered(byChild: "createdAt").observeSingleEvent(of: .value) { (snap) in
             guard let value = snap.value as? [String:Any] else {
                 self.tableView.reloadData()
@@ -50,7 +56,7 @@ extension SearchViewController: UISearchBarDelegate {
             for post in value {
                 self.posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
             }
-            self.posts = self.posts.filter({($0.title?.contains(searchText))!})
+            self.posts = self.posts.filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
             self.tableView.reloadData()
         }
     }
