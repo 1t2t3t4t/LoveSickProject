@@ -36,6 +36,16 @@ extension SettingViewController:UITableViewDelegate,UITableViewDataSource {
         cell.textLabel?.text = settings[indexPath.section][indexPath.row]
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch settings[indexPath.section][indexPath.row] {
+        case "Log Out":
+            SessionManager.logOut(nil)
+            self.dismiss(animated: true, completion: nil)
+        default:
+            return
+        }
+    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
     }

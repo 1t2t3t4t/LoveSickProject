@@ -47,12 +47,12 @@ class SessionManager {
         }
     }
     
-    class func logOut(_ completion:@escaping (Bool) -> Void) {
+    class func logOut(_ completion: ((Bool) -> Void)?) {
         do {
             try Auth.auth().signOut()
-            completion(true)
+            completion?(true)
         }catch {
-            completion(false)
+            completion?(false)
         }
     }
 }

@@ -179,6 +179,7 @@ open class LoginCoordinator: ConfigurationSource {
 
     open func signup(name: String, email: String, password: String) {
         print("Implement this method in your subclass to handle signup.")
+        
     }
 
     open func enterWithFacebook(profile: FacebookProfile) {

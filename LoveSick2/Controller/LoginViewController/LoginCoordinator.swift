@@ -10,6 +10,7 @@ import Foundation
 import ILLoginKit
 import ZAlertView
 import JGProgressHUD
+
 class LoginCoordinator: ILLoginKit.LoginCoordinator {
 
     // MARK: - LoginCoordinator
@@ -48,27 +49,27 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
         passwordPlaceholder = "Password"
         repeatPasswordPlaceholder = "Confirm password"
     }
-
-    func login(viewController:UIViewController,email: String, password: String) {
+    
+    override func login(email: String, password: String) {
         let hud = JGProgressHUD(style: .dark)
+        let viewController = self.visibleViewController()
         hud.textLabel.text = "Logging in.."
-        hud.show(in:viewController.view)
+        hud.show(in:viewController!.view)
         
         SessionManager.logIn(email: email, password: password, completion: {(success) in
             hud.dismiss()
-            
             if success {
                 let alert = UIAlertController(title: "Success",
                                               message: "Welcome to LoveSick!",
                                               preferredStyle: .alert)
                 let submitAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                     alert.dismiss(animated: true, completion: nil)
+                    alert.dismiss(animated: true, completion: nil)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let view = storyboard.instantiateViewController(withIdentifier: "tabbar")
-                    viewController.present(view, animated: true, completion: nil)
+                    viewController?.present(view, animated: true, completion: nil)
                 })
                 alert.addAction(submitAction)
-                viewController.present(alert, animated: true, completion: nil)
+                viewController?.present(alert, animated: true, completion: nil)
             }
             else{
                 let alert = UIAlertController(title: "Error",
@@ -78,15 +79,16 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
                     alert.dismiss(animated: true, completion: nil)
                 })
                 alert.addAction(submitAction)
-                viewController.present(alert, animated: true, completion: nil)
+                viewController?.present(alert, animated: true, completion: nil)
             }
         })
     }
     
-    func signup(viewController:UIViewController,name: String, email: String, password: String) {
+    override func signup(name: String, email: String, password: String) {
         let hud = JGProgressHUD(style: .dark)
+        let viewController = self.visibleViewController()
         hud.textLabel.text = "Signing up.."
-        hud.show(in:viewController.view)
+        hud.show(in:viewController!.view)
         SessionManager.register(email: email, password: password, displayName: name, completion: {(success) in
             hud.dismiss()
             if success {
@@ -97,10 +99,10 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
                     alert.dismiss(animated: true, completion: nil)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let view = storyboard.instantiateViewController(withIdentifier: "tabbar")
-                    viewController.present(view, animated: true, completion: nil)
+                    viewController?.present(view, animated: true, completion: nil)
                 })
                 alert.addAction(submitAction)
-                viewController.present(alert, animated: true, completion: nil)
+                viewController?.present(alert, animated: true, completion: nil)
             }
             else{
                 let alert = UIAlertController(title: "Error",
@@ -110,11 +112,11 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
                     alert.dismiss(animated: true, completion: nil)
                 })
                 alert.addAction(submitAction)
-                viewController.present(alert, animated: true, completion: nil)
+                viewController?.present(alert, animated: true, completion: nil)
             }
         })
     }
-    
+
     // Handle Facebook login/signup via your API
     override func enterWithFacebook(profile: FacebookProfile) {
         print("Login/Signup via Facebook with: FB profile =\(profile)")
