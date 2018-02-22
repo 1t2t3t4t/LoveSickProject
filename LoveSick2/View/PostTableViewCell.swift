@@ -28,11 +28,14 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        name.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
+        name.textColor = UIColor.gray
         title.numberOfLines = 0
         title.lineBreakMode = .byWordWrapping
+        title.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.heavy)
         profileImg.image = #imageLiteral(resourceName: "profileLoad")
         numvote.textAlignment = .center
-        numvote.textColor = UIColor.lightGray
+        numvote.textColor = UIColor.gray
         more.setImage(#imageLiteral(resourceName: "more"), for: .normal)
         more.tintColor = UIColor.gray
         more.tintColor = UIColor.gray
@@ -44,6 +47,8 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
         downvote.tintColor = UIColor.lightGray
         downvote.setTitle("", for: .normal)
         category.text = "Category"
+        category.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
+        category.textColor = UIColor.gray
         addattributeText(button:comment,image: #imageLiteral(resourceName: "message"),text: " 0")
         comment.tintColor = UIColor.gray
         addattributeText(button:share,image: #imageLiteral(resourceName: "share"),text: " Share")
