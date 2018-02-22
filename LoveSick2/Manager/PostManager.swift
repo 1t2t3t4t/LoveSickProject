@@ -141,6 +141,7 @@ class PostManager {
             completion(posts,nil)
         }
     }
+
     
     private func sort(_ posts:inout [Post]) {
         switch self.queryType {
