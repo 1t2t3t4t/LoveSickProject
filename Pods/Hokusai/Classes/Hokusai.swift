@@ -316,7 +316,9 @@ final public class Hokusai: UIViewController, UIGestureRecognizerDelegate {
         
         let labelHeights = labels.flatMap { $0.frame.height }.reduce(0, +)
         let buttonHeights = buttons.flatMap { $0.frame.height }.reduce(0, +)
-        let menuHeight = CGFloat(buttons.count + labels.count + 1) * kElementInterval + labelHeights + buttonHeights
+        var iphonex = 0
+        
+        let menuHeight = CGFloat(buttons.count + labels.count + 1) * kElementInterval + labelHeights + buttonHeights + 10
         menuView.frame = CGRect(
             x: 0,
             y: view.frame.height - menuHeight,

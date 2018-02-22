@@ -12,7 +12,7 @@ class TabBarController: UITabBarController{
     var previousIndex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.delegate = self
+        self.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -31,7 +31,7 @@ class TabBarController: UITabBarController{
             }
             hokusai.fontName = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.bold).fontName
             
-            hokusai.colorScheme = HOKColorScheme.inari
+            hokusai.colorScheme = HOKColorScheme.hokusai
             hokusai.addButton("Text") {
                 let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                 let view = storyBoard.instantiateViewController(withIdentifier: "postText") as! PostTextViewController
@@ -52,7 +52,8 @@ class TabBarController: UITabBarController{
 }
 extension TabBarController:UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        if viewController == self.tabBarController?.viewControllers![2] {
+        print("enter shouldselect \(viewController.title)")
+        if viewController.title == "showPostOption" {//self.tabBarController?.viewControllers![2] {
             return false
         }
         return true

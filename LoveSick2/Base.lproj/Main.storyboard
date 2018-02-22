@@ -542,10 +542,10 @@
             </objects>
             <point key="canvasLocation" x="-52" y="289.20539730134936"/>
         </scene>
-        <!--Post-->
+        <!--showPostOption-->
         <scene sceneID="BBw-fh-080">
             <objects>
-                <viewController id="ANE-UP-tWf" sceneMemberID="viewController">
+                <viewController title="showPostOption" id="ANE-UP-tWf" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r2c-WS-dsR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
