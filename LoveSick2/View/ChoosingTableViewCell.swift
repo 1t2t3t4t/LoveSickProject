@@ -19,7 +19,8 @@ protocol ChoosingStyleDelegate: class {
 }
 
 class ChoosingTableViewCell: UITableViewCell {
-    
+    @IBOutlet weak var switcher:UISwitch!
+    @IBOutlet weak var label:UILabel!
     var style:choosingStyle!{
         didSet{
             self.setUp()
@@ -28,15 +29,17 @@ class ChoosingTableViewCell: UITableViewCell {
     
     weak var delegate:ChoosingStyleDelegate?
     
-    private var switcher:UISwitch?
-    
     private func setUp() {
+        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.bold)
         if self.style == .anonymous {
-            self.switcher = UISwitch(frame: self.bounds)
-            self.switcher?.frame.origin.x += 10
-            self.switcher?.frame.origin.y += -((self.switcher?.frame.origin.y)!/2)+(self.switcher?.frame.size.height)!/2
-            self.switcher?.addTarget(self, action: #selector(stateChange), for: .valueChanged)
-            self.addSubview(self.switcher!)
+            label.text = "Post anonymously"
+            switcher.isOn = false
+            switcher.addTarget(self, action: #selector(stateChange), for: .valueChanged)
+        }
+        else{
+            switcher.isHidden = true
+            label.text = "Choose Category"
+            
         }
     }
     

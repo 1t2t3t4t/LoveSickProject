@@ -9,7 +9,8 @@
 import UIKit
 import XLPagerTabStrip
 import UIEmptyState
-
+import Hokusai
+import Alamofire
 class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptyStateDataSource, UIEmptyStateDelegate {
     
     @IBOutlet weak var tableView:UITableView!
@@ -53,6 +54,7 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
         self.tableView.contentInset = adjustForTabbarInsets
         self.tableView.scrollIndicatorInsets = adjustForTabbarInsets
         self.reloadEmptyStateForTableView(tableView)
+        
         self.paginator = PostPaginator(withType: .mostLiked, { (posts, error) in
             self.tableView.reloadData()
         })
@@ -84,11 +86,24 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "toppostCell", for: indexPath) as! PostTableViewCell
         let post = self.paginator.posts[indexPath.row]
-        cell.post = post
-        return cell
-    }
+        if post.isImagePost! {
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
+            cell.post = post
+         
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "toppostCell", for: indexPath) as! PostTableViewCell
+            cell.post = post
+            return cell
+        }
+        }
+ 
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
+//        cell.delegate = self
+//        cell.setCustomImage(image: #imageLiteral(resourceName: "profileLoad"))
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == paginator.posts.count - 5 {
@@ -110,10 +125,29 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        return 250
+
     }
+    
+    
+}
+extension TopPostViewController:PostTableViewCellDelegate {
+    func report() {
+
+            let hokusai = Hokusai()
+            hokusai.cancelButtonTitle = "Cancel"
+            hokusai.fontName = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.bold).fontName
+            
+            hokusai.colorScheme = HOKColorScheme.tsubaki
+            hokusai.addButton("Report"){
+            }
+            hokusai.show()
+        
+    }
+    
     
 }

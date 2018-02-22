@@ -20,6 +20,14 @@
 		D89EA06470EE340E6181478C /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75367EB21DE57AB668E35AA2 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		EF216CD9203EAACF00C13CB7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CD8203EAACF00C13CB7 /* ChatTableViewCell.swift */; };
 		EF216CDB203EAB1700C13CB7 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CDA203EAB1700C13CB7 /* MessageViewController.swift */; };
+		EF216CDD203EC4E900C13CB7 /* PostImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CDC203EC4E900C13CB7 /* PostImageTableViewCell.swift */; };
+		EF216CDF203EEAE100C13CB7 /* ChoosePhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CDE203EEAE100C13CB7 /* ChoosePhotoTableViewCell.swift */; };
+		EF216CE2203EECB900C13CB7 /* PostImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CE1203EECB900C13CB7 /* PostImageViewController.swift */; };
+		EF216CE3203F1EC400C13CB7 /* Fusuma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF216CE4203F1EC400C13CB7 /* Fusuma.framework */; };
+		EF216CE7203F202600C13CB7 /* KMPlaceholderTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF216CE8203F202600C13CB7 /* KMPlaceholderTextView.framework */; };
+		EF216CEA203F388000C13CB7 /* UploadPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CE9203F388000C13CB7 /* UploadPhoto.swift */; };
+		EF216CEC203F3E2500C13CB7 /* PreviewImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CEB203F3E2500C13CB7 /* PreviewImageTableViewCell.swift */; };
+		EF216CED203F595700C13CB7 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF216CEE203F595700C13CB7 /* Nuke.framework */; };
 		EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */; };
 		EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2BF9E92039B6BE0014D38C /* NMessenger.framework */; };
 		EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */; };
@@ -129,6 +137,15 @@
 		DD1EDA92ADBEC42B5B23CAC2 /* Pods-LoveSick2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2.debug.xcconfig"; sourceTree = "<group>"; };
 		EF216CD8203EAACF00C13CB7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		EF216CDA203EAB1700C13CB7 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		EF216CDC203EC4E900C13CB7 /* PostImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageTableViewCell.swift; sourceTree = "<group>"; };
+		EF216CDE203EEAE100C13CB7 /* ChoosePhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoosePhotoTableViewCell.swift; sourceTree = "<group>"; };
+		EF216CE1203EECB900C13CB7 /* PostImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageViewController.swift; sourceTree = "<group>"; };
+		EF216CE4203F1EC400C13CB7 /* Fusuma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Fusuma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF216CE6203F1EC900C13CB7 /* RSKPlaceholderTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSKPlaceholderTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF216CE8203F202600C13CB7 /* KMPlaceholderTextView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KMPlaceholderTextView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF216CE9203F388000C13CB7 /* UploadPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhoto.swift; sourceTree = "<group>"; };
+		EF216CEB203F3E2500C13CB7 /* PreviewImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageTableViewCell.swift; sourceTree = "<group>"; };
+		EF216CEE203F595700C13CB7 /* Nuke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nuke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EF2BF9E72039A9E10014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9E92039B6BE0014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +206,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF216CED203F595700C13CB7 /* Nuke.framework in Frameworks */,
+				EF216CE7203F202600C13CB7 /* KMPlaceholderTextView.framework in Frameworks */,
+				EF216CE3203F1EC400C13CB7 /* Fusuma.framework in Frameworks */,
 				EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */,
 				EFDD54172014AFF300817F49 /* XLPagerTabStrip.framework in Frameworks */,
 				EFDD53ED2013A7AF00817F49 /* Alamofire.framework in Frameworks */,
@@ -272,6 +292,10 @@
 		BC100AB5276A9EB37EE03421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF216CEE203F595700C13CB7 /* Nuke.framework */,
+				EF216CE8203F202600C13CB7 /* KMPlaceholderTextView.framework */,
+				EF216CE6203F1EC900C13CB7 /* RSKPlaceholderTextView.framework */,
+				EF216CE4203F1EC400C13CB7 /* Fusuma.framework */,
 				EF2BF9E92039B6BE0014D38C /* NMessenger.framework */,
 				EF2BF9E72039A9E10014D38C /* NMessenger.framework */,
 				EFDD54182014AFF300817F49 /* XLPagerTabStrip.framework */,
@@ -292,6 +316,15 @@
 				75367EB21DE57AB668E35AA2 /* Pods_OneSignalNotificationServiceExtension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF216CE0203EEC9600C13CB7 /* PostTextViewcontroller */ = {
+			isa = PBXGroup;
+			children = (
+				EFDD54202014E0A000817F49 /* PostTextViewController.swift */,
+				EF216CE1203EECB900C13CB7 /* PostImageViewController.swift */,
+			);
+			path = PostTextViewcontroller;
 			sourceTree = "<group>";
 		};
 		EF2BF9E22039A8970014D38C /* SettingViewController */ = {
@@ -400,6 +433,7 @@
 				EFDD53E62013A76D00817F49 /* Reply.swift */,
 				EFDD53E72013A76D00817F49 /* User.swift */,
 				EFF9A5D9201A362F00CB4D6D /* Extension.swift */,
+				EF216CE9203F388000C13CB7 /* UploadPhoto.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -407,6 +441,7 @@
 		EFDD540C2013B5A900817F49 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EF216CE0203EEC9600C13CB7 /* PostTextViewcontroller */,
 				EF2BF9E32039A8B90014D38C /* ChatViewController */,
 				EF2BF9E22039A8970014D38C /* SettingViewController */,
 				811035EA2035C06D00DE4172 /* SearchViewController */,
@@ -414,7 +449,6 @@
 				81DB7D062035A17400B2232C /* NewFeedViewController */,
 				81DB7D042035A12400B2232C /* PostViewController */,
 				EFDD541E2014BC4500817F49 /* TabBarController.swift */,
-				EFDD54202014E0A000817F49 /* PostTextViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -431,6 +465,9 @@
 				810F7BA6202C937400B523AB /* CommentTableViewCell.swift */,
 				EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */,
 				EF216CD8203EAACF00C13CB7 /* ChatTableViewCell.swift */,
+				EF216CDC203EC4E900C13CB7 /* PostImageTableViewCell.swift */,
+				EF216CDE203EEAE100C13CB7 /* ChoosePhotoTableViewCell.swift */,
+				EF216CEB203F3E2500C13CB7 /* PreviewImageTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -638,6 +675,7 @@
 				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Hokusai/Hokusai.framework",
@@ -645,8 +683,10 @@
 				"${BUILT_PRODUCTS_DIR}/ILLoginKit/ILLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
 				"${BUILT_PRODUCTS_DIR}/NMessenger/NMessenger.framework",
+				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
@@ -668,6 +708,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hokusai.framework",
@@ -675,8 +716,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ILLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMessenger.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
@@ -872,6 +915,7 @@
 				EFDD54272014E15C00817F49 /* ContentTableViewCell.swift in Sources */,
 				EFDD541F2014BC4500817F49 /* TabBarController.swift in Sources */,
 				EFDD53DF2013A75800817F49 /* MapperManager.swift in Sources */,
+				EF216CDF203EEAE100C13CB7 /* ChoosePhotoTableViewCell.swift in Sources */,
 				EFDD53E02013A75800817F49 /* PostPaginator.swift in Sources */,
 				810F7BA7202C937400B523AB /* CommentTableViewCell.swift in Sources */,
 				EFDD540E2013B5BF00817F49 /* TopPostViewController.swift in Sources */,
@@ -892,13 +936,17 @@
 				EFDD539E2013A32C00817F49 /* LoginViewController.swift in Sources */,
 				EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */,
 				EFF9A5D8201A2FA700CB4D6D /* SettingViewController.swift in Sources */,
+				EF216CDD203EC4E900C13CB7 /* PostImageTableViewCell.swift in Sources */,
 				EF216CD9203EAACF00C13CB7 /* ChatTableViewCell.swift in Sources */,
+				EF216CEC203F3E2500C13CB7 /* PreviewImageTableViewCell.swift in Sources */,
 				EFDD539C2013A32C00817F49 /* AppDelegate.swift in Sources */,
 				EFDD53EB2013A76D00817F49 /* User.swift in Sources */,
 				EF216CDB203EAB1700C13CB7 /* MessageViewController.swift in Sources */,
 				EFDD54102013B5CC00817F49 /* NewPostViewController.swift in Sources */,
 				EFDD54162014AFEA00817F49 /* NewFeedsViewController.swift in Sources */,
 				EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */,
+				EF216CE2203EECB900C13CB7 /* PostImageViewController.swift in Sources */,
+				EF216CEA203F388000C13CB7 /* UploadPhoto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

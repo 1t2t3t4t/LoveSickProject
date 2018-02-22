@@ -14,7 +14,9 @@ class Post: Mappable {
     
     var title: String?
     var content: String?
+    var imageURL: String?
     var createdAt: Double?
+    var isImagePost:Bool?
     var like: Int = 0
     var creatorUID: String?
     var displayName: String?
@@ -37,6 +39,13 @@ class Post: Mappable {
     init(title:String,content:String) {
         self.title = title
         self.content = content
+        self.isImagePost = false
+        self.creatorUID = User.currentUser?.uid
+        self.like = 0
+    }
+    init(title:String) {
+        self.title = title
+        self.isImagePost = true
         self.creatorUID = User.currentUser?.uid
         self.like = 0
     }
@@ -55,6 +64,8 @@ class Post: Mappable {
         self.isAnonymous <- map["isAnonymous"]
         self.displayName <- map["displayName"]
         self.postuid <- map["postuid"]
+        self.imageURL <- map["imageURL"]
+        self.isImagePost <- map["isImagePost"]
     }
     
 }

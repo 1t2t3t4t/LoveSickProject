@@ -69,6 +69,25 @@ class PostManager {
         post.postuid = uid
         Database.database().reference().child("Posts/\(uid)").setValue(post.toJSON())
     }
+    class func postImage(title:String,image:UIImage,isAnonymous: Bool) {
+        let post = Post(title: title)
+        post.createdAt = Date().timeIntervalSince1970
+        post.like = Int(arc4random_uniform(3000))
+        post.isAnonymous = isAnonymous
+        post.creatorUID = User.currentUser?.uid
+        post.displayName = User.currentUser?.displayName
+        let uid = Database.database().reference().child("Posts").childByAutoId().key
+        post.postuid = uid
+        UploadPhoto.uploadPostImage(image, completion: {(url) in
+            guard let str = url else {
+                return
+            }
+                post.imageURL = str
+            Database.database().reference().child("Posts/\(uid)").setValue(post.toJSON())
+        })
+        
+        
+    }
     
     class func upvote(postuid:String,completion:@escaping(LoveSickError?) -> Void) {
         Database.database().reference().child("Posts/\(postuid)").observeSingleEvent(of: .value, with: {(snapshot) in

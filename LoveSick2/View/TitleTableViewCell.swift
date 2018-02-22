@@ -7,27 +7,32 @@
 //
 
 import UIKit
+import KMPlaceholderTextView
 
 class TitleTableViewCell: UITableViewCell,UITextViewDelegate {
-    @IBOutlet weak var textView:UITextView!
+    
+    @IBOutlet weak var textView:KMPlaceholderTextView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        textView.text = "Title"
-        textView.textColor = UIColor.gray
-        textView.delegate = self
+        textView.textColor = UIColor.black
+        //textView.delegate = self
+        textView.isScrollEnabled = false
+        
+        textView.tag = 1
         // Initialization code
     }
 
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Title" && textView.textColor == UIColor.gray {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-        else if textView.text == "" && textView.textColor == UIColor.black {
-            textView.textColor = UIColor.gray
-            textView.text = "Title"
-        }
-    }
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        if textView.text == "Title" && textView.textColor == UIColor.gray {
+//            textView.text = ""
+//            textView.textColor = UIColor.black
+//        }
+//        else if textView.text == "" && textView.textColor == UIColor.black {
+//            textView.textColor = UIColor.gray
+//            textView.text = "Title"
+//        }
+//    }
 
 }
 

@@ -40,6 +40,9 @@ class TabBarController: UITabBarController{
                  self.selectedIndex = self.previousIndex
             }
             hokusai.addButton("Image"){
+                let viewController = PostImageViewController.newInstanceFromStoryboard() as! PostImageViewController
+                let nav = UINavigationController(rootViewController: viewController)
+                self.present(nav, animated: true, completion: nil)
                  self.selectedIndex = self.previousIndex
             }
             hokusai.show()

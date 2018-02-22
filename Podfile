@@ -24,6 +24,9 @@ target 'LoveSick2' do
     pod 'ZAlertView'
     pod 'XLPagerTabStrip', '~> 8.0'
     pod 'NMessenger'
+    pod 'Fusuma'
+    pod 'KMPlaceholderTextView', '~> 1.3.0'
+     pod 'Nuke', '~> 6.0'
   # Pods for LoveSick2
 
   target 'LoveSick2Tests' do
