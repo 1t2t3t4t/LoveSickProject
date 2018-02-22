@@ -11,9 +11,21 @@ import NMessenger
 import AsyncDisplayKit
 
 class ChatViewController: NMessengerViewController {
-
+    
+    var titleName:String?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+         self.tabBarController?.tabBar.isHidden = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let title = titleName else {
+            return
+        }
+        self.navigationItem.title = title
         //self.inputBarView.textInputAreaView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ChatViewController.sendMessage)))
         
         // Do any additional setup after loading the view.
