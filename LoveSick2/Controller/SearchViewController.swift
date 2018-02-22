@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.setUpSearchBar()
+        //Database.database().reference().child("Tests").removeValue()
     }
     
     private func setUpSearchBar() {
@@ -31,6 +32,12 @@ class SearchViewController: UIViewController {
         self.searchBar.delegate = self
         self.searchBar.placeholder = "Search here..."
         self.navigationItem.titleView = self.searchBar
+        var i = 0
+        let str = ["hello world","yo dude","why the hell"]
+//        while i<10000 {
+//            i+=1
+//            PostManager.post(title: str[Int(arc4random_uniform(3))], content: str[Int(arc4random_uniform(3))], isAnonymous: false)
+//        }
         
     }
     
@@ -47,18 +54,35 @@ extension SearchViewController: UISearchBarDelegate {
     
     @objc private func fetchPost() {
         self.posts.removeAll()
+        self.tableView.reloadData()
         guard let searchText = self.searchBar.text else { return }
-        Database.database().reference().child("Posts").queryOrdered(byChild: "createdAt").observeSingleEvent(of: .value) { (snap) in
-            guard let value = snap.value as? [String:Any] else {
+        Database.database().reference().child("Posts").queryOrdered(byChild: "title").queryStarting(atValue: searchText).queryEnding(atValue: searchText + "\u{f8ff}").observeSingleEvent(of: .value, with: {(snap) in
+            if snap.exists() {
+                guard let value = snap.value as? [String:Any] else {
+                    self.tableView.reloadData()
+                    return
+                }
+                for post in value {
+                    self.posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
+                }
+                self.posts = self.posts.filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
                 self.tableView.reloadData()
-                return
             }
-            for post in value {
-                self.posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
+            else{
+                Database.database().reference().child("Posts").queryOrdered(byChild: "createdAt").observeSingleEvent(of: .value) { (snap) in
+                    guard let value = snap.value as? [String:Any] else {
+                        self.tableView.reloadData()
+                        return
+                    }
+                    for post in value {
+                        self.posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
+                    }
+                    self.posts = self.posts.filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
+                    self.tableView.reloadData()
+                }
             }
-            self.posts = self.posts.filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
-            self.tableView.reloadData()
-        }
+        })
+
     }
     
 }
