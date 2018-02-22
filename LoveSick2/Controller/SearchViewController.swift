@@ -13,17 +13,26 @@ class SearchViewController: UIViewController {
 
     private var searchBar:UISearchBar!
     private var timer:Timer?
+    private let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: UITableView!
     
     var posts:[Post] = []
+    var typeCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            tableView.addSubview(refreshControl)
+        }
+        self.tableView.tableFooterView = UIView()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.setUpSearchBar()
+        
         //Database.database().reference().child("Tests").removeValue()
     }
     
@@ -32,8 +41,8 @@ class SearchViewController: UIViewController {
         self.searchBar.delegate = self
         self.searchBar.placeholder = "Search here..."
         self.navigationItem.titleView = self.searchBar
-        var i = 0
-        let str = ["hello world","yo dude","why the hell"]
+    //    var i = 0
+     //   let str = ["hello world","yo dude","why the hell"]
 //        while i<10000 {
 //            i+=1
 //            PostManager.post(title: str[Int(arc4random_uniform(3))], content: str[Int(arc4random_uniform(3))], isAnonymous: false)
@@ -46,18 +55,39 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == "" {
+            self.posts.removeAll()
+            self.tableView.reloadData()
+            self.refreshControl.endRefreshing()
+            return
+        }
+        if typeCount < 1 {
+            typeCount = 1
+            self.tableView.setContentOffset(CGPoint(x:0, y:self.tableView.contentOffset.y -         (self.refreshControl.frame.size.height)), animated: true)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+            self.refreshControl.sendActions(for: .valueChanged)
+        })
+        self.refreshControl.beginRefreshing()
         if timer != nil {
-            if timer!.isValid { timer!.invalidate() }
+            
+            if timer!.isValid {
+                timer!.invalidate()
+                //self.refreshControl.endRefreshing()
+            }
         }
         self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(fetchPost), userInfo: nil, repeats: false)
     }
     
     @objc private func fetchPost() {
+        
         self.posts.removeAll()
         self.tableView.reloadData()
         guard let searchText = self.searchBar.text else { return }
         Database.database().reference().child("Posts").queryOrdered(byChild: "title").queryStarting(atValue: searchText).queryEnding(atValue: searchText + "\u{f8ff}").observeSingleEvent(of: .value, with: {(snap) in
             if snap.exists() {
+                print("enter unicode field")
                 guard let value = snap.value as? [String:Any] else {
                     self.tableView.reloadData()
                     return
@@ -67,9 +97,14 @@ extension SearchViewController: UISearchBarDelegate {
                 }
                 self.posts = self.posts.filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
                 self.tableView.reloadData()
+               self.refreshControl.endRefreshing()
+                self.typeCount = 0
+                return
             }
             else{
                 Database.database().reference().child("Posts").queryOrdered(byChild: "createdAt").observeSingleEvent(of: .value) { (snap) in
+                    print("find the word")
+                    
                     guard let value = snap.value as? [String:Any] else {
                         self.tableView.reloadData()
                         return
@@ -79,6 +114,9 @@ extension SearchViewController: UISearchBarDelegate {
                     }
                     self.posts = self.posts.filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
                     self.tableView.reloadData()
+                   self.refreshControl.endRefreshing()
+                    self.typeCount = 0
+                    return
                 }
             }
         })

@@ -18,6 +18,8 @@
 		81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */; };
 		81B27381202B1B8800DCCA8B /* ExtensionSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */; };
 		D89EA06470EE340E6181478C /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75367EB21DE57AB668E35AA2 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		EF216CD9203EAACF00C13CB7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CD8203EAACF00C13CB7 /* ChatTableViewCell.swift */; };
+		EF216CDB203EAB1700C13CB7 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CDA203EAB1700C13CB7 /* MessageViewController.swift */; };
 		EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */; };
 		EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2BF9E92039B6BE0014D38C /* NMessenger.framework */; };
 		EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */; };
@@ -125,6 +127,8 @@
 		A27461F1B4E25C92A7ADB186 /* Pods_LoveSick2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveSick2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4D1593277B8AE0AFFABE27 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		DD1EDA92ADBEC42B5B23CAC2 /* Pods-LoveSick2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2.debug.xcconfig"; sourceTree = "<group>"; };
+		EF216CD8203EAACF00C13CB7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		EF216CDA203EAB1700C13CB7 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EF2BF9E72039A9E10014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9E92039B6BE0014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */,
+				EF216CDA203EAB1700C13CB7 /* MessageViewController.swift */,
 			);
 			path = ChatViewController;
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 				810F7BA4202C653400B523AB /* CommentTextTableViewCell.swift */,
 				810F7BA6202C937400B523AB /* CommentTableViewCell.swift */,
 				EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */,
+				EF216CD8203EAACF00C13CB7 /* ChatTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -886,8 +892,10 @@
 				EFDD539E2013A32C00817F49 /* LoginViewController.swift in Sources */,
 				EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */,
 				EFF9A5D8201A2FA700CB4D6D /* SettingViewController.swift in Sources */,
+				EF216CD9203EAACF00C13CB7 /* ChatTableViewCell.swift in Sources */,
 				EFDD539C2013A32C00817F49 /* AppDelegate.swift in Sources */,
 				EFDD53EB2013A76D00817F49 /* User.swift in Sources */,
+				EF216CDB203EAB1700C13CB7 /* MessageViewController.swift in Sources */,
 				EFDD54102013B5CC00817F49 /* NewPostViewController.swift in Sources */,
 				EFDD54162014AFEA00817F49 /* NewFeedsViewController.swift in Sources */,
 				EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */,
