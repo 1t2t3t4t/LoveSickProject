@@ -15,3 +15,15 @@ extension UIViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
     }
 }
+extension String {
+    func words() -> [String] {
+        var byWords:[String] = []
+        enumerateSubstrings(in: startIndex..<endIndex, options: .byWords) {
+            guard let word = $0 else { return }
+            print($1,$2,$3)
+            byWords.append(word)
+        }
+        return byWords
+    }
+    
+}
