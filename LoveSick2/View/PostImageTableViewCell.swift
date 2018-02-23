@@ -9,12 +9,14 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import KDCircularProgress
 protocol PostImageTableViewCellDelegate: class {
     func report() -> Void
 }
 class PostImageTableViewCell: UITableViewCell {
     
     @IBOutlet weak var profileImg:UIImageView!
+    @IBOutlet weak var progressView:KDCircularProgress!
     @IBOutlet weak var name:UILabel!
     @IBOutlet weak var contentImg:UIImageView!
     @IBOutlet weak var category:UILabel!
@@ -36,13 +38,14 @@ class PostImageTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        progressView.glowMode = .noGlow
         name.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
         name.textColor = UIColor.gray
         title.numberOfLines = 0
         title.lineBreakMode = .byWordWrapping
-        title.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.heavy)
+        title.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.heavy)
         profileImg.image = #imageLiteral(resourceName: "profileLoad")
-        profileImg.contentMode = .scaleAspectFit
+        profileImg.contentMode = .scaleAspectFill
         numvote.textAlignment = .center
         numvote.textColor = UIColor.gray
         more.setImage(#imageLiteral(resourceName: "more"), for: .normal)
@@ -81,7 +84,7 @@ class PostImageTableViewCell: UITableViewCell {
     }
     
     func setCustomImage(image : UIImage) {
-        
+        aspectConstraint = nil
         let aspect = image.size.width / image.size.height
         
         let constraint = NSLayoutConstraint(item: contentImg, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: contentImg, attribute: NSLayoutAttribute.height, multiplier: aspect, constant: 0.0)
@@ -90,7 +93,9 @@ class PostImageTableViewCell: UITableViewCell {
         aspectConstraint = constraint
         
         contentImg.image = image
-    }
+    
+        }
+    
     func setUpCell() {
         
         self.name.text = self.post.displayName
@@ -98,17 +103,29 @@ class PostImageTableViewCell: UITableViewCell {
         let numLike = self.post.like >  999 ? "\(self.post.like/1000)k" : "\(self.post.like)"
         addattributeText(button:comment,image: #imageLiteral(resourceName: "message"),text: " \(self.post.replies.count)")
         self.numvote.text = numLike
-        setCustomImage(image: #imageLiteral(resourceName: "profileLoad"))
-        if self.post.imageURL != nil {
-            Alamofire.request(self.post.imageURL!).responseData { response in
-                
-                if let image = response.result.value {
-                    let img = UIImage(data:image)
-                    img?.af_inflate()
-                    self.setCustomImage(image: img!)
-                }
-            }
-        }
+        setCustomImage(image: #imageLiteral(resourceName: "grayBackground"))
+        self.contentImg.af_setImage(withURL: URL(string:self.post.imageURL!)!, placeholderImage: #imageLiteral(resourceName: "grayBackground"), filter: nil, progress: {progress in
+                            self.progressView.angle = progress.fractionCompleted*360.0
+                        }
+                            , imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true, completion: {(response) in
+                                self.progressView.isHidden = true
+                                if let image = response.result.value{
+                                    self.contentImg.image = image
+                                }
+                        })
+//        if self.post.imageURL != nil {
+//            Alamofire.request(self.post.imageURL!).downloadProgress(closure: {progress in
+//                print("fractioncomplete \(progress.fractionCompleted)")
+//                self.progressView.angle = progress.fractionCompleted*360.0
+//            }).responseData { response in
+//                self.progressView.isHidden = true
+//                if let image = response.result.value {
+//                    let img = UIImage(data:image)
+//                    img?.af_inflate()
+//                    self.setCustomImage(image: img!)
+//                }
+//            }
+//        }
         
         
         
@@ -148,6 +165,16 @@ class PostImageTableViewCell: UITableViewCell {
         fullString.append(textStr)
         button.setAttributedTitle(fullString, for: .normal)
     }
+//    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+//        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+//        label.numberOfLines = 0
+//        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+//        label.font = font
+//        label.text = text
+//        label.sizeToFit()
+//
+//        return label.frame.height
+//    }
     
 }
 

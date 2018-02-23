@@ -8,26 +8,32 @@
 
 import Foundation
 import Firebase
+import KDCircularProgress
 class UploadPhoto {
     
-    static func uploadPostImage(_ image: UIImage, completion: @escaping (String?) -> Void) {
-        let temp = compressImage(image: image)
-        guard let img = UIImage(data: temp) else {
-            return
-        }
-        guard let imageData = UIImagePNGRepresentation(img) else {
+    static func uploadPostImage(_ image: UIImage,_ progressView:KDCircularProgress, completion: @escaping (String?) -> Void) {
+//        let temp = compressImage(image: image)
+//        guard let img = UIImage(data: temp) else {
+//            return
+//        }
+        guard let imageData = UIImagePNGRepresentation(image) else {
             print("cast png error")
             return completion(nil)
         }
         let autoid = Database.database().reference().childByAutoId().key
         let reference = Storage.storage().reference().child("PostImages/\(autoid).png")
-        reference.putData(imageData, metadata: nil, completion: { (metadata, error) in
+       let uploadTask =  reference.putData(imageData, metadata: nil, completion: { (metadata, error) in
             if let error = error {
                 print("upload error")
                 assertionFailure(error.localizedDescription)
                 return completion(nil)
             }
             completion(metadata?.downloadURL()?.absoluteString)
+        })
+        uploadTask.observe(.progress, handler: {snapshot in
+            progressView.angle = (Double(snapshot.progress!.completedUnitCount)
+                / Double(snapshot.progress!.totalUnitCount)) * 360
+            print("snapshot.progress \(snapshot.progress)")
         })
     }
     static func compressImage(image:UIImage) -> Data {

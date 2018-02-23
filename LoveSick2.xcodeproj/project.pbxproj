@@ -27,7 +27,7 @@
 		EF216CE7203F202600C13CB7 /* KMPlaceholderTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF216CE8203F202600C13CB7 /* KMPlaceholderTextView.framework */; };
 		EF216CEA203F388000C13CB7 /* UploadPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CE9203F388000C13CB7 /* UploadPhoto.swift */; };
 		EF216CEC203F3E2500C13CB7 /* PreviewImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CEB203F3E2500C13CB7 /* PreviewImageTableViewCell.swift */; };
-		EF216CED203F595700C13CB7 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF216CEE203F595700C13CB7 /* Nuke.framework */; };
+		EF216CEF203FEC9B00C13CB7 /* KDCircularProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF216CF0203FEC9B00C13CB7 /* KDCircularProgress.framework */; };
 		EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */; };
 		EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2BF9E92039B6BE0014D38C /* NMessenger.framework */; };
 		EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */; };
@@ -146,6 +146,7 @@
 		EF216CE9203F388000C13CB7 /* UploadPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhoto.swift; sourceTree = "<group>"; };
 		EF216CEB203F3E2500C13CB7 /* PreviewImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageTableViewCell.swift; sourceTree = "<group>"; };
 		EF216CEE203F595700C13CB7 /* Nuke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nuke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF216CF0203FEC9B00C13CB7 /* KDCircularProgress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KDCircularProgress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EF2BF9E72039A9E10014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9E92039B6BE0014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -206,7 +207,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF216CED203F595700C13CB7 /* Nuke.framework in Frameworks */,
+				EF216CEF203FEC9B00C13CB7 /* KDCircularProgress.framework in Frameworks */,
 				EF216CE7203F202600C13CB7 /* KMPlaceholderTextView.framework in Frameworks */,
 				EF216CE3203F1EC400C13CB7 /* Fusuma.framework in Frameworks */,
 				EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */,
@@ -292,6 +293,7 @@
 		BC100AB5276A9EB37EE03421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF216CF0203FEC9B00C13CB7 /* KDCircularProgress.framework */,
 				EF216CEE203F595700C13CB7 /* Nuke.framework */,
 				EF216CE8203F202600C13CB7 /* KMPlaceholderTextView.framework */,
 				EF216CE6203F1EC900C13CB7 /* RSKPlaceholderTextView.framework */,
@@ -683,6 +685,7 @@
 				"${BUILT_PRODUCTS_DIR}/ILLoginKit/ILLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
 				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/KDCircularProgress/KDCircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
 				"${BUILT_PRODUCTS_DIR}/NMessenger/NMessenger.framework",
@@ -716,6 +719,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ILLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KDCircularProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMessenger.framework",

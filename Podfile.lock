@@ -76,6 +76,7 @@ PODS:
   - Imaginary (3.0.3):
     - Cache (~> 4.0)
   - JGProgressHUD (2.0)
+  - KDCircularProgress (1.5.2)
   - KMPlaceholderTextView (1.3.0)
   - leveldb-library (1.20)
   - Lightbox (2.1.2):
@@ -124,6 +125,7 @@ DEPENDENCIES:
   - Hokusai
   - ILLoginKit
   - JGProgressHUD
+  - KDCircularProgress
   - KMPlaceholderTextView (~> 1.3.0)
   - Lightbox
   - NMessenger
@@ -158,6 +160,7 @@ SPEC CHECKSUMS:
   ILLoginKit: 8adbc63cf1994c918b1a8e2a76676a847ac99404
   Imaginary: 9b45836a5af881f452a86e0a1215772ae4712d00
   JGProgressHUD: c402c0f41fc291ca7e33bba2f999118d9682dd9c
+  KDCircularProgress: 12f677b2deb02409ab48c6cae1898d146b8ad549
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   Lightbox: 2dc267df8be2285bc7724cb11cbbf4aaaf59dced
@@ -174,6 +177,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: d1ab378af0923320ec0b5eab11d7b2f803d31261
   ZAlertView: 59fffdb4e37a01df461835566d5101052b8af953
 
-PODFILE CHECKSUM: c8efb64e2703ccf022cebc5356b9ac4186b8ef3d
+PODFILE CHECKSUM: e50241406a25728c4454540be14ad37678551ba1
 
 COCOAPODS: 1.3.1

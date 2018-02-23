@@ -15,6 +15,7 @@ protocol PostTextViewDelegate:class {
 class PostTextViewController: UIViewController {
     
     @IBOutlet weak var tableView:UITableView!
+    var tabBar:UITabBarController?
     
     weak var titleDelegate:PostTextViewDelegate?
     weak var contentDelegate:PostTextViewDelegate?
@@ -45,6 +46,12 @@ class PostTextViewController: UIViewController {
             return
         }
         PostManager.post(title: title, content: content, isAnonymous: anonymously)
+        guard let bar = tabBar else {
+            return
+        }
+        bar.selectedIndex = 0
+        let notificationName = NSNotification.Name("NewPostReloadData")
+        NotificationCenter.default.post(name: notificationName, object: nil)
         self.dismiss(animated: true, completion: nil)
     }
 
