@@ -7,32 +7,31 @@
 //
 
 import UIKit
-
+import KMPlaceholderTextView
 
 class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     
-    @IBOutlet weak var textView:UITextView!
+    @IBOutlet weak var textView:KMPlaceholderTextView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        textView.tag = 1
-        textView.text = "Your text post"
-        textView.textColor = UIColor.gray
+        textView.tag = 2
+        textView.textColor = UIColor.black
         textView.isScrollEnabled = false
         textView.delegate = self
         // Initialization code
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Your text post" && textView.textColor == UIColor.gray {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-        else if textView.text == "" && textView.textColor == UIColor.black {
-            textView.textColor = UIColor.gray
-            textView.text = "Your text post"
-        }
-    }
+//    func textViewDidBeginEditing(_ textView: UITextView) {
+//        if textView.text == "Your text post" && textView.textColor == UIColor.gray {
+//            textView.text = ""
+//            textView.textColor = UIColor.black
+//        }
+//        else if textView.text == "" && textView.textColor == UIColor.black {
+//            textView.textColor = UIColor.gray
+//            textView.text = "Your text post"
+//        }
+//    }
 
 }
 

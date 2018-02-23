@@ -70,6 +70,7 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell", for: indexPath) as!
             TitleTableViewCell
             self.titleDelegate = cell
+            cell.textView.delegate = self
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath) as!
@@ -95,9 +96,9 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0 {
             return 44
         }
-        else if indexPath.row == 1 {
-            return 44
-        }
+//        else if indexPath.row == 1 {
+//            return 44
+//        }
         else{
             return UITableViewAutomaticDimension
         }
@@ -118,30 +119,17 @@ extension PostTextViewController: ChoosingStyleDelegate {
     }
     
 }
-
-extension PostTextViewController:UITextViewDelegate{
-    
+extension PostTextViewController:UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        if textView.tag == 1 {
-            let currentOffset = tableView.contentOffset
-            UIView.setAnimationsEnabled(false)
-            tableView.beginUpdates()
-            tableView.endUpdates()
-            UIView.setAnimationsEnabled(true)
-            tableView.setContentOffset(currentOffset, animated: false)
-        }
+        let currentOffset = tableView.contentOffset
+        UIView.setAnimationsEnabled(false)
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        UIView.setAnimationsEnabled(true)
+        tableView.setContentOffset(currentOffset, animated: false)
+    
+        
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Your text post" && textView.textColor == UIColor.gray {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-        else if textView.text == "" && textView.textColor == UIColor.black {
-            textView.textColor = UIColor.gray
-            textView.text = "Your text post"
-        }
-    }
-  
+    
 }
-
