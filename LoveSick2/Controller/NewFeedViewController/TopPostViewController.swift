@@ -11,11 +11,17 @@ import XLPagerTabStrip
 import UIEmptyState
 import Hokusai
 import Alamofire
+import KDCircularProgress
+
 class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptyStateDataSource, UIEmptyStateDelegate {
     
     @IBOutlet weak var tableView:UITableView!
+   
 
     var type:PostQueryType!
+     var rowHeights:[Int:CGFloat] = [:]
+    var currentTypeIndex:Int!
+    public var changeCurrentIndexProgressive: ((_ oldCell: ButtonBarViewCell?, _ newCell: ButtonBarViewCell?, _ progressPercentage: CGFloat, _ changeCurrentIndex: Bool, _ animated: Bool) -> Void)?
     
     private var paginator:PostPaginator!
     private lazy var refreshControl: UIRefreshControl = {
@@ -42,6 +48,7 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "Top")
+        
     }
     
     override func viewDidLoad() {
@@ -49,15 +56,16 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.addSubview(self.refreshControl)
-        //tableView.tableFooterView = UIView()
-        let adjustForTabbarInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 0, self.tabBarController!.tabBar.frame.height, 0)
-        self.tableView.contentInset = adjustForTabbarInsets
-        self.tableView.scrollIndicatorInsets = adjustForTabbarInsets
+       
+      //  tableView.tableFooterView = UIView()
+//        let adjustForTabbarInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 0, self.tabBarController!.tabBar.frame.height, 0)
+//        self.tableView.contentInset = adjustForTabbarInsets
+//        self.tableView.scrollIndicatorInsets = adjustForTabbarInsets
         self.reloadEmptyStateForTableView(tableView)
-        
-        self.paginator = PostPaginator(withType: .mostLiked, { (posts, error) in
-            self.tableView.reloadData()
+        self.paginator = PostPaginator(withType:.mostLiked , { (posts, error) in
+                self.tableView.reloadData()
         })
+        
         tableView.tableFooterView = UIView()
         
         self.emptyStateDataSource = self
@@ -73,6 +81,7 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
             self.refreshControl.endRefreshing()
         }
     }
+  
 }
 
 extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
@@ -91,7 +100,30 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
 
             let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
             cell.post = post
-         
+//            cell.contentImg.af_setImage(withURL: URL(string:cell.post.imageURL!)!, placeholderImage: #imageLiteral(resourceName: "grayBackground"), filter: nil, progress: {progress in
+//                cell.progressView.angle = progress.fractionCompleted*360.0
+//
+//            }
+//                , imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true, completion: {(response) in
+//                    cell.progressView.isHidden = true
+//                    if let image = response.result.value{
+////                        DispatchQueue.main.async {
+////
+////                            let aspectRatio = (image as UIImage).size.height/(image as UIImage).size.width
+////                            cell.contentImg.image = image
+////                             let imageHeight = self.view.frame.width*aspectRatio
+////                             tableView.beginUpdates()
+////                            if imageHeight < cell.contentImg.frame.size.height {
+////                                self.rowHeights[indexPath.row] = cell.frame.size.height - (cell.contentImg.frame.size.height - imageHeight)
+////                            }
+////                            else {
+////                                self.rowHeights[indexPath.row] = imageHeight
+////                            }
+////                            tableView.endUpdates()
+////
+////                        }
+//                    }
+//            })
             return cell
         }
         else {
@@ -125,11 +157,16 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+//        if let height = self.rowHeights[indexPath.row]{
+//            return height
+//        }else{
+//            return UITableViewAutomaticDimension
+//        }
 
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 500
 
     }
     

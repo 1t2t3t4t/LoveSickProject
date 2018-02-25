@@ -18,6 +18,8 @@ class NewFeedsViewController: ButtonBarPagerTabStripViewController {
         //-
         super.viewDidLoad()
         
+        let notificationName = NSNotification.Name("ChangeViewToNew")
+        NotificationCenter.default.addObserver(self, selector: #selector(NewFeedsViewController.changePageViaNoti(notification:)), name: notificationName, object: nil)
         buttonBarView.removeFromSuperview()
         navigationController?.navigationBar.addSubview(buttonBarView)
         
@@ -43,6 +45,10 @@ class NewFeedsViewController: ButtonBarPagerTabStripViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         buttonBarView.isHidden = false
+        
+    }
+    @objc func changePageViaNoti(notification: NSNotification) {
+        self.moveToViewController(at: 1)
     }
     
     // MARK: - PagerTabStripDataSource
@@ -83,5 +89,6 @@ class NewFeedsViewController: ButtonBarPagerTabStripViewController {
         super.configureCell(cell, indicatorInfo: indicatorInfo)
         cell.backgroundColor = .clear
     }
+    
 }
 

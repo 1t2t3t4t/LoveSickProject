@@ -8,19 +8,28 @@
 
 import UIKit
 import Fusuma
+import KDCircularProgress
 protocol PostImageViewDelegate:class {
     func getText() -> String
 }
 class PostImageViewController: UIViewController {
     
      @IBOutlet weak var tableView:UITableView!
+    var tabBar:UITabBarController?
     var contentCell: UITableViewCell = UITableViewCell()
+     @IBOutlet weak var progressView:KDCircularProgress!
+    
     private var anonymously:Bool = false
     private var postImage:UIImage?
      weak var titleDelegate:PostTextViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.progressView.isHidden = true
+        progressView.glowMode = .noGlow
+        progressView.layer.cornerRadius = 10
+        progressView.clipsToBounds = true
+        progressView.backgroundColor = UIColor.gray
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorColor = UIColor.init(white: 0.5, alpha: 0.15)
@@ -43,12 +52,28 @@ class PostImageViewController: UIViewController {
             print("title is null")
             return
         }
-        guard let image = postImage else{
-            return
-        }
-        print("title all value \(title)")
-        PostManager.postImage(title: title, image: image, isAnonymous: anonymously)
-        self.dismiss(animated: true, completion: nil)
+//        guard let image = postImage else{
+//            return
+//        }
+        self.progressView.isHidden = false
+        PostManager.postImage(title: title, image: #imageLiteral(resourceName: "profileLoad"), progressView: progressView, isAnonymous: anonymously, completion: {success in
+            if success! {
+                guard let bar = self.tabBar else {
+                    return
+                }
+                self.progressView.isHidden = true
+                bar.selectedIndex = 0
+                let notificationName1 = NSNotification.Name("ChangeViewToNew")
+                NotificationCenter.default.post(name: notificationName1, object: nil)
+                let notificationName2 = NSNotification.Name("NewPostReloadData")
+                NotificationCenter.default.post(name: notificationName2, object: nil)
+                self.dismiss(animated: true, completion: nil)
+            }
+            else{
+                
+            }
+        })
+       
     }
     
 }
@@ -118,9 +143,6 @@ extension PostImageViewController:UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0 {
             return 44
         }
-        else if indexPath.row == 2 {
-            return 44
-        }
         else{
             return UITableViewAutomaticDimension
         }
@@ -142,7 +164,7 @@ extension PostImageViewController:ChoosePhotoTableViewCellDelegate {
     func chooseImage() {
         let fusuma = FusumaViewController()
         fusuma.delegate = self // To allow for video capturing with .library and .camera available by default
-        fusuma.cropHeightRatio = 0.8
+        fusuma.cropHeightRatio = 1
         fusumaCameraRollTitle = "Library"
         fusumaCameraTitle = "Camera"// Height-to-width ratio. The default value is 1, which means a squared-size photo.
         fusuma.allowMultipleSelection = false// You can select multiple photos from the camera roll. The default value is false.
@@ -165,7 +187,7 @@ extension PostImageViewController: ChoosingStyleDelegate {
 extension PostImageViewController:UITextViewDelegate{
     
     func textViewDidChange(_ textView: UITextView) {
-
+           
             let currentOffset = tableView.contentOffset
             UIView.setAnimationsEnabled(false)
             tableView.beginUpdates()

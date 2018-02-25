@@ -45,6 +45,7 @@ class ChatViewController: NMessengerViewController {
         newMessage.avatarNode = nAvatar
 
         self.messengerView.addMessage(newMessage, scrollsToMessage: true)
+        
 
 
         return newMessage

@@ -14,7 +14,7 @@ class TabBarController: UITabBarController{
         super.viewDidLoad()
         self.delegate = self
 
-        // Do any additional setup after loading the view.
+        // Do any advarional setup after loading the view.
     }
 
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -35,12 +35,14 @@ class TabBarController: UITabBarController{
             hokusai.addButton("Text") {
                 let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                 let view = storyBoard.instantiateViewController(withIdentifier: "postText") as! PostTextViewController
+                view.tabBar = self
                 let nav = UINavigationController(rootViewController: view)
                 self.present(nav, animated: true, completion: nil)
                  self.selectedIndex = self.previousIndex
             }
             hokusai.addButton("Image"){
                 let viewController = PostImageViewController.newInstanceFromStoryboard() as! PostImageViewController
+                viewController.tabBar = self
                 let nav = UINavigationController(rootViewController: viewController)
                 self.present(nav, animated: true, completion: nil)
                  self.selectedIndex = self.previousIndex

@@ -8,7 +8,7 @@
 
 import Foundation
 import Firebase
-
+import KDCircularProgress
 enum PostQueryType {
     case mostRecent
     case mostLiked
@@ -68,8 +68,9 @@ class PostManager {
         let uid = Database.database().reference().child("Posts").childByAutoId().key
         post.postuid = uid
         Database.database().reference().child("Posts/\(uid)").setValue(post.toJSON())
+           Database.database().reference().child("Users/\(String(describing: Auth.auth().currentUser?.uid))/Posts").setValue(uid)
     }
-    class func postImage(title:String,image:UIImage,isAnonymous: Bool) {
+    class func postImage(title:String,image:UIImage,progressView:KDCircularProgress,isAnonymous: Bool,completion:@escaping(Bool?) -> Void) {
         let post = Post(title: title)
         post.createdAt = Date().timeIntervalSince1970
         post.like = Int(arc4random_uniform(3000))
@@ -78,12 +79,19 @@ class PostManager {
         post.displayName = User.currentUser?.displayName
         let uid = Database.database().reference().child("Posts").childByAutoId().key
         post.postuid = uid
-        UploadPhoto.uploadPostImage(image, completion: {(url) in
+        UploadPhoto.uploadPostImage(image,progressView, completion: {(url) in
             guard let str = url else {
+                completion(false)
                 return
             }
                 post.imageURL = str
             Database.database().reference().child("Posts/\(uid)").setValue(post.toJSON())
+            guard let useruid = Auth.auth().currentUser?.uid else {
+                return
+            }
+            print("check uid man \(useruid))")
+            Database.database().reference().child("Users/\( useruid)/Posts").child(uid).setValue(uid)
+            completion(true)
         })
         
         
