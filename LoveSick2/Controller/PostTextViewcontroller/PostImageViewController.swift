@@ -9,19 +9,23 @@
 import UIKit
 import Fusuma
 import KDCircularProgress
+
 protocol PostImageViewDelegate:class {
     func getText() -> String
 }
+
 class PostImageViewController: UIViewController {
     
-     @IBOutlet weak var tableView:UITableView!
+    @IBOutlet weak var tableView:UITableView!
+    @IBOutlet weak var progressView:KDCircularProgress!
+    
     var tabBar:UITabBarController?
     var contentCell: UITableViewCell = UITableViewCell()
-     @IBOutlet weak var progressView:KDCircularProgress!
     
     private var anonymously:Bool = false
     private var postImage:UIImage?
-     weak var titleDelegate:PostTextViewDelegate?
+    
+    weak var titleDelegate:PostTextViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,16 +51,16 @@ class PostImageViewController: UIViewController {
     }
     
     @objc func post() {
-        
         guard let title = self.titleDelegate?.getText() else {
             print("title is null")
             return
         }
-//        guard let image = postImage else{
-//            return
-//        }
+        guard let image = self.postImage else {
+            print("image is null")
+            return
+        }
         self.progressView.isHidden = false
-        PostManager.postImage(title: title, image: #imageLiteral(resourceName: "profileLoad"), progressView: progressView, isAnonymous: anonymously, completion: {success in
+        PostManager.postImage(title: title, image: image, progressView: progressView, isAnonymous: anonymously, completion: {success in
             if success! {
                 guard let bar = self.tabBar else {
                     return
@@ -69,14 +73,10 @@ class PostImageViewController: UIViewController {
                 NotificationCenter.default.post(name: notificationName2, object: nil)
                 self.dismiss(animated: true, completion: nil)
             }
-            else{
-                
-            }
         })
-       
     }
-    
 }
+
 extension PostImageViewController:UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -199,37 +199,24 @@ extension PostImageViewController:UITextViewDelegate{
     
     
 }
+
 extension PostImageViewController:FusumaDelegate {
-    func fusumaVideoCompleted(withFileURL fileURL: URL) {
-        
-    }
     
-    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
-        
-        postImage = image
-        self.tableView.reloadData()
-    }
-    
-    // Return the image but called after is dismissed.
-    func fusumaDismissedWithImage(image: UIImage, source: FusumaMode) {
-        
-        print("Called just after FusumaViewController is dismissed.")
-    }
-    
-    // When camera roll is not authorized, this method is called.
-    func fusumaCameraRollUnauthorized() {
-        
-        print("Camera roll unauthorized")
-    }
-    
-    // Return selected images when you allow to select multiple photos.
     func fusumaMultipleImageSelected(_ images: [UIImage], source: FusumaMode) {
         
     }
     
-    // Return an image and the detailed information.
-    func fusumaImageSelected(_ image: UIImage, source: FusumaMode, metaData: ImageMetadata) {
+    func fusumaVideoCompleted(withFileURL fileURL: URL) {
         
+    }
+    
+    func fusumaCameraRollUnauthorized() {
+        
+    }
+    
+    func fusumaImageSelected(_ image: UIImage, source: FusumaMode) {
+        postImage = image.af_imageScaled(to: image.size.applying(CGAffineTransform(scaleX: 0.1, y: 0.1)))
+        self.tableView.reloadData()
     }
 }
 

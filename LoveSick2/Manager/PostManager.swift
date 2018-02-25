@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import KDCircularProgress
+
 enum PostQueryType {
     case mostRecent
     case mostLiked
@@ -70,6 +71,7 @@ class PostManager {
         Database.database().reference().child("Posts/\(uid)").setValue(post.toJSON())
            Database.database().reference().child("Users/\(String(describing: Auth.auth().currentUser?.uid))/Posts").setValue(uid)
     }
+    
     class func postImage(title:String,image:UIImage,progressView:KDCircularProgress,isAnonymous: Bool,completion:@escaping(Bool?) -> Void) {
         let post = Post(title: title)
         post.createdAt = Date().timeIntervalSince1970
@@ -93,8 +95,6 @@ class PostManager {
             Database.database().reference().child("Users/\( useruid)/Posts").child(uid).setValue(uid)
             completion(true)
         })
-        
-        
     }
     
     class func upvote(postuid:String,completion:@escaping(LoveSickError?) -> Void) {

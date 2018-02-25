@@ -15,6 +15,7 @@ extension UIViewController {
         return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
     }
 }
+
 extension String {
     func words() -> [String] {
         var byWords:[String] = []
@@ -27,10 +28,9 @@ extension String {
     }
     
 }
+
 extension UIImage {
     func compressImage(image:UIImage) -> Data {
-        // Reducing file size to a 10th
-        
         var actualHeight : CGFloat = image.size.height
         var actualWidth : CGFloat = image.size.width
         let maxHeight : CGFloat = image.size.height

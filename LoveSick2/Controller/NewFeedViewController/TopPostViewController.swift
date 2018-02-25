@@ -97,33 +97,8 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = self.paginator.posts[indexPath.row]
         if post.isImagePost! {
-
             let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
             cell.post = post
-//            cell.contentImg.af_setImage(withURL: URL(string:cell.post.imageURL!)!, placeholderImage: #imageLiteral(resourceName: "grayBackground"), filter: nil, progress: {progress in
-//                cell.progressView.angle = progress.fractionCompleted*360.0
-//
-//            }
-//                , imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true, completion: {(response) in
-//                    cell.progressView.isHidden = true
-//                    if let image = response.result.value{
-////                        DispatchQueue.main.async {
-////
-////                            let aspectRatio = (image as UIImage).size.height/(image as UIImage).size.width
-////                            cell.contentImg.image = image
-////                             let imageHeight = self.view.frame.width*aspectRatio
-////                             tableView.beginUpdates()
-////                            if imageHeight < cell.contentImg.frame.size.height {
-////                                self.rowHeights[indexPath.row] = cell.frame.size.height - (cell.contentImg.frame.size.height - imageHeight)
-////                            }
-////                            else {
-////                                self.rowHeights[indexPath.row] = imageHeight
-////                            }
-////                            tableView.endUpdates()
-////
-////                        }
-//                    }
-//            })
             return cell
         }
         else {
@@ -131,11 +106,8 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
             cell.post = post
             return cell
         }
-        }
- 
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
-//        cell.delegate = self
-//        cell.setCustomImage(image: #imageLiteral(resourceName: "profileLoad"))
+        
+    }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == paginator.posts.count - 5 {

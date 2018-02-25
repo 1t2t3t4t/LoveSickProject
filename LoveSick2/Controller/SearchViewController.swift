@@ -71,7 +71,6 @@ extension SearchViewController: UISearchBarDelegate {
         })
         self.refreshControl.beginRefreshing()
         if timer != nil {
-            
             if timer!.isValid {
                 timer!.invalidate()
                 //self.refreshControl.endRefreshing()
@@ -81,48 +80,10 @@ extension SearchViewController: UISearchBarDelegate {
     }
     
     @objc private func fetchPost() {
-        
         self.posts.removeAll()
-        self.tableView.reloadData()
+//        self.tableView.reloadData()
         guard let searchText = self.searchBar.text else { return }
-//        Database.database().reference().child("Posts").queryOrdered(byChild: "title").queryStarting(atValue: searchText).queryEnding(atValue: searchText + "\u{f8ff}").observeSingleEvent(of: .value, with: {(snap) in
-//            if snap.exists() {
-//                print("enter unicode field")
-//                guard let value = snap.value as? [String:Any] else {
-//                    self.tableView.reloadData()
-//                    return
-//                }
-//                for post in value {
-//                    self.posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
-//                }
-//                self.posts = self.posts.filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
-//                self.tableView.reloadData()
-//               self.refreshControl.endRefreshing()
-//                self.typeCount = 0
-//                return
-//            }
-//            else{
-//                Database.database().reference().child("Posts").queryOrdered(byChild: "createdAt").observeSingleEvent(of: .value) { (snap) in
-//                    print("find the word")
-//
-//                    guard let value = snap.value as? [String:Any] else {
-//                        self.tableView.reloadData()
-//                        return
-//                    }
-//                    for post in value {
-//                        self.posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
-//                    }
-//                    self.posts = self.posts.filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
-//                    self.tableView.reloadData()
-//                   self.refreshControl.endRefreshing()
-//                    self.typeCount = 0
-//                    return
-//                }
-//            }
-//        })
         Database.database().reference().child("Posts").queryOrdered(byChild: "createdAt").observeSingleEvent(of: .value) { (snap) in
-            print("find the word")
-            
             guard let value = snap.value as? [String:Any] else {
                 self.tableView.reloadData()
                 return
@@ -133,14 +94,12 @@ extension SearchViewController: UISearchBarDelegate {
                     self.posts.append(post)
                 }
             }
-//            self.posts = self.posts.filter({($0.title?.lowercased().contains(searchText.lowercased()))!})
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
             self.typeCount = 0
             return
         }
     }
-    
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {

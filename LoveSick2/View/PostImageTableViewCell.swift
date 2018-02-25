@@ -67,6 +67,7 @@ class PostImageTableViewCell: UITableViewCell {
         share.tintColor = UIColor.gray
         
     }
+    
     internal var aspectConstraint : NSLayoutConstraint? {
         didSet {
             if oldValue != nil {
@@ -86,14 +87,10 @@ class PostImageTableViewCell: UITableViewCell {
     func setCustomImage(image : UIImage) {
         aspectConstraint = nil
         let aspect = image.size.width / image.size.height
-        
         let constraint = NSLayoutConstraint(item: contentImg, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: contentImg, attribute: NSLayoutAttribute.height, multiplier: aspect, constant: 0.0)
         constraint.priority = UILayoutPriority(rawValue: 999)
-        
         aspectConstraint = constraint
-        
         contentImg.image = image
-    
         }
     
     func setUpCell() {
@@ -111,24 +108,10 @@ class PostImageTableViewCell: UITableViewCell {
                                 self.progressView.isHidden = true
                                 if let image = response.result.value{
                                     self.contentImg.image = image
+                                    self.setCustomImage(image: image)
                                 }
-                        })
-//        if self.post.imageURL != nil {
-//            Alamofire.request(self.post.imageURL!).downloadProgress(closure: {progress in
-//                print("fractioncomplete \(progress.fractionCompleted)")
-//                self.progressView.angle = progress.fractionCompleted*360.0
-//            }).responseData { response in
-//                self.progressView.isHidden = true
-//                if let image = response.result.value {
-//                    let img = UIImage(data:image)
-//                    img?.af_inflate()
-//                    self.setCustomImage(image: img!)
-//                }
-//            }
-//        }
-        
-        
-        
+                                
+        })
     }
     
     @IBAction func upVote(_ sender: Any) {
