@@ -41,6 +41,8 @@ class PostImageTableViewCell: UITableViewCell {
         progressView.glowMode = .noGlow
         name.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
         name.textColor = UIColor.gray
+        name.isUserInteractionEnabled = true
+        name.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PostImageTableViewCell.showProfile)))
         title.numberOfLines = 0
         title.lineBreakMode = .byWordWrapping
         title.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.heavy)
@@ -135,6 +137,13 @@ class PostImageTableViewCell: UITableViewCell {
                 self.numvote.text = "\(self.post.like)"
             }
         }
+    }
+    @objc func showProfile(sender:UITapGestureRecognizer) {
+        print("hello world showprofile")
+        guard let uid = self.post.creatorUID else {
+            return
+        }
+        self.delegate?.showProfile(uid:uid)
     }
     
     

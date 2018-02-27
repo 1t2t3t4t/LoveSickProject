@@ -50,8 +50,10 @@ class PostTextViewController: UIViewController {
             return
         }
         bar.selectedIndex = 0
-        let notificationName = NSNotification.Name("NewPostReloadData")
-        NotificationCenter.default.post(name: notificationName, object: nil)
+        let notificationName1 = NSNotification.Name("ChangeViewToNew")
+        NotificationCenter.default.post(name: notificationName1, object: nil)
+        let notificationName2 = NSNotification.Name("NewPostReloadData")
+        NotificationCenter.default.post(name: notificationName2, object: nil)
         self.dismiss(animated: true, completion: nil)
     }
 
@@ -103,9 +105,6 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
         if indexPath.row == 0 {
             return 44
         }
-//        else if indexPath.row == 1 {
-//            return 44
-//        }
         else{
             return UITableViewAutomaticDimension
         }

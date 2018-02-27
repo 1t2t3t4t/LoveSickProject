@@ -8,9 +8,10 @@
 
 import UIKit
 import MessageUI
+import ZAlertView
 class SettingViewController: UIViewController {
     @IBOutlet weak var tableView:UITableView!
-   let settings = [["Profile","Account"],["Invite","Block List"],["Contact Us"],["Log Out"]]
+   let settings = [["Profile","Account"],["Invite","Friend Requests"],["Contact Us"],["Log Out"]]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Settings"
@@ -22,6 +23,17 @@ class SettingViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    func logout() {
+        let dialog = ZAlertView()
+        dialog.addButton("Log Out", touchHandler: {_ in
+            SessionManager.logOut(nil)
+            self.dismiss(animated: true, completion: nil)
+            
+        })
+        dialog.addButton("Cancel", touchHandler: {_ in dialog.dismissAlertView()})
+        dialog.show()
+        
+    }
 }
 extension SettingViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,10 +50,12 @@ extension SettingViewController:UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: false)
         switch settings[indexPath.section][indexPath.row] {
+        case "Friend Requests":
+            self.performSegue(withIdentifier: "toFriendRequest", sender: self)
         case "Log Out":
-            SessionManager.logOut(nil)
-            self.dismiss(animated: true, completion: nil)
+            logout()
         default:
             return
         }

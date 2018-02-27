@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Hokusai
+import Firebase
 class ViewPostViewController: UIViewController {
 
     @IBOutlet weak var displayPicture: UIImageView!
@@ -29,6 +30,8 @@ class ViewPostViewController: UIViewController {
 
         self.setUpPost()
         
+        let rightBth = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(ViewPostViewController.report))
+        self.navigationItem.rightBarButtonItem = rightBth
         self.replyTableView.delegate = self
         self.replyTableView.dataSource = self
         self.replyTableView.tableFooterView = UIView()
@@ -50,6 +53,24 @@ class ViewPostViewController: UIViewController {
     @objc private func dismissView() {
         self.navigationController?.popViewController(animated: true)
     }
+    @objc private func report() {
+        let hokusai = Hokusai()
+        hokusai.cancelButtonTitle = "Cancel"
+        hokusai.fontName = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.bold).fontName
+        
+        hokusai.colorScheme = HOKColorScheme.tsubaki
+        hokusai.addButton("Report"){
+        }
+        print("check uid name \(self.post.creatorUID) \(User.currentUser?.uid)")
+        if self.post.creatorUID == User.currentUser?.uid {
+            hokusai.addButton("Delete post"){
+                Database.database().reference().child("Posts/\(self.post.postuid)").removeValue()
+                Database.database().reference().child("Users/\(self.post.creatorUID)/\(self.post.postuid)").removeValue()
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        hokusai.show()
+    }
     
     private func setUpPost() {
         self.usernameLabel.text = self.post.displayName
@@ -58,6 +79,7 @@ class ViewPostViewController: UIViewController {
         self.postTitle.text = self.post.title
         self.postContent.text = self.post.content
         self.numlikeLabel.text = "\(self.post.like)"
+        self.displayPicture.image = #imageLiteral(resourceName: "profileLoad")
     }
     
     @IBAction func gotoComment() {

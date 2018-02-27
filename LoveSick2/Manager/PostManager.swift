@@ -154,6 +154,32 @@ class PostManager {
             completion(posts,nil)
         }
     }
+    
+    func querySelfPostsFirstTen(completion:@escaping ([Post],LoveSickError?) -> Void) {
+        Database.database().reference().child("Users/\(Auth.auth().currentUser?.uid)/Posts").queryOrdered(byChild: self.queryType.string).queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snap) in
+            guard let value = snap.value as? [String:Any] else { completion([],.PostQueryError); return }
+            var posts:[Post] = []
+            for post in value {
+                posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
+            }
+            self.sort(&posts)
+            completion(posts,nil)
+        }
+    }
+    
+    func querySelfPosts(withQueryValue queryValue:Double?,completion:@escaping ([Post],LoveSickError?) -> Void) {
+        guard queryValue != nil else { completion([],nil); return }
+        Database.database().reference().child("Users/\(Auth.auth().currentUser?.uid)/Posts").queryOrdered(byChild: self.queryType.string).queryEnding(atValue: queryValue).queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snap) in
+            guard let value = snap.value as? [String:Any] else { completion([],.PostQueryError); return }
+            var posts:[Post] = []
+            for post in value {
+                posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
+            }
+            self.sort(&posts)
+            posts.removeFirst()
+            completion(posts,nil)
+        }
+    }
 
     func queryPosts(withQueryValue queryValue:Double?,completion:@escaping ([Post],LoveSickError?) -> Void) {
         guard queryValue != nil else { completion([],nil); return }

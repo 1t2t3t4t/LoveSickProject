@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let initialViewController = storyboard.instantiateViewController(withIdentifier: "login")
                 self.window?.rootViewController = initialViewController
             }
-            
         })
+        
 //        for i in 0...10000 {
 //            PostManager.post(title: "FOR QUERY TESTING \(i)", content: "efkwopefkopwef", isAnonymous: true)
 //        }

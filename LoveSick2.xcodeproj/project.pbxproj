@@ -17,6 +17,16 @@
 		81AAE74020150A1A004D0D31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */; };
 		81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */; };
 		81B27381202B1B8800DCCA8B /* ExtensionSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */; };
+		81E674102045C2200003BB85 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E6740F2045C2200003BB85 /* ActivityIndicator.swift */; };
+		81E674122045CA9B0003BB85 /* FriendRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E674112045CA9B0003BB85 /* FriendRequestTableViewController.swift */; };
+		81E674142045CF9C0003BB85 /* ChatRoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E674132045CF9C0003BB85 /* ChatRoomManager.swift */; };
+		81E674162045D0070003BB85 /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E674152045D0070003BB85 /* ChatRoom.swift */; };
+		81E674182045D7050003BB85 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E674172045D7050003BB85 /* Chat.swift */; };
+		81F87C92204538BB007E11F9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F87C91204538BB007E11F9 /* ProfileViewController.swift */; };
+		81F87C9420456054007E11F9 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F87C9320456054007E11F9 /* Profile.swift */; };
+		81F87C9620456683007E11F9 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81F87C9520456683007E11F9 /* ProfileHeaderView.xib */; };
+		81F87C9A2045684C007E11F9 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F87C992045684C007E11F9 /* ProfileHeaderView.swift */; };
+		81F87C9C20458AA7007E11F9 /* SelfPostPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F87C9B20458AA7007E11F9 /* SelfPostPaginator.swift */; };
 		D89EA06470EE340E6181478C /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75367EB21DE57AB668E35AA2 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		EF216CD9203EAACF00C13CB7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CD8203EAACF00C13CB7 /* ChatTableViewCell.swift */; };
 		EF216CDB203EAB1700C13CB7 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CDA203EAB1700C13CB7 /* MessageViewController.swift */; };
@@ -130,6 +140,16 @@
 		81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostViewController.swift; sourceTree = "<group>"; };
 		81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSwift.swift; sourceTree = "<group>"; };
+		81E6740F2045C2200003BB85 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		81E674112045CA9B0003BB85 /* FriendRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestTableViewController.swift; sourceTree = "<group>"; };
+		81E674132045CF9C0003BB85 /* ChatRoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomManager.swift; sourceTree = "<group>"; };
+		81E674152045D0070003BB85 /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		81E674172045D7050003BB85 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		81F87C91204538BB007E11F9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		81F87C9320456054007E11F9 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		81F87C9520456683007E11F9 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		81F87C992045684C007E11F9 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		81F87C9B20458AA7007E11F9 /* SelfPostPaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfPostPaginator.swift; sourceTree = "<group>"; };
 		878AC48364DF84E2B968C1DD /* Pods-LoveSick2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2.release.xcconfig"; sourceTree = "<group>"; };
 		8F4B915B520EBBFE64C26622 /* Pods_LoveSick2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveSick2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27461F1B4E25C92A7ADB186 /* Pods_LoveSick2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveSick2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -290,6 +310,22 @@
 			path = NewFeedViewController;
 			sourceTree = "<group>";
 		};
+		81E6740E2045C1FD0003BB85 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				81E6740F2045C2200003BB85 /* ActivityIndicator.swift */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		81F87C9020453879007E11F9 /* ProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				81F87C91204538BB007E11F9 /* ProfileViewController.swift */,
+			);
+			path = ProfileViewController;
+			sourceTree = "<group>";
+		};
 		BC100AB5276A9EB37EE03421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF9A5D7201A2FA700CB4D6D /* SettingViewController.swift */,
+				81E674112045CA9B0003BB85 /* FriendRequestTableViewController.swift */,
 			);
 			path = SettingViewController;
 			sourceTree = "<group>";
@@ -373,6 +410,7 @@
 		EFDD539A2013A32C00817F49 /* LoveSick2 */ = {
 			isa = PBXGroup;
 			children = (
+				81E6740E2045C1FD0003BB85 /* Library */,
 				81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */,
 				EFDD54192014B55C00817F49 /* View */,
 				EFDD540C2013B5A900817F49 /* Controller */,
@@ -420,8 +458,10 @@
 				EFDD54052013B00C00817F49 /* UserManager.swift */,
 				EFDD53DA2013A75800817F49 /* MapperManager.swift */,
 				EFDD53DB2013A75800817F49 /* PostPaginator.swift */,
+				81F87C9B20458AA7007E11F9 /* SelfPostPaginator.swift */,
 				EFDD53DC2013A75800817F49 /* PostManager.swift */,
 				81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */,
+				81E674132045CF9C0003BB85 /* ChatRoomManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -434,8 +474,11 @@
 				EFDD53E82013A76D00817F49 /* Post.swift */,
 				EFDD53E62013A76D00817F49 /* Reply.swift */,
 				EFDD53E72013A76D00817F49 /* User.swift */,
+				81E674152045D0070003BB85 /* ChatRoom.swift */,
+				81E674172045D7050003BB85 /* Chat.swift */,
 				EFF9A5D9201A362F00CB4D6D /* Extension.swift */,
 				EF216CE9203F388000C13CB7 /* UploadPhoto.swift */,
+				81F87C9320456054007E11F9 /* Profile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -443,6 +486,7 @@
 		EFDD540C2013B5A900817F49 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				81F87C9020453879007E11F9 /* ProfileViewController */,
 				EF216CE0203EEC9600C13CB7 /* PostTextViewcontroller */,
 				EF2BF9E32039A8B90014D38C /* ChatViewController */,
 				EF2BF9E22039A8970014D38C /* SettingViewController */,
@@ -470,6 +514,8 @@
 				EF216CDC203EC4E900C13CB7 /* PostImageTableViewCell.swift */,
 				EF216CDE203EEAE100C13CB7 /* ChoosePhotoTableViewCell.swift */,
 				EF216CEB203F3E2500C13CB7 /* PreviewImageTableViewCell.swift */,
+				81F87C9520456683007E11F9 /* ProfileHeaderView.xib */,
+				81F87C992045684C007E11F9 /* ProfileHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -635,6 +681,7 @@
 				81AAE74020150A1A004D0D31 /* GoogleService-Info.plist in Resources */,
 				EFDD53A32013A32C00817F49 /* Assets.xcassets in Resources */,
 				EFDD53A12013A32C00817F49 /* Main.storyboard in Resources */,
+				81F87C9620456683007E11F9 /* ProfileHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,6 +961,7 @@
 			files = (
 				811035EC2035C08300DE4172 /* SearchViewController.swift in Sources */,
 				EFDD53EA2013A76D00817F49 /* Reply.swift in Sources */,
+				81E674162045D0070003BB85 /* ChatRoom.swift in Sources */,
 				EFDD53EC2013A76D00817F49 /* Post.swift in Sources */,
 				EFDD53E92013A76D00817F49 /* LoveSickError.swift in Sources */,
 				EFDD54272014E15C00817F49 /* ContentTableViewCell.swift in Sources */,
@@ -928,26 +976,34 @@
 				810F7BA3202C652500B523AB /* CommentTitleTableViewCell.swift in Sources */,
 				81B27381202B1B8800DCCA8B /* ExtensionSwift.swift in Sources */,
 				EFDD54042013A9FE00817F49 /* LoginCoordinator.swift in Sources */,
+				81E674122045CA9B0003BB85 /* FriendRequestTableViewController.swift in Sources */,
+				81E674102045C2200003BB85 /* ActivityIndicator.swift in Sources */,
 				EFDD54212014E0A000817F49 /* PostTextViewController.swift in Sources */,
 				810F7BA5202C653400B523AB /* CommentTextTableViewCell.swift in Sources */,
 				EFDD54142014826300817F49 /* SessionManager.swift in Sources */,
 				EFDD54232014E14300817F49 /* ChoosingTableViewCell.swift in Sources */,
 				EFDD541D2014B57700817F49 /* PostTableViewCell.swift in Sources */,
 				EFF9A5DA201A363000CB4D6D /* Extension.swift in Sources */,
+				81F87C92204538BB007E11F9 /* ProfileViewController.swift in Sources */,
 				81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */,
 				EFDD54062013B00C00817F49 /* UserManager.swift in Sources */,
+				81F87C9A2045684C007E11F9 /* ProfileHeaderView.swift in Sources */,
+				81F87C9420456054007E11F9 /* Profile.swift in Sources */,
 				EFDD53E12013A75800817F49 /* PostManager.swift in Sources */,
 				EFDD539E2013A32C00817F49 /* LoginViewController.swift in Sources */,
 				EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */,
+				81E674142045CF9C0003BB85 /* ChatRoomManager.swift in Sources */,
 				EFF9A5D8201A2FA700CB4D6D /* SettingViewController.swift in Sources */,
 				EF216CDD203EC4E900C13CB7 /* PostImageTableViewCell.swift in Sources */,
 				EF216CD9203EAACF00C13CB7 /* ChatTableViewCell.swift in Sources */,
+				81E674182045D7050003BB85 /* Chat.swift in Sources */,
 				EF216CEC203F3E2500C13CB7 /* PreviewImageTableViewCell.swift in Sources */,
 				EFDD539C2013A32C00817F49 /* AppDelegate.swift in Sources */,
 				EFDD53EB2013A76D00817F49 /* User.swift in Sources */,
 				EF216CDB203EAB1700C13CB7 /* MessageViewController.swift in Sources */,
 				EFDD54102013B5CC00817F49 /* NewPostViewController.swift in Sources */,
 				EFDD54162014AFEA00817F49 /* NewFeedsViewController.swift in Sources */,
+				81F87C9C20458AA7007E11F9 /* SelfPostPaginator.swift in Sources */,
 				EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */,
 				EF216CE2203EECB900C13CB7 /* PostImageViewController.swift in Sources */,
 				EF216CEA203F388000C13CB7 /* UploadPhoto.swift in Sources */,

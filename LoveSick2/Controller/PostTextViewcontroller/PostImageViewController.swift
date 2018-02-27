@@ -197,7 +197,6 @@ extension PostImageViewController:UITextViewDelegate{
         
     }
     
-    
 }
 
 extension PostImageViewController:FusumaDelegate {

@@ -57,10 +57,6 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
         self.tableView.dataSource = self
         self.tableView.addSubview(self.refreshControl)
        
-      //  tableView.tableFooterView = UIView()
-//        let adjustForTabbarInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 0, self.tabBarController!.tabBar.frame.height, 0)
-//        self.tableView.contentInset = adjustForTabbarInsets
-//        self.tableView.scrollIndicatorInsets = adjustForTabbarInsets
         self.reloadEmptyStateForTableView(tableView)
         self.paginator = PostPaginator(withType:.mostLiked , { (posts, error) in
                 self.tableView.reloadData()
@@ -99,11 +95,13 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
         if post.isImagePost! {
             let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
             cell.post = post
+            cell.delegate = self
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "toppostCell", for: indexPath) as! PostTableViewCell
             cell.post = post
+            cell.delegate = self
             return cell
         }
         
@@ -121,20 +119,15 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         let viewController = ViewPostViewController.newInstanceFromStoryboard() as! ViewPostViewController
         viewController.post = self.paginator.posts[indexPath.row]
         self.navigationController?.pushViewController(viewController, animated: true)
-        tableView.deselectRow(at: indexPath, animated: false)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
-//        if let height = self.rowHeights[indexPath.row]{
-//            return height
-//        }else{
-//            return UITableViewAutomaticDimension
-//        }
-
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -145,6 +138,14 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
     
 }
 extension TopPostViewController:PostTableViewCellDelegate {
+
+    func showProfile(uid:String) {
+       
+        let view = ProfileViewController.newInstanceFromStoryboard() as! ProfileViewController
+        view.userid = uid
+        self.navigationController?.pushViewController(view, animated: true)
+    }
+    
     func report() {
 
             let hokusai = Hokusai()

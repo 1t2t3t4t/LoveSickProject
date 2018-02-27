@@ -35,4 +35,7 @@ class UserManager {
         }
     }
     
+    class func addFriend(withUID uid:String) {
+        Database.database().reference().child("Users/\(uid)/FriendRequests/\(User.currentUser!.uid!)").setValue(User.currentUser?.toJSON())
+    }
 }

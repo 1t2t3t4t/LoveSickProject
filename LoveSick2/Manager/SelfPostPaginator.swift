@@ -1,25 +1,22 @@
 //
-//  PostPaginator.swift
-//  LoveSickProject
+//  SelfPostPaginator.swift
+//  LoveSick2
 //
-//  Created by Nathakorn on 1/11/18.
-//  Copyright © 2018 Nathakorn. All rights reserved.
+//  Created by Nathakorn on 2/27/18.
+//  Copyright © 2018 marky RE. All rights reserved.
 //
 
 import Foundation
 
-class PostPaginator {
+class SelfPostPaginator {
     
     private var queryValue:Double?
-    private var queryType:PostQueryType!
     private var postManager:PostManager = PostManager()
-    
     
     var posts:[Post] = []
     
-    init(withType queryType:PostQueryType,_ completion:@escaping ([Post],LoveSickError?) -> Void) {
-        self.queryType = queryType
-        postManager.queryType = queryType
+    init(_ completion:@escaping ([Post],LoveSickError?) -> Void) {
+        postManager.queryType = .mostRecent
         self.postManager.queryPostsFirstTen { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
@@ -52,16 +49,6 @@ class PostPaginator {
     }
     
     private func updateQueryValue(withLastPost post:Post?) {
-        switch self.queryType {
-        case .mostRecent:
-            self.queryValue = post?.createdAt
-            break
-        case .mostLiked:
-            self.queryValue = post == nil ? nil : Double((post?.like)!)
-            break
-        default:
-            self.queryValue = post?.createdAt
-            break
-        }
+        self.queryValue = post?.createdAt
     }
 }

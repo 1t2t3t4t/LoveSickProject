@@ -9,6 +9,7 @@
 import UIKit
 protocol PostTableViewCellDelegate: class {
     func report() -> Void
+    func showProfile(uid:String) -> Void
 }
 class PostTableViewCell: UITableViewCell,UITextViewDelegate{
     
@@ -35,6 +36,8 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
         super.awakeFromNib()
         name.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
         name.textColor = UIColor.gray
+        name.isUserInteractionEnabled = true
+        name.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(PostTableViewCell.showProfile)))
         title.numberOfLines = 0
         title.lineBreakMode = .byWordWrapping
         title.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.heavy)
@@ -91,7 +94,16 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
     @IBAction func report(_ sender:Any) {
         self.delegate?.report()
     }
-    
+    @objc func showProfile(sender:UITapGestureRecognizer) {
+         print("hello world showprofile")
+        if self.post.displayName == "Anonymous" {
+            return
+        }
+        guard let uid = self.post.creatorUID else {
+            return
+        }
+        self.delegate?.showProfile(uid:uid)
+    }
     
     func addattributeText(button:UIButton,image:UIImage,text:String) {
         let fullString = NSMutableAttributedString(string: "")

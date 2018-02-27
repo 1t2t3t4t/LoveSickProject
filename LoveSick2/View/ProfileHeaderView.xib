@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProfileHeaderView" customModule="LoveSick2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Wx-Zd-tRx">
+                    <rect key="frame" x="269" y="10" width="90" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="8lq-Pz-iP9"/>
+                        <constraint firstAttribute="width" constant="90" id="hpL-2G-s5S"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsC-01-xMK">
+                    <rect key="frame" x="16" y="15" width="215" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="odm-bs-2f5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuH-rs-kxG">
+                    <rect key="frame" x="16" y="54.5" width="215" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="f4C-OI-I3d"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="tsC-01-xMK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="7Fn-Zz-lp7"/>
+                <constraint firstItem="0Wx-Zd-tRx" firstAttribute="leading" secondItem="tsC-01-xMK" secondAttribute="trailing" constant="38" id="Apq-le-8Sy"/>
+                <constraint firstItem="0Wx-Zd-tRx" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="Eu5-MC-cXe"/>
+                <constraint firstItem="tsC-01-xMK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="G3K-Wr-PJw"/>
+                <constraint firstItem="0Wx-Zd-tRx" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="OY0-W4-jMh"/>
+                <constraint firstItem="tsC-01-xMK" firstAttribute="trailing" secondItem="JuH-rs-kxG" secondAttribute="trailing" id="QCM-O6-G76"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0Wx-Zd-tRx" secondAttribute="trailing" constant="16" id="fnB-dY-XMA"/>
+                <constraint firstItem="JuH-rs-kxG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="lsz-pv-QCf"/>
+                <constraint firstItem="tsC-01-xMK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="m6g-lF-u32"/>
+                <constraint firstItem="JuH-rs-kxG" firstAttribute="top" relation="lessThanOrEqual" secondItem="tsC-01-xMK" secondAttribute="bottom" constant="18.5" id="nGz-uE-z8L"/>
+                <constraint firstItem="tsC-01-xMK" firstAttribute="leading" secondItem="JuH-rs-kxG" secondAttribute="leading" id="vQH-M2-1UM"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imageView" destination="0Wx-Zd-tRx" id="E10-CS-Dv3"/>
+                <outlet property="imageViewHeight" destination="8lq-Pz-iP9" id="wfJ-DI-hBP"/>
+                <outlet property="imageViewWidth" destination="hpL-2G-s5S" id="tIL-Wh-hCc"/>
+                <outlet property="totalPost" destination="JuH-rs-kxG" id="UUP-ir-os5"/>
+                <outlet property="username" destination="tsC-01-xMK" id="hAc-WX-TjV"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="54"/>
+        </view>
+    </objects>
+</document>

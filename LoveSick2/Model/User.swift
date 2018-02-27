@@ -20,6 +20,15 @@ class User: Mappable {
     var thumbnailProfileURL: String?
     var profileURL: String?
     var friendlist:[String]?
+    var friendrequest:[User] = []
+    private var friendrequestModel:[String:Any]?{
+        didSet{
+            if friendrequestModel == nil { return }
+            for model in friendrequestModel! {
+                self.friendrequest.append(MapperManager<User>.mapObject(dictionary: model.value as! [String:Any]))
+            }
+        }
+    }
     
     static var currentUser:User?
     
@@ -40,6 +49,7 @@ class User: Mappable {
         self.friendlist <- map["friendlist"]
         self.thumbnailProfileURL <- map["thumbnailProfileURL"]
         self.profileURL <- map["profileURL"]
+        self.friendrequestModel <- map["FriendRequests"]
     }
     
     class func getProfilePic(withCompletion completion: @escaping (UIImage) -> Void ) {

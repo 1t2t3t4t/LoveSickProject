@@ -28,6 +28,8 @@ target 'LoveSick2' do
     pod 'KMPlaceholderTextView', '~> 1.3.0'
      pod 'Nuke', '~> 6.0'
      pod 'KDCircularProgress'
+     pod 'GSKStretchyHeaderView'
+     pod 'ZAlertView'
   # Pods for LoveSick2
 
   target 'LoveSick2Tests' do
