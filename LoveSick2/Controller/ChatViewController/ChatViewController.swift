@@ -12,7 +12,7 @@ import AsyncDisplayKit
 
 class ChatViewController: NMessengerViewController {
     
-    var titleName:String?
+    var chatRoom:ChatRoom!
     
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
@@ -22,18 +22,15 @@ class ChatViewController: NMessengerViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let title = titleName else {
-            return
+        self.navigationItem.title = chatRoom.userUID
+        ChatRoomManager.getChatRoom(withUID: chatRoom.chatRoomUID!) { (chatroom) in
+            self.chatRoom = chatroom
+            self.viewWillLayoutSubviews()
         }
-        self.navigationItem.title = title
-        //self.inputBarView.textInputAreaView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(ChatViewController.sendMessage)))
         
-        // Do any additional setup after loading the view.
     }
     override func sendText(_ text: String, isIncomingMessage: Bool) -> GeneralMessengerCell {
-
         //create a new text message
-
         let textContent = TextContentNode(textMessageString: text, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
         let newMessage = MessageNode(content: textContent)
         newMessage.cellPadding = messagePadding
@@ -43,26 +40,10 @@ class ChatViewController: NMessengerViewController {
         print("check check 156789 \(isIncomingMessage)")
         newMessage.isIncomingMessage = false//isIncomingMessage
         newMessage.avatarNode = nAvatar
-
         self.messengerView.addMessage(newMessage, scrollsToMessage: true)
         
-
-
+        self.chatRoom.sendMessage(text)
         return newMessage
     }
-//    @objc func sendMessage() {
-//
-////        let textContent = TextContentNode(textMessageString: self.inputBarView.textInputView.text, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
-////        let newMessage = MessageNode(content: textContent)
-////        newMessage.cellPadding = messagePadding
-////        let nAvatar = ASImageNode()
-////        nAvatar.image = #imageLiteral(resourceName: "profileLoad")
-////        newMessage.currentViewController = self
-////        newMessage.isIncomingMessage = true
-////        print("check for isincoming \(newMessage.isIncomingMessage)")
-////        newMessage.avatarNode = nAvatar
-////
-////        self.messengerView.addMessage(newMessage, scrollsToMessage: true)
-//
-//    }
+
 }

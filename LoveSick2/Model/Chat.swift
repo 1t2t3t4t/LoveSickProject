@@ -19,6 +19,12 @@ class Chat: Mappable {
         
     }
     
+    init(message:String, senderUID:String, timestamp:Double) {
+        self.message = message
+        self.senderUID = senderUID
+        self.timestamp = timestamp
+    }
+    
     func mapping(map: Map) {
         self.message <- map["message"]
         self.senderUID <- map["senderUID"]

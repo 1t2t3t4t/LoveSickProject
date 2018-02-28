@@ -34,8 +34,9 @@ class FriendRequestTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         ChatRoomManager.createChatRoom(fuid: currentUser.uid!, suid: currentUser.friendrequest[indexPath.row].uid!)
-        Database.database().reference().child("Users/\(currentUser.uid)/FriendRequests/\(currentUser.friendrequest[indexPath.row].uid!)").removeValue()
+        Database.database().reference().child("Users/\(User.currentUser!.uid)/FriendRequests/\(User.currentUser!.friendrequest[indexPath.row].uid!)").removeValue()
         User.currentUser?.friendrequest.remove(at: indexPath.row)
+        tableView.reloadData()
     }
 
 

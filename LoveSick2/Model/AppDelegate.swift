@@ -27,10 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = initialViewController
             }
         })
-        
-//        for i in 0...10000 {
-//            PostManager.post(title: "FOR QUERY TESTING \(i)", content: "efkwopefkopwef", isAnonymous: true)
-//        }
         self.window?.makeKeyAndVisible()
         return true
     }

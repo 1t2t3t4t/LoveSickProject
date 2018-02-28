@@ -21,6 +21,15 @@ class User: Mappable {
     var profileURL: String?
     var friendlist:[String]?
     var friendrequest:[User] = []
+    var chatRoom:[ChatRoom] = []
+    private var chatRoomModel:[String:Any]?{
+        didSet{
+            if chatRoomModel == nil { return }
+            for model in chatRoomModel! {
+                self.chatRoom.append(MapperManager<ChatRoom>.mapObject(dictionary: model.value as! [String:Any]))
+            }
+        }
+    }
     private var friendrequestModel:[String:Any]?{
         didSet{
             if friendrequestModel == nil { return }
@@ -50,6 +59,7 @@ class User: Mappable {
         self.thumbnailProfileURL <- map["thumbnailProfileURL"]
         self.profileURL <- map["profileURL"]
         self.friendrequestModel <- map["FriendRequests"]
+        self.chatRoomModel <- map["ChatRooms"]
     }
     
     class func getProfilePic(withCompletion completion: @escaping (UIImage) -> Void ) {
