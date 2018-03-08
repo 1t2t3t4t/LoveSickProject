@@ -23,12 +23,38 @@ class ChatViewController: NMessengerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = chatRoom.userUID
-        ChatRoomManager.getChatRoom(withUID: chatRoom.chatRoomUID!) { (chatroom) in
+        ChatRoomManager.getChatRoom(withUID: self.chatRoom.chatRoomUID!) { (chatroom) in
+            chatroom?.messages.removeSubrange(Range(NSRange(location: 0, length: self.chatRoom.messages.count))!)
             self.chatRoom = chatroom
-            self.viewWillLayoutSubviews()
+            self.messengerView.delegate?.batchFetchContent!()
+            ChatRoomManager.messageListener(withUID: self.chatRoom.chatRoomUID!, completion: { (chat) in
+                let textContent = TextContentNode(textMessageString: chat!.message!, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
+                let newMessage = MessageNode(content: textContent)
+                newMessage.cellPadding = self.messagePadding
+                let nAvatar = ASImageNode()
+                nAvatar.image = #imageLiteral(resourceName: "profileLoad")
+                newMessage.currentViewController = self
+                newMessage.isIncomingMessage = true
+                newMessage.avatarNode = nAvatar
+                self.messengerView.addMessage(newMessage, scrollsToMessage: true)
+            })
         }
-        
     }
+    
+    func batchFetchContent() {
+        for message in self.chatRoom.messages {
+            let textContent = TextContentNode(textMessageString: message.message!, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
+            let newMessage = MessageNode(content: textContent)
+            newMessage.cellPadding = messagePadding
+            let nAvatar = ASImageNode()
+            nAvatar.image = #imageLiteral(resourceName: "profileLoad")
+            newMessage.currentViewController = self
+            newMessage.isIncomingMessage = message.senderUID != User.currentUser?.uid!
+            newMessage.avatarNode = nAvatar
+            self.messengerView.addMessage(newMessage, scrollsToMessage: true)
+        }
+    }
+    
     override func sendText(_ text: String, isIncomingMessage: Bool) -> GeneralMessengerCell {
         //create a new text message
         let textContent = TextContentNode(textMessageString: text, currentViewController: self, bubbleConfiguration: self.sharedBubbleConfiguration)
@@ -37,7 +63,6 @@ class ChatViewController: NMessengerViewController {
         let nAvatar = ASImageNode()
         nAvatar.image = #imageLiteral(resourceName: "profileLoad")
         newMessage.currentViewController = self
-        print("check check 156789 \(isIncomingMessage)")
         newMessage.isIncomingMessage = false//isIncomingMessage
         newMessage.avatarNode = nAvatar
         self.messengerView.addMessage(newMessage, scrollsToMessage: true)

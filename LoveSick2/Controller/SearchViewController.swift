@@ -33,7 +33,6 @@ class SearchViewController: UIViewController {
         self.tableView.dataSource = self
         self.setUpSearchBar()
         
-        //Database.database().reference().child("Posts").removeValue()
     }
     
     private func setUpSearchBar() {
@@ -41,12 +40,6 @@ class SearchViewController: UIViewController {
         self.searchBar.delegate = self
         self.searchBar.placeholder = "Search here..."
         self.navigationItem.titleView = self.searchBar
-    //    var i = 0
-     //   let str = ["hello world","yo dude","why the hell"]
-//        while i<10000 {
-//            i+=1
-//            PostManager.post(title: str[Int(arc4random_uniform(3))], content: str[Int(arc4random_uniform(3))], isAnonymous: false)
-//        }
         
     }
     
@@ -73,7 +66,6 @@ extension SearchViewController: UISearchBarDelegate {
         if timer != nil {
             if timer!.isValid {
                 timer!.invalidate()
-                //self.refreshControl.endRefreshing()
             }
         }
         self.timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(fetchPost), userInfo: nil, repeats: false)
@@ -81,7 +73,6 @@ extension SearchViewController: UISearchBarDelegate {
     
     @objc private func fetchPost() {
         self.posts.removeAll()
-//        self.tableView.reloadData()
         guard let searchText = self.searchBar.text else { return }
         Database.database().reference().child("Posts").queryOrdered(byChild: "createdAt").observeSingleEvent(of: .value) { (snap) in
             guard let value = snap.value as? [String:Any] else {

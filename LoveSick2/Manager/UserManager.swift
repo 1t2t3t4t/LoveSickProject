@@ -35,7 +35,14 @@ class UserManager {
         }
     }
     
-    class func addFriend(withUID uid:String) {
-        Database.database().reference().child("Users/\(uid)/FriendRequests/\(User.currentUser!.uid!)").setValue(User.currentUser?.toJSON())
+    class func addFriend(withUID uid:String,completion: @escaping (Bool) -> Void) {
+        Database.database().reference().child("Users/\(uid)/FriendRequests/\(User.currentUser!.uid!)").setValue(User.currentUser?.toJSON(), withCompletionBlock: {(error,ref) in
+            if error != nil {
+                completion(false)
+            }
+            else{
+                completion(true)
+            }
+        })//setValue(User.currentUser?.toJSON())
     }
 }

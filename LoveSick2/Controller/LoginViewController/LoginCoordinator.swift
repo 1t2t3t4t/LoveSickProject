@@ -89,7 +89,7 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
         let viewController = self.visibleViewController()
         hud.textLabel.text = "Signing up.."
         hud.show(in:viewController!.view)
-        SessionManager.register(email: email, password: password, displayName: name, completion: {(success) in
+        SessionManager.register(email: email, password: password, displayName: name, completion: {(success,error) in
             hud.dismiss()
             if success {
                 let alert = UIAlertController(title: "Success",
@@ -106,7 +106,7 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
             }
             else{
                 let alert = UIAlertController(title: "Error",
-                                              message: "Cannot sign up, please try again",
+                                              message: "Cannot sign up, please try again (\(error))",
                                               preferredStyle: .alert)
                 let submitAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                     alert.dismiss(animated: true, completion: nil)

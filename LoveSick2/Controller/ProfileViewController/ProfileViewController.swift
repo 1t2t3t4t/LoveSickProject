@@ -10,6 +10,7 @@ import UIKit
 import GSKStretchyHeaderView
 import Hokusai
 import ZAlertView
+import Firebase
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var tableView:UITableView!
@@ -17,14 +18,18 @@ class ProfileViewController: UIViewController {
     var userid:String?
     var userProfile:[String:Any]?
     var nibViews:ProfileHeaderView?
+    var addBtn = UIButton()
     
     private var paginator:SelfPostPaginator!
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.tableFooterView = UIView()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        
         self.navigationController?.navigationBar.isTranslucent = false
         self.navigationItem.title = "Profile"
         
@@ -38,8 +43,23 @@ class ProfileViewController: UIViewController {
         view.setTitleColor(UIColor.white, for: .normal)
         view.backgroundColor = UIColor.red
         view.addTarget(self, action: #selector(ProfileViewController.addFriend), for: .touchUpInside)
+        addBtn = view
         if userid != User.currentUser?.uid {
+            print("check name \(User.currentUser!.uid!) \(userid!)")
+        Database.database().reference().child("Users/\(userid!)/FriendRequests/\(User.currentUser!.uid!)").observeSingleEvent(of: .value, with: {snap in
+            if snap.exists() {
+                print("have friend request")
+                view.setTitle("Added", for: .normal)
+                view.backgroundColor = UIColor.gray
+                
+            }
+            else {
+                print("not have friend req")
+                view.setTitle("+ Add", for: .normal)
+                view.backgroundColor = UIColor.red
+            }
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: view)
+        })
         }
         
         nibViews = Bundle.main.loadNibNamed("ProfileHeaderView", owner: self, options: nil)?.first as! ProfileHeaderView
@@ -53,8 +73,10 @@ class ProfileViewController: UIViewController {
         self.stretchyHeader.contentAnchor = .bottom
         self.stretchyHeader.maximumContentHeight = 120
         self.tableView.addSubview(self.stretchyHeader)
+        
         //ProfileHeaderView
         self.paginator = SelfPostPaginator({ (posts, error) in
+            
             self.tableView.reloadData()
         })
         if #available(iOS 11.0, *) {
@@ -73,8 +95,8 @@ class ProfileViewController: UIViewController {
     
     @objc func addFriend() {
         print("enter add friend")
-        let activity = UIActivityIndicatorView(frame: CGRect(x: 0, y:0, width: 60, height: 60))
-        activity.center = CGPoint(x: self.view.center.x, y: self.view.center.y - (self.navigationController?.navigationBar.frame.height)! - 30)
+        let activity = UIActivityIndicatorView(frame: CGRect(x: 0, y:0, width: 80, height: 80))
+        activity.center = CGPoint(x: self.view.center.x, y: self.view.center.y - (self.navigationController?.navigationBar.frame.height)! - 40)
         activity.activityIndicatorViewStyle = .whiteLarge
         activity.hidesWhenStopped = true
         activity.backgroundColor = UIColor.gray
@@ -82,9 +104,56 @@ class ProfileViewController: UIViewController {
         activity.clipsToBounds = true
         self.view.addSubview(activity)
         self.view.bringSubview(toFront: activity)
+        
+        if addBtn.currentTitle != "Added"{
         activity.startAnimating()
-        UserManager.addFriend(withUID: self.userid!)
-        activity.stopAnimating()
+        UserManager.addFriend(withUID: self.userid!,completion: {success in
+            activity.stopAnimating()
+            if !success {
+                let alert = UIAlertController(title: "Error", message: "Cannot add friend, please try again", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in
+                    alert.dismiss(animated: true, completion: nil)}))
+                self.present(alert, animated: true, completion: nil)
+            }
+            else {
+                self.addBtn.setTitle("Added", for: .normal)
+                self.addBtn.backgroundColor = UIColor.gray
+            }
+        })
+        }
+        else {
+            let messageAttrString = NSMutableAttributedString(string: "Are you sure you want to remove friend request?", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.regular),NSAttributedStringKey.foregroundColor:UIColor.darkGray])
+            let actionSheet = UIAlertController(title:nil, message: "", preferredStyle: .actionSheet)
+            actionSheet.setValue(messageAttrString, forKey: "attributedMessage")
+            actionSheet.addAction(UIAlertAction(title: "Remove", style: .destructive, handler: {_ in
+//                SessionManager.logOut({(success) in
+//                    let view = LoginViewController.newInstanceFromStoryboard() as! LoginViewController
+//                    self.present(view, animated: true, completion: nil)
+//                })
+                activity.startAnimating()
+                Database.database().reference().child("Users/\(self.userid!)/FriendRequests/\(User.currentUser!.uid!)").removeValue(completionBlock: {(error,ref) in
+                    activity.stopAnimating()
+                    if error != nil {
+                        let alert = UIAlertController(title: "Error", message: "Cannot remove friend request, please try again", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in
+                            alert.dismiss(animated: true, completion: nil)}))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                    else {
+                        self.addBtn.setTitle("+ Add", for: .normal)
+                        self.addBtn.backgroundColor = UIColor.red
+                    }
+            
+                })
+                
+                self.dismiss(animated: true, completion: nil)
+            }))
+            actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(actionSheet, animated: true, completion: nil)
+        }
+       // activity.stopAnimating()
     }
 
 }

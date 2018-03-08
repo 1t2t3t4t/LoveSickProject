@@ -37,19 +37,19 @@ public struct FullNameRule: ValidationRule {
             return false
         }
 
-        let components = input.components(separatedBy: " ")
-
-        guard components.count > 1 else {
-            return false
-        }
-
-        guard let first = components.first, let last = components.last else {
-            return false
-        }
-        
-        guard first.characters.count > 1, last.characters.count > 1 else {
-            return false
-        }
+//        let components = input.components(separatedBy: " ")
+//
+//        guard components.count > 1 else {
+//            return false
+//        }
+//
+//        guard let first = components.first, let last = components.last else {
+//            return false
+//        }
+//
+//        guard first.characters.count > 1, last.characters.count > 1 else {
+//            return false
+//        }
 
         return true
     }

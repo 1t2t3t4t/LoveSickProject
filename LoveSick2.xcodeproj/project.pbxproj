@@ -14,6 +14,7 @@
 		810F7BA5202C653400B523AB /* CommentTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7BA4202C653400B523AB /* CommentTextTableViewCell.swift */; };
 		810F7BA7202C937400B523AB /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7BA6202C937400B523AB /* CommentTableViewCell.swift */; };
 		811035EC2035C08300DE4172 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811035EB2035C08300DE4172 /* SearchViewController.swift */; };
+		819C9D9E205030B40051729E /* FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C9D9D205030B40051729E /* FriendRequestTableViewCell.swift */; };
 		81AAE74020150A1A004D0D31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */; };
 		81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */; };
 		81B27381202B1B8800DCCA8B /* ExtensionSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */; };
@@ -137,6 +138,7 @@
 		810F7BA4202C653400B523AB /* CommentTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextTableViewCell.swift; sourceTree = "<group>"; };
 		810F7BA6202C937400B523AB /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		811035EB2035C08300DE4172 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		819C9D9D205030B40051729E /* FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
 		81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostViewController.swift; sourceTree = "<group>"; };
 		81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSwift.swift; sourceTree = "<group>"; };
@@ -280,6 +282,13 @@
 				811035EB2035C08300DE4172 /* SearchViewController.swift */,
 			);
 			name = SearchViewController;
+			sourceTree = "<group>";
+		};
+		819C9D9C20502E940051729E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		81DB7D042035A12400B2232C /* PostViewController */ = {
@@ -486,6 +495,7 @@
 		EFDD540C2013B5A900817F49 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				819C9D9C20502E940051729E /* New Group */,
 				81F87C9020453879007E11F9 /* ProfileViewController */,
 				EF216CE0203EEC9600C13CB7 /* PostTextViewcontroller */,
 				EF2BF9E32039A8B90014D38C /* ChatViewController */,
@@ -516,6 +526,7 @@
 				EF216CEB203F3E2500C13CB7 /* PreviewImageTableViewCell.swift */,
 				81F87C9520456683007E11F9 /* ProfileHeaderView.xib */,
 				81F87C992045684C007E11F9 /* ProfileHeaderView.swift */,
+				819C9D9D205030B40051729E /* FriendRequestTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -995,6 +1006,7 @@
 				81E674142045CF9C0003BB85 /* ChatRoomManager.swift in Sources */,
 				EFF9A5D8201A2FA700CB4D6D /* SettingViewController.swift in Sources */,
 				EF216CDD203EC4E900C13CB7 /* PostImageTableViewCell.swift in Sources */,
+				819C9D9E205030B40051729E /* FriendRequestTableViewCell.swift in Sources */,
 				EF216CD9203EAACF00C13CB7 /* ChatTableViewCell.swift in Sources */,
 				81E674182045D7050003BB85 /* Chat.swift in Sources */,
 				EF216CEC203F3E2500C13CB7 /* PreviewImageTableViewCell.swift in Sources */,

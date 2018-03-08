@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = initialViewController
             }
             else{
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "login")
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
                 self.window?.rootViewController = initialViewController
             }
         })

@@ -24,14 +24,31 @@ class SettingViewController: UIViewController {
     }
 
     func logout() {
-        let dialog = ZAlertView()
-        dialog.addButton("Log Out", touchHandler: {_ in
-            SessionManager.logOut(nil)
-            self.dismiss(animated: true, completion: nil)
+        
+        let messageAttrString = NSMutableAttributedString(string: "Are you sure you want to logout?", attributes: [NSAttributedStringKey.font:UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.regular),NSAttributedStringKey.foregroundColor:UIColor.darkGray])
+        let actionSheet = UIAlertController(title:nil, message: "", preferredStyle: .actionSheet)
+        actionSheet.setValue(messageAttrString, forKey: "attributedMessage")
+        actionSheet.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: {_ in
+            SessionManager.logOut({(success) in
+                let view = LoginViewController.newInstanceFromStoryboard() as! LoginViewController
+                
+                self.present(view, animated: true, completion: nil)
+                self.dismiss(animated: true, completion: nil)
+            })
             
-        })
-        dialog.addButton("Cancel", touchHandler: {_ in dialog.dismissAlertView()})
-        dialog.show()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(actionSheet, animated: true, completion: nil)
+//        let dialog = ZAlertView(title: "Are you sure you want to log out?", message: "", alertType: .confirmation)
+//        dialog.addButton("Log Out", touchHandler: {_ in
+//            SessionManager.logOut(nil)
+//            self.dismiss(animated: true, completion: nil)
+//
+//        })
+//        dialog.addButton("Cancel", touchHandler: {_ in dialog.dismissAlertView()})
+//        dialog.show()
         
     }
 }
