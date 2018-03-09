@@ -26,8 +26,26 @@ extension String {
         }
         return byWords
     }
+    func toDouble() -> Double? {
+        return NumberFormatter().number(from: self)?.doubleValue
+    }
     
 }
+class TimeInterval {
+    class func stringFromTimeInterval(interval: Double) -> String {
+        let date = Date(timeIntervalSince1970: interval)
+        let dayTimePeriodFormatter = DateFormatter()
+        dayTimePeriodFormatter.dateFormat = "hh:mm a"
+        
+       // let hours = (Int(interval) / 3600)
+        //let minutes = Int(interval / 60) - Int(hours * 60)
+        // let seconds = Int(interval) - (Int(interval / 60) * 60)
+        
+        return dayTimePeriodFormatter.string(from:date)//NSString(format:"%0.2d:%0.2d",hours,minutes) //"%0.2d:%0.2d:%0.2d",hours,minutes,seconds)
+    }
+}
+
+
 
 extension UIImage {
     func compressImage(image:UIImage) -> Data {

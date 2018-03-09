@@ -17,6 +17,7 @@ class User: Mappable {
     var email: String?
     var uid: String?
     var pushId: String?
+    var profileImg:UIImage?
     var thumbnailProfileURL: String?
     var profileURL: String?
     var friendlist:[String]?

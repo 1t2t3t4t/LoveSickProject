@@ -15,6 +15,8 @@
 		810F7BA7202C937400B523AB /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7BA6202C937400B523AB /* CommentTableViewCell.swift */; };
 		811035EC2035C08300DE4172 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811035EB2035C08300DE4172 /* SearchViewController.swift */; };
 		819C9D9E205030B40051729E /* FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C9D9D205030B40051729E /* FriendRequestTableViewCell.swift */; };
+		819C9DA02051A8F20051729E /* SettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819C9D9F2051A8F20051729E /* SettingHeaderView.xib */; };
+		819C9DA22051A9450051729E /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C9DA12051A9450051729E /* SettingHeaderView.swift */; };
 		81AAE74020150A1A004D0D31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */; };
 		81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */; };
 		81B27381202B1B8800DCCA8B /* ExtensionSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */; };
@@ -139,6 +141,8 @@
 		810F7BA6202C937400B523AB /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		811035EB2035C08300DE4172 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		819C9D9D205030B40051729E /* FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
+		819C9D9F2051A8F20051729E /* SettingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingHeaderView.xib; sourceTree = "<group>"; };
+		819C9DA12051A9450051729E /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostViewController.swift; sourceTree = "<group>"; };
 		81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSwift.swift; sourceTree = "<group>"; };
@@ -378,7 +382,6 @@
 			isa = PBXGroup;
 			children = (
 				EFF9A5D7201A2FA700CB4D6D /* SettingViewController.swift */,
-				81E674112045CA9B0003BB85 /* FriendRequestTableViewController.swift */,
 			);
 			path = SettingViewController;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 		EF2BF9E32039A8B90014D38C /* ChatViewController */ = {
 			isa = PBXGroup;
 			children = (
+				81E674112045CA9B0003BB85 /* FriendRequestTableViewController.swift */,
 				EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */,
 				EF216CDA203EAB1700C13CB7 /* MessageViewController.swift */,
 			);
@@ -527,6 +531,8 @@
 				81F87C9520456683007E11F9 /* ProfileHeaderView.xib */,
 				81F87C992045684C007E11F9 /* ProfileHeaderView.swift */,
 				819C9D9D205030B40051729E /* FriendRequestTableViewCell.swift */,
+				819C9D9F2051A8F20051729E /* SettingHeaderView.xib */,
+				819C9DA12051A9450051729E /* SettingHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -692,6 +698,7 @@
 				81AAE74020150A1A004D0D31 /* GoogleService-Info.plist in Resources */,
 				EFDD53A32013A32C00817F49 /* Assets.xcassets in Resources */,
 				EFDD53A12013A32C00817F49 /* Main.storyboard in Resources */,
+				819C9DA02051A8F20051729E /* SettingHeaderView.xib in Resources */,
 				81F87C9620456683007E11F9 /* ProfileHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -992,6 +999,7 @@
 				EFDD54212014E0A000817F49 /* PostTextViewController.swift in Sources */,
 				810F7BA5202C653400B523AB /* CommentTextTableViewCell.swift in Sources */,
 				EFDD54142014826300817F49 /* SessionManager.swift in Sources */,
+				819C9DA22051A9450051729E /* SettingHeaderView.swift in Sources */,
 				EFDD54232014E14300817F49 /* ChoosingTableViewCell.swift in Sources */,
 				EFDD541D2014B57700817F49 /* PostTableViewCell.swift in Sources */,
 				EFF9A5DA201A363000CB4D6D /* Extension.swift in Sources */,

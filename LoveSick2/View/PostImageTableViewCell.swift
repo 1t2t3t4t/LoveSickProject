@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 import Alamofire
 import AlamofireImage
 import KDCircularProgress
@@ -67,9 +68,19 @@ class PostImageTableViewCell: UITableViewCell {
         comment.tintColor = UIColor.gray
         addattributeText(button:share,image: #imageLiteral(resourceName: "share"),text: " Share")
         share.tintColor = UIColor.gray
+       
         
     }
-    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        aspectConstraint = nil
+        self.profileImg.image = nil
+        self.name.text = ""
+        self.title.text = ""
+        self.category.text = ""
+        self.numvote.text = ""
+        self.contentImg.image = nil
+    }
     internal var aspectConstraint : NSLayoutConstraint? {
         didSet {
             if oldValue != nil {
@@ -81,10 +92,7 @@ class PostImageTableViewCell: UITableViewCell {
         }
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        aspectConstraint = nil
-    }
+
     
     func setCustomImage(image : UIImage) {
         aspectConstraint = nil

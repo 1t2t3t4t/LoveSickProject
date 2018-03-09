@@ -20,7 +20,9 @@ class UserManager {
                 return
             }
             let user = MapperManager<User>.mapObject(dictionary: value)
+            
             completion(user)
+            
         }
     }
     

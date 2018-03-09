@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import Alamofire
+import AlamofireImage
 protocol PostTableViewCellDelegate: class {
     func report() -> Void
     func showProfile(uid:String) -> Void
@@ -61,6 +64,16 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
         comment.tintColor = UIColor.gray
         addattributeText(button:share,image: #imageLiteral(resourceName: "share"),text: " Share")
         share.tintColor = UIColor.gray
+       
+        
+    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+        self.name.text = ""
+        self.title.text = ""
+        self.category.text = ""
+        self.numvote.text = ""
         
     }
 

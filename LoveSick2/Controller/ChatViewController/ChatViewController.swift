@@ -22,7 +22,7 @@ class ChatViewController: NMessengerViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = chatRoom.userUID
+        self.navigationItem.title = chatRoom.fusername == User.currentUser?.displayName ? chatRoom.susername : chatRoom.fusername
         ChatRoomManager.getChatRoom(withUID: self.chatRoom.chatRoomUID!) { (chatroom) in
             chatroom?.messages.removeSubrange(Range(NSRange(location: 0, length: self.chatRoom.messages.count))!)
             self.chatRoom = chatroom

@@ -11,12 +11,31 @@ import Firebase
 
 class ChatRoomManager {
     
-    class func createChatRoom(fuid:String, suid:String) {
+    class func createChatRoom(fuid:String, suid:String,completion: @escaping (Bool) -> Void) {
         let chatuid = Database.database().reference().child("ChatRooms").childByAutoId().key
-        let chatRoomJSON = ChatRoom(chatuid, fuid: fuid, suid: suid).toJSON()
-        Database.database().reference().child("ChatRooms/\(chatuid)").setValue(chatRoomJSON)
-        Database.database().reference().child("Users/\(fuid)/ChatRooms/\(chatuid)").setValue(chatRoomJSON)
-        Database.database().reference().child("Users/\(suid)/ChatRooms/\(chatuid)").setValue(chatRoomJSON)
+        Database.database().reference().child("Users/\(suid)/username").observeSingleEvent(of: .value, with: {snap in
+            if snap.exists() {
+                let fusername = User.currentUser?.displayName as! String
+                let susername = snap.value as! String
+                let chatRoomJSON = ChatRoom(chatuid, fuid: fuid, suid: suid,fusername:fusername,susername:susername).toJSON()
+                Database.database().reference().child("ChatRooms/\(chatuid)").setValue(chatRoomJSON)
+                Database.database().reference().child("Users/\(fuid)/ChatRooms/\(chatuid)").setValue(chatRoomJSON)
+                Database.database().reference().child("Users/\(suid)/ChatRooms/\(chatuid)").setValue(chatRoomJSON)
+                Database.database().reference().child("ChatRooms/\(chatuid)/timestamp").setValue("\(Date().timeIntervalSince1970)")
+                Database.database().reference().child("Users/\(fuid)/FriendRequests").child("\(suid)").removeValue(completionBlock: {(error,ref) in
+                    if error != nil {
+                        completion(false)
+                    }
+                    else {
+                        completion(true)
+                    }
+                })
+            }
+            else {
+                
+            }
+        })
+       
     }
     
     class func getChatRoom(withUID uid:String, completion: @escaping (ChatRoom?) -> Void) {
@@ -28,6 +47,12 @@ class ChatRoomManager {
     }
     
     class func messageListener(withUID uid:String, completion: @escaping (Chat?) -> Void) {
+        Database.database().reference().child("ChatRooms/\(uid)").observe(.childAdded) { (snap) in
+            if let value = snap.value as? [[String:Any]] {
+                let chat = MapperManager<Chat>.mapObjectArray(array: value)
+                if chat.last?.senderUID != User.currentUser!.uid! { completion(chat.last) }
+            }
+        }
         Database.database().reference().child("ChatRooms/\(uid)").observe(.childChanged) { (snap) in
             if let value = snap.value as? [[String:Any]] {
                 let chat = MapperManager<Chat>.mapObjectArray(array: value)

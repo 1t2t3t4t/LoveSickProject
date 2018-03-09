@@ -15,6 +15,7 @@ class FriendRequestTableViewController: UITableViewController {
     private var currentUser = User.currentUser!
     override func viewWillAppear(_ animated: Bool) {
         self.tabBarController?.tabBar.isHidden = true
+        self.navigationItem.hidesBackButton = false
     }
     override func viewWillDisappear(_ animated: Bool) {
          self.tabBarController?.tabBar.isHidden = false
@@ -51,6 +52,7 @@ class FriendRequestTableViewController: UITableViewController {
 
 }
 extension FriendRequestTableViewController:FriendRequestTableViewCellDelegate {
+    
     func addFriend(row: Int,cell:FriendRequestTableViewCell) {
         let activity = UIActivityIndicatorView(frame: CGRect(x: 0, y:0, width: 80, height: 80))
         activity.center = CGPoint(x: self.view.center.x, y: self.view.center.y - (self.navigationController?.navigationBar.frame.height)! - 40)
@@ -62,18 +64,23 @@ extension FriendRequestTableViewController:FriendRequestTableViewCellDelegate {
         self.tableView.addSubview(activity)
         self.tableView.bringSubview(toFront: activity)
         activity.startAnimating()
-        ChatRoomManager.createChatRoom(fuid: currentUser.uid!, suid: currentUser.friendrequest[row].uid!)
-        Database.database().reference().child("Users/\(User.currentUser!.uid)/FriendRequests/\(User.currentUser!.friendrequest[row].uid!)").removeValue(completionBlock: {(error,ref) in
+        ChatRoomManager.createChatRoom(fuid: currentUser.uid!, suid: currentUser.friendrequest[row].uid!,completion:{success in
             activity.stopAnimating()
-            if error != nil {
-                
+            if !success {
+                let alert = UIAlertController(title: "Error", message: "Cannot accept friend request, please try again", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in
+                    alert.dismiss(animated: true, completion: nil)}))
+                self.present(alert, animated: true, completion: nil)
             }
-            else {
+            else{
                 User.currentUser?.friendrequest.remove(at: row)
                 cell.add.setTitle("Accepted", for: .normal)
+                let notificationName = NSNotification.Name("FriendRequestReloadData")
+                NotificationCenter.default.post(name: notificationName, object: nil)
                 cell.add.backgroundColor = UIColor.gray
             }
         })
+        
 
     }
     
@@ -91,13 +98,15 @@ extension FriendRequestTableViewController:FriendRequestTableViewCellDelegate {
         Database.database().reference().child("Users/\(User.currentUser!.uid)/FriendRequests/\(User.currentUser!.friendrequest[row].uid!)").removeValue(completionBlock: {(error,ref) in
             activity.stopAnimating()
             if error != nil {
-                let alert = UIAlertController(title: "Error", message: "Cannot accept friend request, please try again", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Error", message: "Cannot cancel friend request, please try again", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in
                     alert.dismiss(animated: true, completion: nil)}))
                 self.present(alert, animated: true, completion: nil)
             }
             else {
                 User.currentUser?.friendrequest.remove(at: row)
+                let notificationName = NSNotification.Name("FriendRequestReloadData")
+                NotificationCenter.default.post(name: notificationName, object: nil)
                 self.tableView.reloadData()
             
             }

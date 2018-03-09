@@ -10,6 +10,9 @@ import UIKit
 import XLPagerTabStrip
 import UIEmptyState
 import Hokusai
+import Firebase
+import AlamofireImage
+import Alamofire
 class NewPostViewController: UIViewController , IndicatorInfoProvider, UIEmptyStateDataSource, UIEmptyStateDelegate {
     
     
@@ -103,36 +106,40 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
             cell.post = post
             cell.delegate = self
-            //            cell.contentImg.af_setImage(withURL: URL(string:cell.post.imageURL!)!, placeholderImage: #imageLiteral(resourceName: "grayBackground"), filter: nil, progress: {progress in
-            //                cell.progressView.angle = progress.fractionCompleted*360.0
-            //
-            //            }
-            //                , imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true, completion: {(response) in
-            //                    cell.progressView.isHidden = true
-            //                    if let image = response.result.value{
-            ////                        DispatchQueue.main.async {
-            ////
-            ////                            let aspectRatio = (image as UIImage).size.height/(image as UIImage).size.width
-            ////                            cell.contentImg.image = image
-            ////                             let imageHeight = self.view.frame.width*aspectRatio
-            ////                             tableView.beginUpdates()
-            ////                            if imageHeight < cell.contentImg.frame.size.height {
-            ////                                self.rowHeights[indexPath.row] = cell.frame.size.height - (cell.contentImg.frame.size.height - imageHeight)
-            ////                            }
-            ////                            else {
-            ////                                self.rowHeights[indexPath.row] = imageHeight
-            ////                            }
-            ////                            tableView.endUpdates()
-            ////
-            ////                        }
-            //                    }
-            //            })
+            if cell.post.displayName != "Anonymous"{
+            Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+                if snap.exists() {
+                    print("snap exist man")
+                    guard let url = snap.value as? String else {
+                        print("snap exist man url fail")
+                        return
+                    }
+                    print("snap exist man url fin")
+                    cell.profileImg.af_setImage(withURL: URL(string: url)!)
+                }
+            })
+                return cell
+            }
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "newpostCell", for: indexPath) as! PostTableViewCell
             cell.post = post
             cell.delegate = self
+            if cell.post.displayName != "Anonymous"{
+            Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+                if snap.exists() {
+                    print("snap exist man")
+                    guard let url = snap.value as? String else {
+                        print("snap exist man url fail")
+                        return
+                    }
+                    print("snap exist man url fin")
+                    cell.profileImg.af_setImage(withURL: URL(string: url)!)
+                }
+            })
+                return cell
+            }
             return cell
         }
     }

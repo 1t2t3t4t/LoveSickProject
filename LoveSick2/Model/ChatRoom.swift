@@ -14,11 +14,31 @@ class ChatRoom: Mappable {
     
     var messages: [Chat] = []
     var chatRoomUID:String?
-    private var fuid:String?
-    private var suid:String?
+    var fuid:String?
+    var suid:String?
+    private var _fusername:String?
+    private var _susername:String?
+    var timestamp:String?
+    var fusername:String {
+        get {
+        return _fusername != nil ? _fusername!:""
+        }
+        set {
+            _fusername = newValue
+        }
+    }
+    var susername:String {
+        get {
+        return _susername != nil ? _susername!:""
+        }
+        set {
+            _susername = newValue
+        }
+    }
     var userUID:String? {
         return User.currentUser!.uid == fuid ? suid : fuid
     }
+    
     private var messagesModel:[String:Any]? = [: ]{
         didSet{
             if messagesModel == nil { return }
@@ -32,15 +52,13 @@ class ChatRoom: Mappable {
         
     }
     
-    init(_ uid:String, fuid:String, suid:String) {
+    init(_ uid:String, fuid:String, suid:String,fusername:String,susername:String) {
         self.chatRoomUID = uid
         self.suid = suid
         self.fuid = fuid
-        let chatuid = Database.database().reference().child("ChatRooms").childByAutoId().key
-        let chatRoomJSON = ChatRoom(chatuid, fuid: fuid, suid: suid).toJSON()
-        Database.database().reference().child("ChatRooms/\(chatuid)").setValue(chatRoomJSON)
-        Database.database().reference().child("Users/\(fuid)/ChatRooms/\(chatuid)").setValue(chatRoomJSON)
-        Database.database().reference().child("Users/\(suid)/ChatRooms/\(chatuid)").setValue(chatRoomJSON)
+        self.fusername = fusername
+        self.susername = susername
+        self.timestamp = "\(Date().timeIntervalSince1970)"
     }
     
     func mapping(map: Map) {
@@ -49,12 +67,16 @@ class ChatRoom: Mappable {
         self.fuid <- map["fuid"]
         self.suid <- map["suid"]
         self.messages <- map["messages"]
+        self.fusername <- map["fusername"]
+        self.susername <- map["susername"]
+        self.timestamp <- map["timestamp"]
     }
     
     func sendMessage(_ text:String) {
         let chat = Chat(message: text, senderUID: (User.currentUser?.uid)!, timestamp: Date().timeIntervalSince1970)
         self.messages.append(chat)
         Database.database().reference().child("ChatRooms/\(self.chatRoomUID!)").updateChildValues(self.toJSON())
+         Database.database().reference().child("ChatRooms/\(self.chatRoomUID!)/timestamp").setValue("\(Date().timeIntervalSince1970)")
     }
     
 }

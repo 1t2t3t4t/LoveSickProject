@@ -10,8 +10,10 @@ import UIKit
 import XLPagerTabStrip
 import UIEmptyState
 import Hokusai
-import Alamofire
 import KDCircularProgress
+import Firebase
+import AlamofireImage
+import Alamofire
 
 class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptyStateDataSource, UIEmptyStateDelegate {
     
@@ -95,13 +97,43 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
         if post.isImagePost! {
             let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
             cell.post = post
-            cell.delegate = self
+                        cell.delegate = self
+            if cell.post.displayName != "Anonymous"{
+            Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+                if snap.exists() {
+                    print("snap exist man")
+                    guard let url = snap.value as? String else {
+                        print("snap exist man url fail")
+                        return
+                    }
+                    print("snap exist man url fin")
+                    cell.profileImg.af_setImage(withURL: URL(string: url)!)
+                }
+            })
+
+                
+            return cell
+            }
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "toppostCell", for: indexPath) as! PostTableViewCell
             cell.post = post
             cell.delegate = self
+            if cell.post.displayName != "Anonymous"{
+            Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+                if snap.exists() {
+                    print("snap exist man")
+                    guard let url = snap.value as? String else {
+                        print("snap exist man url fail")
+                        return
+                    }
+                    print("snap exist man url fin")
+                    cell.profileImg.af_setImage(withURL: URL(string: url)!)
+                }
+            })
+                return cell
+            }
             return cell
         }
         
