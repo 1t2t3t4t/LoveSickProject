@@ -1946,7 +1946,6 @@
         <!--Chat View Controller-->
         <scene sceneID="vea-dN-LoA">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="X3K-nr-P3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ChatViewController" id="Wvr-aS-riq" customClass="ChatViewController" customModule="LoveSick2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wfp-BO-rf8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1955,13 +1954,13 @@
                         <viewLayoutGuide key="safeArea" id="A2t-Rc-SNg"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X3K-nr-P3l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="371" y="1916"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="qc4-Tt-rvu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qp1-yT-o1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ProfileViewController" id="Sm6-2E-z7x" customClass="ProfileViewController" customModule="LoveSick2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iff-C6-VSq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -2301,6 +2300,7 @@
                         <outlet property="tableView" destination="RYi-CN-VTK" id="OhY-KY-26h"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qp1-yT-o1L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1228" y="1915"/>
         </scene>
