@@ -23,6 +23,7 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
     var type:PostQueryType!
      var rowHeights:[Int:CGFloat] = [:]
     var currentTypeIndex:Int!
+    var viewHeight:CGFloat?
     public var changeCurrentIndexProgressive: ((_ oldCell: ButtonBarViewCell?, _ newCell: ButtonBarViewCell?, _ progressPercentage: CGFloat, _ changeCurrentIndex: Bool, _ animated: Bool) -> Void)?
     
     private var paginator:PostPaginator!
@@ -55,9 +56,12 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = UIRectEdge.bottom
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 44/*(self.tabBarController?.tabBar.frame.height)!*/, 0)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.addSubview(self.refreshControl)
+        
        
         self.reloadEmptyStateForTableView(tableView)
         self.paginator = PostPaginator(withType:.mostLiked , { (posts, error) in
@@ -68,6 +72,7 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
         
         self.emptyStateDataSource = self
         self.emptyStateDelegate = self
+        
         
     }
     
@@ -97,17 +102,25 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
         if post.isImagePost! {
             let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
             cell.post = post
-                        cell.delegate = self
+            cell.delegate = self
             if cell.post.displayName != "Anonymous"{
+                if let img = ImageCache.cachedImage(for: post.creatorUID!) {
+                    cell.progressView.isHidden = true
+                    cell.profileImg.image = img
+                }
             Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
                 if snap.exists() {
                     print("snap exist man")
                     guard let url = snap.value as? String else {
                         print("snap exist man url fail")
+                        cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
                         return
                     }
                     print("snap exist man url fin")
-                    cell.profileImg.af_setImage(withURL: URL(string: url)!)
+                    cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                        ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+                    })
+                   // cell.profileImg.af_setImage(withURL: URL(string: url)!)
                 }
             })
 
@@ -121,15 +134,21 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
             cell.post = post
             cell.delegate = self
             if cell.post.displayName != "Anonymous"{
+                if let img = ImageCache.cachedImage(for: post.creatorUID!) {
+                    cell.profileImg.image = img
+                }
             Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
                 if snap.exists() {
                     print("snap exist man")
                     guard let url = snap.value as? String else {
+                        cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
                         print("snap exist man url fail")
                         return
                     }
                     print("snap exist man url fin")
-                    cell.profileImg.af_setImage(withURL: URL(string: url)!)
+                    cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                        ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+                    })
                 }
             })
                 return cell

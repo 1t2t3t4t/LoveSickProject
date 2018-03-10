@@ -47,6 +47,8 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
         profileImg.image = #imageLiteral(resourceName: "profileLoad")
         numvote.textAlignment = .center
         numvote.textColor = UIColor.gray
+        profileImg.layer.cornerRadius = profileImg.frame.size.height/2.0
+        profileImg.clipsToBounds = true
         more.setImage(#imageLiteral(resourceName: "more"), for: .normal)
         more.tintColor = UIColor.gray
         more.tintColor = UIColor.gray

@@ -9,13 +9,13 @@
 import Foundation
 import ObjectMapper
 import Firebase
-
 class User: Mappable {
     
     var username: String?
     var displayName: String?
     var email: String?
     var uid: String?
+    var isCurrentUser:Bool = false
     var pushId: String?
     var profileImg:UIImage?
     var thumbnailProfileURL: String?
@@ -23,6 +23,7 @@ class User: Mappable {
     var friendlist:[String]?
     var friendrequest:[User] = []
     var chatRoom:[ChatRoom] = []
+   
     private var chatRoomModel:[String:Any]?{
         didSet{
             if chatRoomModel == nil { return }
@@ -40,7 +41,9 @@ class User: Mappable {
         }
     }
     
-    static var currentUser:User?
+    static var currentUser:User!
+        
+    
     
     required init?(map: Map) {
         

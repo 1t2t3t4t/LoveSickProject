@@ -8,7 +8,13 @@
 
 import Foundation
 import UIKit
-
+extension UInt64 {
+    
+    func megabytes() -> UInt64 {
+        return self * 1024 * 1024
+    }
+    
+}
 extension UIViewController {
     class func newInstanceFromStoryboard() -> UIViewController {
         let identifier = String(describing: self)

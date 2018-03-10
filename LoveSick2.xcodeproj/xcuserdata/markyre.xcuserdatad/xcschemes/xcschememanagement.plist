@@ -7,12 +7,12 @@
 		<key>LoveSick2.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>36</integer>
+			<integer>32</integer>
 		</dict>
 		<key>OneSignalNotificationServiceExtension.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>37</integer>
+			<integer>33</integer>
 		</dict>
 	</dict>
 </dict>

@@ -54,6 +54,8 @@ class PostImageTableViewCell: UITableViewCell {
         more.setImage(#imageLiteral(resourceName: "more"), for: .normal)
         more.tintColor = UIColor.gray
         more.tintColor = UIColor.gray
+        profileImg.layer.cornerRadius = profileImg.frame.size.height/2.0
+        profileImg.clipsToBounds = true
         more.setTitle("", for: .normal)
         upvote.setImage(#imageLiteral(resourceName: "upvote"), for: .normal)
         upvote.tintColor = UIColor.lightGray
@@ -111,12 +113,18 @@ class PostImageTableViewCell: UITableViewCell {
         addattributeText(button:comment,image: #imageLiteral(resourceName: "message"),text: " \(self.post.replies.count)")
         self.numvote.text = numLike
         setCustomImage(image: #imageLiteral(resourceName: "grayBackground"))
+        if let img = ImageCache.cachedImage(for: self.post.imageURL!) {
+            self.contentImg.image = img
+            self.setCustomImage(image: img)
+            return
+        }
         self.contentImg.af_setImage(withURL: URL(string:self.post.imageURL!)!, placeholderImage: #imageLiteral(resourceName: "grayBackground"), filter: nil, progress: {progress in
                             self.progressView.angle = progress.fractionCompleted*360.0
                         }
                             , imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true, completion: {(response) in
                                 self.progressView.isHidden = true
                                 if let image = response.result.value{
+                                    ImageCache.cache(image, for: self.post.imageURL!)
                                     self.contentImg.image = image
                                     self.setCustomImage(image: image)
                                 }

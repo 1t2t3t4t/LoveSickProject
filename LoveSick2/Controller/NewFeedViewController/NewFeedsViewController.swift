@@ -14,9 +14,10 @@ class NewFeedsViewController: ButtonBarPagerTabStripViewController {
     override func viewDidLoad() {
         // set up style before super view did load is executed
         settings.style.buttonBarBackgroundColor = .clear
-        settings.style.selectedBarBackgroundColor = .purple
+        settings.style.selectedBarBackgroundColor = .blue
         //-
         super.viewDidLoad()
+        print("pagerstrip \(self.view.frame.height) \(buttonBarView.frame.height)")
         
         let notificationName = NSNotification.Name("ChangeViewToNew")
         NotificationCenter.default.addObserver(self, selector: #selector(NewFeedsViewController.changePageViaNoti(notification:)), name: notificationName, object: nil)

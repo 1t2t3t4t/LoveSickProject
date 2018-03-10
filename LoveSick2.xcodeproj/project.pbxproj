@@ -44,6 +44,7 @@
 		EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */; };
 		EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2BF9E92039B6BE0014D38C /* NMessenger.framework */; };
 		EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */; };
+		EF823874205433F400337AF6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF823873205433F400337AF6 /* ImageCache.swift */; };
 		EFDD539C2013A32C00817F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD539B2013A32C00817F49 /* AppDelegate.swift */; };
 		EFDD539E2013A32C00817F49 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD539D2013A32C00817F49 /* LoginViewController.swift */; };
 		EFDD53A12013A32C00817F49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDD539F2013A32C00817F49 /* Main.storyboard */; };
@@ -177,6 +178,7 @@
 		EF2BF9E72039A9E10014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9E92039B6BE0014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VHMessageContentNode.swift; sourceTree = "<group>"; };
+		EF823873205433F400337AF6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		EFDD53982013A32C00817F49 /* LoveSick2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoveSick2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFDD539B2013A32C00817F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFDD539D2013A32C00817F49 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -286,13 +288,6 @@
 				811035EB2035C08300DE4172 /* SearchViewController.swift */,
 			);
 			name = SearchViewController;
-			sourceTree = "<group>";
-		};
-		819C9D9C20502E940051729E /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		81DB7D042035A12400B2232C /* PostViewController */ = {
@@ -492,6 +487,7 @@
 				EFF9A5D9201A362F00CB4D6D /* Extension.swift */,
 				EF216CE9203F388000C13CB7 /* UploadPhoto.swift */,
 				81F87C9320456054007E11F9 /* Profile.swift */,
+				EF823873205433F400337AF6 /* ImageCache.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -499,7 +495,6 @@
 		EFDD540C2013B5A900817F49 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				819C9D9C20502E940051729E /* New Group */,
 				81F87C9020453879007E11F9 /* ProfileViewController */,
 				EF216CE0203EEC9600C13CB7 /* PostTextViewcontroller */,
 				EF2BF9E32039A8B90014D38C /* ChatViewController */,
@@ -1013,6 +1008,7 @@
 				EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */,
 				81E674142045CF9C0003BB85 /* ChatRoomManager.swift in Sources */,
 				EFF9A5D8201A2FA700CB4D6D /* SettingViewController.swift in Sources */,
+				EF823874205433F400337AF6 /* ImageCache.swift in Sources */,
 				EF216CDD203EC4E900C13CB7 /* PostImageTableViewCell.swift in Sources */,
 				819C9D9E205030B40051729E /* FriendRequestTableViewCell.swift in Sources */,
 				EF216CD9203EAACF00C13CB7 /* ChatTableViewCell.swift in Sources */,

@@ -10,17 +10,20 @@ import UIKit
 import XLPagerTabStrip
 import UIEmptyState
 import Hokusai
+import KDCircularProgress
 import Firebase
 import AlamofireImage
 import Alamofire
-class NewPostViewController: UIViewController , IndicatorInfoProvider, UIEmptyStateDataSource, UIEmptyStateDelegate {
-    
+
+class NewPostViewController: UIViewController, IndicatorInfoProvider, UIEmptyStateDataSource, UIEmptyStateDelegate {
     
     @IBOutlet weak var tableView:UITableView!
+    
     
     var type:PostQueryType!
     var rowHeights:[Int:CGFloat] = [:]
     var currentTypeIndex:Int!
+    var viewHeight:CGFloat?
     public var changeCurrentIndexProgressive: ((_ oldCell: ButtonBarViewCell?, _ newCell: ButtonBarViewCell?, _ progressPercentage: CGFloat, _ changeCurrentIndex: Bool, _ animated: Bool) -> Void)?
     
     private var paginator:PostPaginator!
@@ -53,17 +56,16 @@ class NewPostViewController: UIViewController , IndicatorInfoProvider, UIEmptySt
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.edgesForExtendedLayout = UIRectEdge.bottom
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0,44, 0)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.addSubview(self.refreshControl)
         let notificationName = NSNotification.Name("NewPostReloadData")
         NotificationCenter.default.addObserver(self, selector: #selector(NewPostViewController.notiRefresh(notification:)), name: notificationName, object: nil)
-        //  tableView.tableFooterView = UIView()
-        //        let adjustForTabbarInsets: UIEdgeInsets = UIEdgeInsetsMake(0, 0, self.tabBarController!.tabBar.frame.height, 0)
-        //        self.tableView.contentInset = adjustForTabbarInsets
-        //        self.tableView.scrollIndicatorInsets = adjustForTabbarInsets
+        
         self.reloadEmptyStateForTableView(tableView)
-        self.paginator = PostPaginator (withType:.mostRecent , { (posts, error) in
+        self.paginator = PostPaginator(withType:.mostRecent , { (posts, error) in
             self.tableView.reloadData()
         })
         
@@ -72,13 +74,13 @@ class NewPostViewController: UIViewController , IndicatorInfoProvider, UIEmptySt
         self.emptyStateDataSource = self
         self.emptyStateDelegate = self
         
+        
     }
     @objc func notiRefresh(notification: NSNotification) {
         refreshControl.beginRefreshing()
         refresh()
     }
     @objc func refresh() {
-        
         self.paginator.refresh { (error) in
             if error == nil {
                 self.tableView.reloadData()
@@ -102,51 +104,63 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let post = self.paginator.posts[indexPath.row]
         if post.isImagePost! {
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
             cell.post = post
             cell.delegate = self
             if cell.post.displayName != "Anonymous"{
-            Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
-                if snap.exists() {
-                    print("snap exist man")
-                    guard let url = snap.value as? String else {
-                        print("snap exist man url fail")
-                        return
-                    }
-                    print("snap exist man url fin")
-                    cell.profileImg.af_setImage(withURL: URL(string: url)!)
+                if let img = ImageCache.cachedImage(for: post.creatorUID!) {
+                    cell.progressView.isHidden = true
+                    cell.profileImg.image = img
                 }
-            })
+                Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+                    if snap.exists() {
+                        print("snap exist man")
+                        guard let url = snap.value as? String else {
+                            print("snap exist man url fail")
+                            cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+                            return
+                        }
+                        print("snap exist man url fin")
+                        cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                            ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+                        })
+                        // cell.profileImg.af_setImage(withURL: URL(string: url)!)
+                    }
+                })
+                
+                
                 return cell
             }
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "newpostCell", for: indexPath) as! PostTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "toppostCell", for: indexPath) as! PostTableViewCell
             cell.post = post
             cell.delegate = self
             if cell.post.displayName != "Anonymous"{
-            Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
-                if snap.exists() {
-                    print("snap exist man")
-                    guard let url = snap.value as? String else {
-                        print("snap exist man url fail")
-                        return
-                    }
-                    print("snap exist man url fin")
-                    cell.profileImg.af_setImage(withURL: URL(string: url)!)
+                if let img = ImageCache.cachedImage(for: post.creatorUID!) {
+                    cell.profileImg.image = img
                 }
-            })
+                Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+                    if snap.exists() {
+                        print("snap exist man")
+                        guard let url = snap.value as? String else {
+                            cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+                            print("snap exist man url fail")
+                            return
+                        }
+                        print("snap exist man url fin")
+                        cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                            ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+                        })
+                    }
+                })
                 return cell
             }
             return cell
         }
+        
     }
-    
-    //        let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
-    //        cell.delegate = self
-    //        cell.setCustomImage(image: #imageLiteral(resourceName: "profileLoad"))
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == paginator.posts.count - 5 {
@@ -160,20 +174,15 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         let viewController = ViewPostViewController.newInstanceFromStoryboard() as! ViewPostViewController
         viewController.post = self.paginator.posts[indexPath.row]
         self.navigationController?.pushViewController(viewController, animated: true)
-        tableView.deselectRow(at: indexPath, animated: false)
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
-        //        if let height = self.rowHeights[indexPath.row]{
-        //            return height
-        //        }else{
-        //            return UITableViewAutomaticDimension
-        //        }
-        
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -184,6 +193,7 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
     
 }
 extension NewPostViewController:PostTableViewCellDelegate {
+    
     func showProfile(uid:String) {
         
         let view = ProfileViewController.newInstanceFromStoryboard() as! ProfileViewController
@@ -206,4 +216,3 @@ extension NewPostViewController:PostTableViewCellDelegate {
     
     
 }
-

@@ -16,8 +16,11 @@ class SessionManager {
         UserManager.queryUser(withUID: user.uid) { (user) in
             if user == nil { completion(false); return }
             User.currentUser = user
+            
         }
+        print("current user email \(Auth.auth().currentUser?.email) \(Auth.auth().currentUser?.uid)")
         completion(true)
+        
     }
     
     class func logIn(email:String, password:String, completion:@escaping (Bool) -> Void) {

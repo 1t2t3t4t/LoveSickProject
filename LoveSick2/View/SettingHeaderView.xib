@@ -6,8 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,27 +19,18 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GLf-5R-Nt1">
                     <rect key="frame" x="289" y="12" width="70" height="70"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="70" id="1SI-VN-uj2"/>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="NaC-im-sCQ"/>
+                        <constraint firstAttribute="width" constant="70" id="kU1-mT-T1F"/>
+                        <constraint firstAttribute="height" constant="70" id="qKf-fT-ijF"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZp-Tm-M5o">
-                    <rect key="frame" x="36" y="12" width="210" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="h71-FO-Mdl"/>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="210" id="vH1-WS-oBp"/>
-                    </constraints>
+                    <rect key="frame" x="36" y="36" width="210" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAn-yc-PH3">
                     <rect key="frame" x="289" y="84" width="70" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="30" id="0qt-Nb-CAO"/>
-                        <constraint firstAttribute="width" secondItem="RAn-yc-PH3" secondAttribute="height" multiplier="7:3" id="CCc-eK-Ruz"/>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="70" id="YEg-cQ-nLp"/>
-                    </constraints>
                     <state key="normal" title="Button"/>
                     <connections>
                         <action selector="edit" destination="iN0-l3-epB" eventType="touchUpInside" id="ZsK-i5-zeN"/>
@@ -50,16 +39,15 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="GLf-5R-Nt1" firstAttribute="leading" relation="lessThanOrEqual" secondItem="gZp-Tm-M5o" secondAttribute="trailing" constant="43" id="Afk-Bv-94c"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RAn-yc-PH3" secondAttribute="bottom" constant="6" id="HdQ-Qr-Q0P"/>
-                <constraint firstItem="GLf-5R-Nt1" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="L8V-Na-jxP"/>
-                <constraint firstItem="gZp-Tm-M5o" firstAttribute="leading" relation="lessThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="MQ2-K9-1Zh"/>
-                <constraint firstItem="gZp-Tm-M5o" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="ejI-o9-BP1"/>
-                <constraint firstItem="GLf-5R-Nt1" firstAttribute="leading" secondItem="RAn-yc-PH3" secondAttribute="leading" id="n2O-dZ-Jfy"/>
-                <constraint firstItem="RAn-yc-PH3" firstAttribute="top" secondItem="GLf-5R-Nt1" secondAttribute="bottom" constant="2" id="nke-em-WzB"/>
-                <constraint firstItem="RAn-yc-PH3" firstAttribute="leading" relation="lessThanOrEqual" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="289" id="qOs-Q5-6t3"/>
-                <constraint firstItem="gZp-Tm-M5o" firstAttribute="top" secondItem="GLf-5R-Nt1" secondAttribute="top" id="quI-yC-9Te"/>
-                <constraint firstItem="GLf-5R-Nt1" firstAttribute="trailing" secondItem="RAn-yc-PH3" secondAttribute="trailing" id="z6M-Dy-JTH"/>
+                <constraint firstItem="gZp-Tm-M5o" firstAttribute="top" secondItem="GLf-5R-Nt1" secondAttribute="top" constant="24" id="38A-r2-rsz"/>
+                <constraint firstItem="GLf-5R-Nt1" firstAttribute="leading" secondItem="gZp-Tm-M5o" secondAttribute="trailing" constant="43" id="4TS-L1-RCd"/>
+                <constraint firstItem="gZp-Tm-M5o" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="B5H-SM-eyo"/>
+                <constraint firstItem="gZp-Tm-M5o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="36" id="IfD-O4-PwE"/>
+                <constraint firstItem="RAn-yc-PH3" firstAttribute="top" secondItem="GLf-5R-Nt1" secondAttribute="bottom" constant="2" id="XDi-bi-CYO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RAn-yc-PH3" secondAttribute="trailing" constant="16" id="c6F-Br-n7n"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GLf-5R-Nt1" secondAttribute="trailing" constant="16" id="jGO-dq-SIS"/>
+                <constraint firstItem="RAn-yc-PH3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="289" id="lPD-m4-WuS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RAn-yc-PH3" secondAttribute="bottom" constant="6" id="xEh-9x-kn5"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

@@ -37,12 +37,15 @@ class SettingHeaderView: UIView{
         username.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.heavy)
         username.textColor = UIColor.black
         self.backgroundColor = UIColor(red: 239/255.0, green: 239/255.0, blue: 239/255.0, alpha: 1.0)
-        profileImage.layer.cornerRadius = profileImage.frame.height/2.0
+       profileImage.layer.cornerRadius = profileImage.frame.height/2.0
         profileImage.contentMode = .scaleAspectFill
         profileImage.clipsToBounds = true
-        profileImage.image = #imageLiteral(resourceName: "profileLoad")
+        profileImage.image = #imageLiteral(resourceName: "profileLoad")//.af_imageRoundedIntoCircle()
         editProfile.setTitle("Edit", for: .normal)
         editProfile.titleLabel?.font =  UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.heavy)
+        if let profileimg = ImageCache.cachedImage(for: Auth.auth().currentUser!.uid) {
+            self.profileImage.image = profileimg
+        }
         Database.database().reference().child("Users/\(User.currentUser!.uid!)/profileURL").observeSingleEvent(of: .value, with: {snap in
             if snap.exists() {
                 print("snap exist man")
@@ -50,8 +53,19 @@ class SettingHeaderView: UIView{
                 print("snap exist man url fail")
                 return
             }
-                print("snap exist man url fin")
-            self.profileImage.af_setImage(withURL: URL(string: url)!)
+               // self.profileImage.af_setImage(withURL: URL(string: url)!)
+                
+                self.profileImage.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {response in
+                    if let image = response.result.value {
+                        self.profileImage.image = image.af_imageRoundedIntoCircle()
+                            ImageCache.cache(self.profileImage.image!, for: User.currentUser!.uid!)
+                    }
+                    else{
+                        print("damn sad \(response.result)")
+                    }
+
+                })
+            //self.profileImage.af_setImage(withURL: URL(string: url)!)
             }
         })
         
