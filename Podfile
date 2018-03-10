@@ -30,6 +30,7 @@ target 'LoveSick2' do
      pod 'KDCircularProgress'
      pod 'GSKStretchyHeaderView'
      pod 'ZAlertView'
+     pod 'Tabman', '~> 1.0'
   # Pods for LoveSick2
 
   target 'LoveSick2Tests' do

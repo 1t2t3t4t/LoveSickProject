@@ -13,6 +13,7 @@ class NewFeedsViewController: ButtonBarPagerTabStripViewController {
     
     override func viewDidLoad() {
         // set up style before super view did load is executed
+        self.view.backgroundColor = UIColor.red
         settings.style.buttonBarBackgroundColor = .clear
         settings.style.selectedBarBackgroundColor = .blue
         //-
@@ -42,7 +43,7 @@ class NewFeedsViewController: ButtonBarPagerTabStripViewController {
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
-        buttonBarView.isHidden = true
+       buttonBarView.isHidden = true
     }
     override func viewWillAppear(_ animated: Bool) {
         buttonBarView.isHidden = false

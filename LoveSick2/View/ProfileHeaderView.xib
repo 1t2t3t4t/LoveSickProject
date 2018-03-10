@@ -33,8 +33,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuH-rs-kxG">
-                    <rect key="frame" x="16" y="54.5" width="215" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JuH-rs-kxG">
+                    <rect key="frame" x="16" y="52" width="215" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="f4C-OI-I3d"/>
                     </constraints>
@@ -51,6 +51,7 @@
                 <constraint firstItem="tsC-01-xMK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="G3K-Wr-PJw"/>
                 <constraint firstItem="0Wx-Zd-tRx" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="OY0-W4-jMh"/>
                 <constraint firstItem="tsC-01-xMK" firstAttribute="trailing" secondItem="JuH-rs-kxG" secondAttribute="trailing" id="QCM-O6-G76"/>
+                <constraint firstItem="JuH-rs-kxG" firstAttribute="top" secondItem="tsC-01-xMK" secondAttribute="bottom" constant="16" id="dSB-I3-XIo"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0Wx-Zd-tRx" secondAttribute="trailing" constant="16" id="fnB-dY-XMA"/>
                 <constraint firstItem="JuH-rs-kxG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="lsz-pv-QCf"/>
                 <constraint firstItem="tsC-01-xMK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="m6g-lF-u32"/>

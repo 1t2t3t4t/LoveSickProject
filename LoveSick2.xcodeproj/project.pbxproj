@@ -45,6 +45,9 @@
 		EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2BF9E92039B6BE0014D38C /* NMessenger.framework */; };
 		EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */; };
 		EF823874205433F400337AF6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF823873205433F400337AF6 /* ImageCache.swift */; };
+		EF9300A12054703D00F08DD2 /* TableviewOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9300A02054703D00F08DD2 /* TableviewOffset.swift */; };
+		EF9300A22054746A00F08DD2 /* Pageboy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9300A32054746A00F08DD2 /* Pageboy.framework */; };
+		EF9300A5205474A300F08DD2 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9300A4205474A300F08DD2 /* PageViewController.swift */; };
 		EFDD539C2013A32C00817F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD539B2013A32C00817F49 /* AppDelegate.swift */; };
 		EFDD539E2013A32C00817F49 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD539D2013A32C00817F49 /* LoginViewController.swift */; };
 		EFDD53A12013A32C00817F49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDD539F2013A32C00817F49 /* Main.storyboard */; };
@@ -179,6 +182,9 @@
 		EF2BF9E92039B6BE0014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VHMessageContentNode.swift; sourceTree = "<group>"; };
 		EF823873205433F400337AF6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		EF9300A02054703D00F08DD2 /* TableviewOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableviewOffset.swift; sourceTree = "<group>"; };
+		EF9300A32054746A00F08DD2 /* Pageboy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pageboy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF9300A4205474A300F08DD2 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		EFDD53982013A32C00817F49 /* LoveSick2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoveSick2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFDD539B2013A32C00817F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFDD539D2013A32C00817F49 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF9300A22054746A00F08DD2 /* Pageboy.framework in Frameworks */,
 				EF216CEF203FEC9B00C13CB7 /* KDCircularProgress.framework in Frameworks */,
 				EF216CE7203F202600C13CB7 /* KMPlaceholderTextView.framework in Frameworks */,
 				EF216CE3203F1EC400C13CB7 /* Fusuma.framework in Frameworks */,
@@ -314,6 +321,7 @@
 				EFDD54152014AFEA00817F49 /* NewFeedsViewController.swift */,
 				EFDD540D2013B5BF00817F49 /* TopPostViewController.swift */,
 				EFDD540F2013B5CC00817F49 /* NewPostViewController.swift */,
+				EF9300A4205474A300F08DD2 /* PageViewController.swift */,
 			);
 			path = NewFeedViewController;
 			sourceTree = "<group>";
@@ -337,6 +345,7 @@
 		BC100AB5276A9EB37EE03421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF9300A32054746A00F08DD2 /* Pageboy.framework */,
 				EF216CF0203FEC9B00C13CB7 /* KDCircularProgress.framework */,
 				EF216CEE203F595700C13CB7 /* Nuke.framework */,
 				EF216CE8203F202600C13CB7 /* KMPlaceholderTextView.framework */,
@@ -488,6 +497,7 @@
 				EF216CE9203F388000C13CB7 /* UploadPhoto.swift */,
 				81F87C9320456054007E11F9 /* Profile.swift */,
 				EF823873205433F400337AF6 /* ImageCache.swift */,
+				EF9300A02054703D00F08DD2 /* TableviewOffset.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -738,6 +748,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Fusuma/Fusuma.framework",
+				"${BUILT_PRODUCTS_DIR}/GSKStretchyHeaderView/GSKStretchyHeaderView.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/Hokusai/Hokusai.framework",
@@ -754,6 +765,9 @@
 				"${BUILT_PRODUCTS_DIR}/PINCache/PINCache.framework",
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework",
+				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework",
 				"${BUILT_PRODUCTS_DIR}/UIEmptyState/UIEmptyState.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
@@ -772,6 +786,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fusuma.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GSKStretchyHeaderView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hokusai.framework",
@@ -788,6 +803,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINCache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pageboy.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tabman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIEmptyState.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
@@ -815,7 +833,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		05AC60770068ACE7B9B1F282 /* [CP] Embed Pods Frameworks */ = {
@@ -896,7 +914,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8BB0A89FE2193497A1C34829 /* [CP] Copy Pods Resources */ = {
@@ -929,7 +947,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EE788C7A852EEB5F3E6DC610 /* [CP] Copy Pods Resources */ = {
@@ -962,7 +980,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -997,6 +1015,7 @@
 				819C9DA22051A9450051729E /* SettingHeaderView.swift in Sources */,
 				EFDD54232014E14300817F49 /* ChoosingTableViewCell.swift in Sources */,
 				EFDD541D2014B57700817F49 /* PostTableViewCell.swift in Sources */,
+				EF9300A5205474A300F08DD2 /* PageViewController.swift in Sources */,
 				EFF9A5DA201A363000CB4D6D /* Extension.swift in Sources */,
 				81F87C92204538BB007E11F9 /* ProfileViewController.swift in Sources */,
 				81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */,
@@ -1014,6 +1033,7 @@
 				EF216CD9203EAACF00C13CB7 /* ChatTableViewCell.swift in Sources */,
 				81E674182045D7050003BB85 /* Chat.swift in Sources */,
 				EF216CEC203F3E2500C13CB7 /* PreviewImageTableViewCell.swift in Sources */,
+				EF9300A12054703D00F08DD2 /* TableviewOffset.swift in Sources */,
 				EFDD539C2013A32C00817F49 /* AppDelegate.swift in Sources */,
 				EFDD53EB2013A76D00817F49 /* User.swift in Sources */,
 				EF216CDB203EAB1700C13CB7 /* MessageViewController.swift in Sources */,

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import XLPagerTabStrip
 import UIEmptyState
 import Hokusai
 import KDCircularProgress
@@ -15,7 +14,7 @@ import Firebase
 import AlamofireImage
 import Alamofire
 
-class NewPostViewController: UIViewController, IndicatorInfoProvider, UIEmptyStateDataSource, UIEmptyStateDelegate {
+class NewPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptyStateDelegate {
     
     @IBOutlet weak var tableView:UITableView!
     
@@ -24,7 +23,7 @@ class NewPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
     var rowHeights:[Int:CGFloat] = [:]
     var currentTypeIndex:Int!
     var viewHeight:CGFloat?
-    public var changeCurrentIndexProgressive: ((_ oldCell: ButtonBarViewCell?, _ newCell: ButtonBarViewCell?, _ progressPercentage: CGFloat, _ changeCurrentIndex: Bool, _ animated: Bool) -> Void)?
+   
     
     private var paginator:PostPaginator!
     private lazy var refreshControl: UIRefreshControl = {
@@ -49,10 +48,10 @@ class NewPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
         return NSAttributedString(string: "There are no post!", attributes: attrs)
     }
     
-    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "New")
-        
-    }
+//    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+//        return IndicatorInfo(title: "New")
+//
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -201,6 +200,7 @@ extension NewPostViewController:PostTableViewCellDelegate {
         
         let view = ProfileViewController.newInstanceFromStoryboard() as! ProfileViewController
         view.userid = uid
+        view.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(view, animated: true)
     }
     

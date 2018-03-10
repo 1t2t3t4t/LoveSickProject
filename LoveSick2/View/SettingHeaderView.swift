@@ -36,7 +36,9 @@ class SettingHeaderView: UIView{
         username.text = User.currentUser?.displayName
         username.font = UIFont.systemFont(ofSize: 28, weight: UIFont.Weight.heavy)
         username.textColor = UIColor.black
-        self.backgroundColor = UIColor(red: 239/255.0, green: 239/255.0, blue: 239/255.0, alpha: 1.0)
+        username.numberOfLines = 0
+        username.lineBreakMode = .byWordWrapping
+        self.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)
        profileImage.layer.cornerRadius = profileImage.frame.height/2.0
         profileImage.contentMode = .scaleAspectFill
         profileImage.clipsToBounds = true

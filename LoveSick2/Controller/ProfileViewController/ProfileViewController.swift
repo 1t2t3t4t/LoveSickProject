@@ -22,9 +22,16 @@ class ProfileViewController: UIViewController {
     
     private var paginator:SelfPostPaginator!
     override func viewWillAppear(_ animated: Bool) {
+        self.extendedLayoutIncludesOpaqueBars = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
+       // self.tabBarController?.tabBar.isHidden = true
+        
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+       // self.tabBarController?.tabBar.isHidden = false
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +78,7 @@ class ProfileViewController: UIViewController {
         //self.stretchyHeader.stretchDelegate = self // this is completely optional
         self.stretchyHeader.minimumContentHeight = 84
         self.stretchyHeader.contentAnchor = .bottom
-        self.stretchyHeader.maximumContentHeight = 120
+        self.stretchyHeader.maximumContentHeight = 130
         self.tableView.addSubview(self.stretchyHeader)
         
         //ProfileHeaderView

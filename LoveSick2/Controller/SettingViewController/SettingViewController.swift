@@ -24,7 +24,7 @@ class SettingViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
-        tableView.backgroundColor = UIColor.tableViewBackgroundColor()
+       // tableView.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)//UIColor.tableViewBackgroundColor()
         nibViews = Bundle.main.loadNibNamed("SettingHeaderView", owner: self, options: nil)?.first as! SettingHeaderView
         nibViews?.delegate = self
         
@@ -76,9 +76,16 @@ extension SettingViewController:UITableViewDelegate,UITableViewDataSource {
         if section == 0 {
             return nibViews
         }
+        
         return nil
         
     }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if section != 0 {
+        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
         return 120.0
@@ -89,7 +96,7 @@ extension SettingViewController:UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return settings.count
     }
-    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingcell") as! UITableViewCell
         cell.textLabel?.text = settings[indexPath.section][indexPath.row]
