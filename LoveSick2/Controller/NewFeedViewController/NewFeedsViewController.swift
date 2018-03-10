@@ -58,7 +58,6 @@ class NewFeedsViewController: ButtonBarPagerTabStripViewController {
         
         let child_1 = storyboard.instantiateViewController(withIdentifier: "toppost") as! TopPostViewController
         let child_2 = storyboard.instantiateViewController(withIdentifier: "newpost") as! NewPostViewController
-        
         guard isReload else {
             return [child_1, child_2]
         }

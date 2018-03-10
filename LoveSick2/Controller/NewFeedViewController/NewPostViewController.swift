@@ -57,7 +57,10 @@ class NewPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.bottom
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0,44, 0)
+        if let tabbar = self.tabBarController {
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0,tabbar.tabBar.frame.height, 0)
+        self.tableView.scrollIndicatorInsets =  UIEdgeInsetsMake(0, 0,tabbar.tabBar.frame.height, 0)
+        }
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.addSubview(self.refreshControl)

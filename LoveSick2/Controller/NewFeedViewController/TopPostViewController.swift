@@ -56,8 +56,13 @@ class TopPostViewController: UIViewController, IndicatorInfoProvider, UIEmptySta
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.edgesForExtendedLayout = UIRectEdge.bottom
-        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 44/*(self.tabBarController?.tabBar.frame.height)!*/, 0)
+        self.edgesForExtendedLayout = UIRectEdge.all
+        if let tabbar = self.tabBarController {
+            self.tableView.contentInset = UIEdgeInsetsMake(0, 0,tabbar.tabBar.frame.height, 0)
+            self.extendedLayoutIncludesOpaqueBars = false
+            self.automaticallyAdjustsScrollViewInsets = false
+            //self.tableView.scrollIndicatorInsets =  UIEdgeInsetsMake(0, 0,tabbar.tabBar.frame.height, 0)
+        }
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.addSubview(self.refreshControl)
