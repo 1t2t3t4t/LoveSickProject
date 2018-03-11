@@ -17,13 +17,14 @@ import Firebase
 class SettingViewController: UIViewController {
     @IBOutlet weak var tableView:UITableView!
     var nibViews:SettingHeaderView?
-   let settings = [["Profile","Account"],["Invite","Friend Requests"],["Contact Us"],["Log Out"]]
+   let settings = [["Change Profile Picture","Account"],["Invite","Friend Requests"],["Contact Us"],["Log Out"]]
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Settings"
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
+        self.navigationItem.title = User.currentUser.displayName
        // tableView.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)//UIColor.tableViewBackgroundColor()
         nibViews = Bundle.main.loadNibNamed("SettingHeaderView", owner: self, options: nil)?.first as! SettingHeaderView
         nibViews?.delegate = self
@@ -88,7 +89,7 @@ extension SettingViewController:UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-        return 120.0
+        return 140.0
         }
         return 20.0
     }
@@ -106,6 +107,8 @@ extension SettingViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: false)
         switch settings[indexPath.section][indexPath.row] {
+        case "Change Profile Picture":
+            self.edit()
         case "Friend Requests":
             self.performSegue(withIdentifier: "toFriendRequest", sender: self)
         case "Log Out":

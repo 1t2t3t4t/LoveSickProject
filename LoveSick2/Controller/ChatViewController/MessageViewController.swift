@@ -13,11 +13,15 @@ import AlamofireImage
 class MessageViewController: UIViewController {
     
     @IBOutlet weak var tableView:UITableView!
+    override func viewWillAppear(_ animated: Bool) {
+        //self.tabBarController?.tabBar.isHidden = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
+        //self.edgesForExtendedLayout = UIRectEdge.bottom
         self.navigationItem.title = "Chats"
         let notificationName = NSNotification.Name("FriendRequestReloadData")
         NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.notiRefresh(notification:)), name: notificationName, object: nil)
@@ -51,21 +55,10 @@ extension MessageViewController:UITableViewDelegate,UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatTableViewCell
         cell.profileImage.image = #imageLiteral(resourceName: "profileLoad")
             
-            cell.chatRoom =  User.currentUser?.chatRoom[indexPath.row-1]
+            cell.chatRoom =  User.currentUser!.chatRoom[indexPath.row-1]
             cell.username.text =  User.currentUser?.chatRoom[indexPath.row-1].susername == User.currentUser?.displayName ? User.currentUser?.chatRoom[indexPath.row-1].fusername : User.currentUser?.chatRoom[indexPath.row-1].susername
         cell.message.text = User.currentUser?.chatRoom[indexPath.row-1].messages.last?.message
         cell.time.text = TimeInterval.stringFromTimeInterval( interval: ((User.currentUser?.chatRoom[indexPath.row-1].timestamp)?.toDouble()!)!) //String.stringFromTimeInterval( Double(User.currentUser?.chatRoom[indexPath.row-1].timestamp)) //User.currentUser?.chatRoom[indexPath.row-1].timestamp
-            Database.database().reference().child("Users/\(cell.chatRoom?.fuid == User.currentUser?.uid ? cell.chatRoom?.suid:cell.chatRoom?.fuid)/profileURL").observeSingleEvent(of: .value, with: {snap in
-                if snap.exists() {
-                    print("snap exist man")
-                    guard let url = snap.value as? String else {
-                        print("snap exist man url fail")
-                        return
-                    }
-                    print("snap exist man url fin")
-                    cell.profileImage.af_setImage(withURL: URL(string: url)!)
-                }
-            })
         return cell
         }
     }
@@ -74,11 +67,14 @@ extension MessageViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
             let viewController = FriendRequestTableViewController.newInstanceFromStoryboard() as! FriendRequestTableViewController
+            viewController.hidesBottomBarWhenPushed = true
+        
             self.navigationController?.pushViewController(viewController, animated: true)
         }
         else {
         let viewController = ChatViewController.newInstanceFromStoryboard() as! ChatViewController
         viewController.chatRoom = User.currentUser?.chatRoom[indexPath.row-1]
+            viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
         
         }

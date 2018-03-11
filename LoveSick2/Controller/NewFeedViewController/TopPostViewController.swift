@@ -177,6 +177,7 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
         tableView.deselectRow(at: indexPath, animated: false)
         let viewController = ViewPostViewController.newInstanceFromStoryboard() as! ViewPostViewController
         viewController.post = self.paginator.posts[indexPath.row]
+        viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
         
     }

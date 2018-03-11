@@ -42,12 +42,15 @@ class TimeInterval {
         let date = Date(timeIntervalSince1970: interval)
         let dayTimePeriodFormatter = DateFormatter()
         dayTimePeriodFormatter.dateFormat = "hh:mm a"
+        let initialDate = dayTimePeriodFormatter.string(from: date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm a"
+        let date12 = dateFormatter.date(from: initialDate)
+        dateFormatter.dateFormat = "HH:mm"
+        let date24 = dateFormatter.string(from: date12!)
         
-       // let hours = (Int(interval) / 3600)
-        //let minutes = Int(interval / 60) - Int(hours * 60)
-        // let seconds = Int(interval) - (Int(interval / 60) * 60)
+        return date24//dayTimePeriodFormatter.string(from:date)
         
-        return dayTimePeriodFormatter.string(from:date)//NSString(format:"%0.2d:%0.2d",hours,minutes) //"%0.2d:%0.2d:%0.2d",hours,minutes,seconds)
     }
 }
 

@@ -8,7 +8,8 @@
 
 import Foundation
 import Firebase
-
+import Alamofire
+import AlamofireImage
 typealias queryCompletion<T> = (T?) -> Void
 
 class UserManager {
@@ -22,6 +23,14 @@ class UserManager {
             let user = MapperManager<User>.mapObject(dictionary: value)
             
             completion(user)
+            Alamofire.request(user.profileURL!).responseImage { response in
+                
+                if let image = response.result.value {
+                    User.currentUser.profileImg = image
+                }
+            }
+            
+            
             
         }
     }

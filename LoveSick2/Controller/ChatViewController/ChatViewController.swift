@@ -32,7 +32,7 @@ class ChatViewController: NMessengerViewController {
                 let newMessage = MessageNode(content: textContent)
                 newMessage.cellPadding = self.messagePadding
                 let nAvatar = ASImageNode()
-                nAvatar.image = #imageLiteral(resourceName: "profileLoad")
+                nAvatar.image = User.currentUser.chatRoom[ChatRoom.getIndex(uid: self.chatRoom.chatRoomUID!)].simg?.af_imageRoundedIntoCircle().af_imageAspectScaled(toFill: CGSize(width: 34, height: 34))
                 newMessage.currentViewController = self
                 newMessage.isIncomingMessage = true
                 newMessage.avatarNode = nAvatar
@@ -47,7 +47,7 @@ class ChatViewController: NMessengerViewController {
             let newMessage = MessageNode(content: textContent)
             newMessage.cellPadding = messagePadding
             let nAvatar = ASImageNode()
-            nAvatar.image = #imageLiteral(resourceName: "profileLoad")
+            nAvatar.image = message.senderUID != User.currentUser?.uid! ? User.currentUser.chatRoom[ChatRoom.getIndex(uid: self.chatRoom.chatRoomUID!)].simg?.af_imageRoundedIntoCircle().af_imageAspectScaled(toFill: CGSize(width: 34, height: 34)) : User.currentUser.profileImg?.af_imageRoundedIntoCircle().af_imageAspectScaled(toFill: CGSize(width: 34, height: 34))
             newMessage.currentViewController = self
             newMessage.isIncomingMessage = message.senderUID != User.currentUser?.uid!
             newMessage.avatarNode = nAvatar
@@ -61,7 +61,7 @@ class ChatViewController: NMessengerViewController {
         let newMessage = MessageNode(content: textContent)
         newMessage.cellPadding = messagePadding
         let nAvatar = ASImageNode()
-        nAvatar.image = #imageLiteral(resourceName: "profileLoad")
+        nAvatar.image = User.currentUser.profileImg?.af_imageAspectScaled(toFill: CGSize(width: 34, height: 34)).af_imageRoundedIntoCircle()
         newMessage.currentViewController = self
         newMessage.isIncomingMessage = false//isIncomingMessage
         newMessage.avatarNode = nAvatar

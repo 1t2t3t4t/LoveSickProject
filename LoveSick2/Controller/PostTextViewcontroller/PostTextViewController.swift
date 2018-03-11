@@ -70,18 +70,18 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
-        case 0:
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! ChoosingTableViewCell
             cell.style = .category
             cell.delegate = self
             return cell
-        case 1:
+        case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell", for: indexPath) as!
             TitleTableViewCell
             self.titleDelegate = cell
             cell.textView.delegate = self
             return cell
-        case 2:
+        case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "contentCell", for: indexPath) as!
             ContentTableViewCell
             self.contentDelegate = cell

@@ -43,8 +43,10 @@ class SettingHeaderView: UIView{
         profileImage.contentMode = .scaleAspectFill
         profileImage.clipsToBounds = true
         profileImage.image = #imageLiteral(resourceName: "profileLoad")//.af_imageRoundedIntoCircle()
-        editProfile.setTitle("Edit", for: .normal)
-        editProfile.titleLabel?.font =  UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.heavy)
+        editProfile.setTitle("Change Profile Picture", for: .normal)
+       // editProfile.isHidden = true
+        username.isHidden = true
+        editProfile.titleLabel?.font =  UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
         if let profileimg = ImageCache.cachedImage(for: Auth.auth().currentUser!.uid) {
             self.profileImage.image = profileimg
         }

@@ -19,7 +19,7 @@ class PageViewController: TabmanViewController, PageboyViewControllerDataSource 
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.automaticallyAdjustsChildScrollViewInsets = true
+       // self.automaticallyAdjustsChildScrollViewInsets = true
         
         self.bar.style = .buttonBar
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

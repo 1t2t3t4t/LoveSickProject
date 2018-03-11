@@ -14,11 +14,11 @@ class FriendRequestTableViewController: UITableViewController {
 
     private var currentUser = User.currentUser!
     override func viewWillAppear(_ animated: Bool) {
-        self.tabBarController?.tabBar.isHidden = true
+        //self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.hidesBackButton = false
     }
     override func viewWillDisappear(_ animated: Bool) {
-         self.tabBarController?.tabBar.isHidden = false
+         //self.tabBarController?.tabBar.isHidden = false
     }
     override func viewDidLoad() {
         super.viewDidLoad()

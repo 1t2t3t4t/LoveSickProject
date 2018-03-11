@@ -16,6 +16,7 @@ class ChatRoom: Mappable {
     var chatRoomUID:String?
     var fuid:String?
     var suid:String?
+    var simg:UIImage?
     private var _fusername:String?
     private var _susername:String?
     var timestamp:String?
@@ -77,6 +78,16 @@ class ChatRoom: Mappable {
         self.messages.append(chat)
         Database.database().reference().child("ChatRooms/\(self.chatRoomUID!)").updateChildValues(self.toJSON())
          Database.database().reference().child("ChatRooms/\(self.chatRoomUID!)/timestamp").setValue("\(Date().timeIntervalSince1970)")
+    }
+    class func getIndex(uid:String) -> Int {
+        var i = 0
+        for chat in User.currentUser.chatRoom {
+            if chat.chatRoomUID == uid {
+                return i
+            }
+            i+=1
+        }
+        return i
     }
     
 }

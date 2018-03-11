@@ -59,17 +59,20 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
         SessionManager.logIn(email: email, password: password, completion: {(success) in
             hud.dismiss()
             if success {
-                let alert = UIAlertController(title: "Success",
-                                              message: "Welcome to LoveSick!",
-                                              preferredStyle: .alert)
-                let submitAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-                    alert.dismiss(animated: true, completion: nil)
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let view = storyboard.instantiateViewController(withIdentifier: "tabbar")
-                    viewController?.present(view, animated: true, completion: nil)
-                })
-                alert.addAction(submitAction)
-                viewController?.present(alert, animated: true, completion: nil)
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let view = storyboard.instantiateViewController(withIdentifier: "tabbar")
+                viewController?.present(view, animated: true, completion: nil)
+//                let alert = UIAlertController(title: "Success",
+//                                              message: "Welcome to LoveSick!",
+//                                              preferredStyle: .alert)
+//                let submitAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+//                    alert.dismiss(animated: true, completion: nil)
+//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                    let view = storyboard.instantiateViewController(withIdentifier: "tabbar")
+//                    viewController?.present(view, animated: true, completion: nil)
+//                })
+//                alert.addAction(submitAction)
+//                viewController?.present(alert, animated: true, completion: nil)
             }
             else{
                 let alert = UIAlertController(title: "Error",
