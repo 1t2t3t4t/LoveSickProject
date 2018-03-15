@@ -21,17 +21,13 @@ class UserManager {
                 return
             }
             let user = MapperManager<User>.mapObject(dictionary: value)
-            
             completion(user)
-            Alamofire.request(user.profileURL!).responseImage { response in
-                
+            guard let url = user.profileURL else { User.currentUser.profileImg = #imageLiteral(resourceName: "profileLoad"); return }
+            Alamofire.request(url).responseImage { response in
                 if let image = response.result.value {
                     User.currentUser.profileImg = image
                 }
             }
-            
-            
-            
         }
     }
     
@@ -55,5 +51,15 @@ class UserManager {
                 completion(true)
             }
         })//setValue(User.currentUser?.toJSON())
+    }
+    
+    class func queryFriendrequest(completion: @escaping queryCompletion<[User]> ) {
+        Database.database().reference().child("Users/\(Auth.auth().currentUser?.uid)").observeSingleEvent(of: .value) { (snap) in
+            guard let value = snap.value as? [String:Any] else {
+                return
+            }
+            let user = MapperManager<User>.mapObject(dictionary: value)
+            completion(user.friendrequest)
+        }
     }
 }

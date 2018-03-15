@@ -57,11 +57,9 @@ class ViewPostViewController: UIViewController {
         let hokusai = Hokusai()
         hokusai.cancelButtonTitle = "Cancel"
         hokusai.fontName = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.bold).fontName
-        
         hokusai.colorScheme = HOKColorScheme.tsubaki
         hokusai.addButton("Report"){
         }
-        print("check uid name \(self.post.creatorUID) \(User.currentUser?.uid)")
         if self.post.creatorUID == User.currentUser?.uid {
             hokusai.addButton("Delete post"){
                 Database.database().reference().child("Posts/\(self.post.postuid)").removeValue()
@@ -78,6 +76,8 @@ class ViewPostViewController: UIViewController {
         self.title = self.post.title
         self.postTitle.text = self.post.title
         self.postContent.text = self.post.content
+//        self.postContent.backgroundColor = .black
+        self.postContent.isScrollEnabled = false
         self.numlikeLabel.text = "\(self.post.like)"
         self.displayPicture.image = #imageLiteral(resourceName: "profileLoad")
     }

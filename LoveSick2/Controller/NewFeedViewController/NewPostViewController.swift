@@ -113,24 +113,23 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
                 if let img = ImageCache.cachedImage(for: post.creatorUID!) {
                     cell.progressView.isHidden = true
                     cell.profileImg.image = img
-                }
-                Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
-                    if snap.exists() {
-                        print("snap exist man")
-                        guard let url = snap.value as? String else {
-                            print("snap exist man url fail")
-                            cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
-                            return
+                }else {
+                    Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+                        if snap.exists() {
+                            print("snap exist man")
+                            guard let url = snap.value as? String else {
+                                print("snap exist man url fail")
+                                cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+                                return
+                            }
+                            print("snap exist man url fin")
+                            cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                                ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+                            })
+                            // cell.profileImg.af_setImage(withURL: URL(string: url)!)
                         }
-                        print("snap exist man url fin")
-                        cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
-                            ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
-                        })
-                        // cell.profileImg.af_setImage(withURL: URL(string: url)!)
-                    }
-                })
-                
-                
+                    })
+                }
                 return cell
             }
             return cell
@@ -142,26 +141,26 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
             if cell.post.displayName != "Anonymous"{
                 if let img = ImageCache.cachedImage(for: post.creatorUID!) {
                     cell.profileImg.image = img
-                }
-                Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
-                    if snap.exists() {
-                        print("snap exist man")
-                        guard let url = snap.value as? String else {
-                            cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
-                            print("snap exist man url fail")
-                            return
+                } else {
+                    Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+                        if snap.exists() {
+                            print("snap exist man")
+                            guard let url = snap.value as? String else {
+                                cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+                                print("snap exist man url fail")
+                                return
+                            }
+                            print("snap exist man url fin")
+                            cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                                ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+                            })
                         }
-                        print("snap exist man url fin")
-                        cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
-                            ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
-                        })
-                    }
-                })
+                    })
+                }
                 return cell
             }
             return cell
         }
-        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -191,9 +190,8 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
         return 500
         
     }
-    
-    
 }
+
 extension NewPostViewController:PostTableViewCellDelegate {
     
     func showProfile(uid:String) {

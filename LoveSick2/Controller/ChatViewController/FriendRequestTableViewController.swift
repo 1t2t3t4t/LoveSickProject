@@ -10,20 +10,24 @@ import UIKit
 import Firebase
 import AlamofireImage
 import Alamofire
+
 class FriendRequestTableViewController: UITableViewController {
 
-    private var currentUser = User.currentUser!
+    private var friendrequest:[User] = []
+    
     override func viewWillAppear(_ animated: Bool) {
         //self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.hidesBackButton = false
     }
-    override func viewWillDisappear(_ animated: Bool) {
-         //self.tabBarController?.tabBar.isHidden = false
-    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.friendrequest = User.currentUser.friendrequest
+        UserManager.queryFriendrequest { (users) in
+            self.friendrequest = users!
+            self.tableView.reloadData()
+        }
         self.tableView.tableFooterView = UIView()
-
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -31,13 +35,12 @@ class FriendRequestTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  currentUser.friendrequest.count
+        return  self.friendrequest.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friendrequestcell", for: indexPath) as! FriendRequestTableViewCell
-        cell.username.text = currentUser.friendrequest[indexPath.row].displayName!
+        cell.username.text = self.friendrequest[indexPath.row].displayName!
         cell.indexPath = indexPath
         cell.delegate = self
         return cell
@@ -45,12 +48,10 @@ class FriendRequestTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
-        
         tableView.reloadData()
     }
-
-
 }
+
 extension FriendRequestTableViewController:FriendRequestTableViewCellDelegate {
     
     func addFriend(row: Int,cell:FriendRequestTableViewCell) {
@@ -64,7 +65,7 @@ extension FriendRequestTableViewController:FriendRequestTableViewCellDelegate {
         self.tableView.addSubview(activity)
         self.tableView.bringSubview(toFront: activity)
         activity.startAnimating()
-        ChatRoomManager.createChatRoom(fuid: currentUser.uid!, suid: currentUser.friendrequest[row].uid!,completion:{success in
+        ChatRoomManager.createChatRoom(fuid: User.currentUser.uid!, suid: self.friendrequest[row].uid!,completion:{success in
             activity.stopAnimating()
             if !success {
                 let alert = UIAlertController(title: "Error", message: "Cannot accept friend request, please try again", preferredStyle: .alert)
@@ -80,8 +81,6 @@ extension FriendRequestTableViewController:FriendRequestTableViewCellDelegate {
                 cell.add.backgroundColor = UIColor.gray
             }
         })
-        
-
     }
     
     func cancelRequest(row: Int,cell:FriendRequestTableViewCell) {
@@ -95,7 +94,7 @@ extension FriendRequestTableViewController:FriendRequestTableViewCellDelegate {
         self.view.addSubview(activity)
         self.view.bringSubview(toFront: activity)
         activity.startAnimating()
-        Database.database().reference().child("Users/\(User.currentUser!.uid)/FriendRequests/\(User.currentUser!.friendrequest[row].uid!)").removeValue(completionBlock: {(error,ref) in
+        Database.database().reference().child("Users/\(User.currentUser!.uid)/FriendRequests/\(self.friendrequest[row].uid!)").removeValue(completionBlock: {(error,ref) in
             activity.stopAnimating()
             if error != nil {
                 let alert = UIAlertController(title: "Error", message: "Cannot cancel friend request, please try again", preferredStyle: .alert)
@@ -104,7 +103,7 @@ extension FriendRequestTableViewController:FriendRequestTableViewCellDelegate {
                 self.present(alert, animated: true, completion: nil)
             }
             else {
-                User.currentUser?.friendrequest.remove(at: row)
+                self.friendrequest.remove(at: row)
                 let notificationName = NSNotification.Name("FriendRequestReloadData")
                 NotificationCenter.default.post(name: notificationName, object: nil)
                 self.tableView.reloadData()
@@ -112,9 +111,5 @@ extension FriendRequestTableViewController:FriendRequestTableViewCellDelegate {
             }
         })
     }
-    
-   
-    
-    
 }
 

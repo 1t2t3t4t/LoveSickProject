@@ -31,7 +31,6 @@ class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
         return refreshControl
     }()
     
-    
     var emptyStateImage: UIImage? {
         return UIImage()
     }
@@ -46,17 +45,9 @@ class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
         return NSAttributedString(string: "There are no post!", attributes: attrs)
     }
     
-    //    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-    //        return IndicatorInfo(title: "New")
-    //
-    //    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.bottom
-//        if let tabbar = self.tabBarController {
-//            self.tableView.contentInset = UIEdgeInsetsMake(0, 0,tabbar.tabBar.frame.height, 0)
-//            self.tableView.scrollIndicatorInsets =  UIEdgeInsetsMake(0, 0,tabbar.tabBar.frame.height, 0)
-//        }
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.addSubview(self.refreshControl)
@@ -107,28 +98,26 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
             cell.post = post
             cell.delegate = self
-            if cell.post.displayName != "Anonymous"{
+            if cell.post.displayName != "Anonymous" {
                 if let img = ImageCache.cachedImage(for: post.creatorUID!) {
                     cell.progressView.isHidden = true
                     cell.profileImg.image = img
-                }
-                Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
-                    if snap.exists() {
-                        print("snap exist man")
-                        guard let url = snap.value as? String else {
-                            print("snap exist man url fail")
-                            cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
-                            return
+                }else{
+                    Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+                        if snap.exists() {
+                            print("snap exist man")
+                            guard let url = snap.value as? String else {
+                                print("snap exist man url fail")
+                                cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+                                return
+                            }
+                            cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                                ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+                            })
+                            // cell.profileImg.af_setImage(withURL: URL(string: url)!)
                         }
-                        print("snap exist man url fin")
-                        cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
-                            ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
-                        })
-                        // cell.profileImg.af_setImage(withURL: URL(string: url)!)
-                    }
-                })
-                
-                
+                    })
+                }
                 return cell
             }
             return cell
@@ -140,21 +129,22 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
             if cell.post.displayName != "Anonymous"{
                 if let img = ImageCache.cachedImage(for: post.creatorUID!) {
                     cell.profileImg.image = img
-                }
-                Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
-                    if snap.exists() {
-                        print("snap exist man")
-                        guard let url = snap.value as? String else {
-                            cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
-                            print("snap exist man url fail")
-                            return
+                }else{
+                    Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+                        if snap.exists() {
+                            print("snap exist man")
+                            guard let url = snap.value as? String else {
+                                cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+                                print("snap exist man url fail")
+                                return
+                            }
+                            print("snap exist man url fin")
+                            cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                                ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+                            })
                         }
-                        print("snap exist man url fin")
-                        cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
-                            ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
-                        })
-                    }
-                })
+                    })
+                }
                 return cell
             }
             return cell

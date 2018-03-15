@@ -50,9 +50,9 @@
                 <constraint firstItem="gZp-Tm-M5o" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="119" id="B5H-SM-eyo"/>
                 <constraint firstItem="gZp-Tm-M5o" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="IfD-O4-PwE"/>
                 <constraint firstItem="RAn-yc-PH3" firstAttribute="top" secondItem="GLf-5R-Nt1" secondAttribute="bottom" constant="8" id="XDi-bi-CYO"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="RAn-yc-PH3" secondAttribute="trailing" constant="98" id="c6F-Br-n7n"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="GLf-5R-Nt1" secondAttribute="trailing" constant="153" id="jGO-dq-SIS"/>
+                <constraint firstItem="RAn-yc-PH3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="oSh-kR-vZj"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="RAn-yc-PH3" secondAttribute="bottom" constant="23" id="xEh-9x-kn5"/>
+                <constraint firstItem="GLf-5R-Nt1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="yfU-4C-ECQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

@@ -47,12 +47,12 @@ class ChatRoomManager {
     }
     
     class func messageListener(withUID uid:String, completion: @escaping (Chat?) -> Void) {
-//        Database.database().reference().child("ChatRooms/\(uid)").observe(.childAdded) { (snap) in
-//            if let value = snap.value as? [[String:Any]] {
-//                let chat = MapperManager<Chat>.mapObjectArray(array: value)
-//                if chat.last?.senderUID != User.currentUser!.uid! { completion(chat.last) }
-//            }
-//        }
+        Database.database().reference().child("ChatRooms/\(uid)").observe(.childAdded) { (snap) in
+            if let value = snap.value as? [[String:Any]] {
+                let chat = MapperManager<Chat>.mapObjectArray(array: value)
+                if chat.last?.senderUID != User.currentUser!.uid! { completion(chat.last) }
+            }
+        }
         Database.database().reference().child("ChatRooms/\(uid)").observe(.childChanged) { (snap) in
             if let value = snap.value as? [[String:Any]] {
                 let chat = MapperManager<Chat>.mapObjectArray(array: value)

@@ -53,22 +53,21 @@ class ProfileViewController: UIViewController {
         addBtn = view
         if userid != User.currentUser?.uid {
             print("check name \(User.currentUser!.uid!) \(userid!)")
-        Database.database().reference().child("Users/\(userid!)/FriendRequests/\(User.currentUser!.uid!)").observeSingleEvent(of: .value, with: {snap in
-            if snap.exists() {
-                print("have friend request")
-                view.setTitle("Added", for: .normal)
-                view.backgroundColor = UIColor.gray
+            Database.database().reference().child("Users/\(userid!)/FriendRequests/\(User.currentUser!.uid!)").observeSingleEvent(of: .value, with: {snap in
+                if snap.exists() {
+                    print("have friend request")
+                    view.setTitle("Added", for: .normal)
+                    view.backgroundColor = UIColor.gray
                 
-            }
-            else {
-                print("not have friend req")
-                view.setTitle("+ Add", for: .normal)
-                view.backgroundColor = UIColor.red
-            }
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: view)
-        })
+                }
+                else {
+                    print("not have friend req")
+                    view.setTitle("+ Add", for: .normal)
+                    view.backgroundColor = UIColor.red
+                }
+                self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: view)
+            })
         }
-        
         nibViews = Bundle.main.loadNibNamed("ProfileHeaderView", owner: self, options: nil)?.first as! ProfileHeaderView
         
         self.stretchyHeader = nibViews //nibViews.first as! GSKStretchyHeaderView

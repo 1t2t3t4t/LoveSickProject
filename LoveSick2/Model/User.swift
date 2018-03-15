@@ -17,7 +17,7 @@ class User: Mappable {
     var uid: String?
     var isCurrentUser:Bool = false
     var pushId: String?
-    var profileImg:UIImage?
+    var profileImg:UIImage? = #imageLiteral(resourceName: "profileLoad")
     var thumbnailProfileURL: String?
     var profileURL: String?
     var friendlist:[String]?
