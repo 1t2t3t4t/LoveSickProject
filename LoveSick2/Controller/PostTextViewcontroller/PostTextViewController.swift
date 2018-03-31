@@ -20,6 +20,8 @@ class PostTextViewController: UIViewController {
     weak var titleDelegate:PostTextViewDelegate?
     weak var contentDelegate:PostTextViewDelegate?
     
+    private var easy:EasyPickerView!
+    
     private var anonymously:Bool = false
     
     var contentCell: UITableViewCell = UITableViewCell()
@@ -45,7 +47,7 @@ class PostTextViewController: UIViewController {
         guard let title = self.titleDelegate?.getText(), let content = self.contentDelegate?.getText() else {
             return
         }
-        PostManager.post(title: title, content: content, isAnonymous: anonymously)
+        PostManager.post(title: title, content: content, isAnonymous: anonymously, category: self.easy.selectedValue)
         guard let bar = tabBar else {
             return
         }
@@ -74,6 +76,9 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! ChoosingTableViewCell
             cell.style = .category
             cell.delegate = self
+            easy = EasyPickerView(frame: cell.frame)
+            easy.easyDelegate = self
+            self.view.addSubview(easy)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell", for: indexPath) as!
@@ -99,6 +104,12 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: false)
+        switch indexPath.row {
+        case 1:
+            easy.toggleView()
+        default:
+            return
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -115,13 +126,18 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
     
 }
 
-extension PostTextViewController: ChoosingStyleDelegate {
+extension PostTextViewController: ChoosingStyleDelegate, EasyPickerDelegate {
     func anonymousChanged(_ value: Bool) {
         self.anonymously = value
     }
     
     func categorySelected(_ value: String) {
-        
+    
+    }
+    
+    func didSelectCell(_ easyPickerView: EasyPickerView, at indexPath: IndexPath) {
+        let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! ChoosingTableViewCell
+        cell.label.text = easyPickerView.selectedValue.rawValue
     }
     
 }
@@ -133,9 +149,7 @@ extension PostTextViewController:UITextViewDelegate {
         tableView.endUpdates()
         UIView.setAnimationsEnabled(true)
         tableView.setContentOffset(currentOffset, animated: false)
-    
-        
     }
     
-    
 }
+

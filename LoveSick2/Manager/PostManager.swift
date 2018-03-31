@@ -59,13 +59,14 @@ class PostManager {
     
     var queryType:PostQueryType!
     
-    class func post(title:String,content:String,isAnonymous: Bool) {
+    class func post(title:String,content:String,isAnonymous: Bool,category: PostCategory) {
         let post = Post(title: title, content: content)
         post.createdAt = Date().timeIntervalSince1970
         post.like = Int(arc4random_uniform(3000))
         post.isAnonymous = isAnonymous
         post.creatorUID = User.currentUser?.uid
         post.displayName = User.currentUser?.displayName
+        post.postcategory = category.rawValue
         let uid = Database.database().reference().child("Posts").childByAutoId().key
         post.postuid = uid
         Database.database().reference().child("Posts/\(uid)").setValue(post.toJSON())

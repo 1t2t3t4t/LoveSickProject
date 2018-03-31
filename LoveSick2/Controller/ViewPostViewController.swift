@@ -19,9 +19,12 @@ class ViewPostViewController: UIViewController {
     @IBOutlet weak var upvote: UIButton!
     @IBOutlet weak var downvote: UIButton!
     @IBOutlet weak var numlikeLabel: UILabel!
-    @IBOutlet weak var contentViewSize: NSLayoutConstraint!
+    
+    @IBOutlet weak var spacing: NSLayoutConstraint!
     
     @IBOutlet weak var replyTableView: UITableView!
+    
+    private var initialCenter = CGFloat()
     
     var post:Post!
     
@@ -40,19 +43,43 @@ class ViewPostViewController: UIViewController {
         tapGesture.numberOfTapsRequired = 3
         tapGesture.addTarget(self, action: #selector(dismissView))
         self.view.addGestureRecognizer(tapGesture)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        //self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        //self.tabBarController?.tabBar.isHidden = false
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(swipeHandling))
+        self.view.addGestureRecognizer(panGesture)
+        self.replyTableView.addGestureRecognizer(panGesture)
     }
 
     @objc private func dismissView() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    @objc private func swipeHandling(pan: UIPanGestureRecognizer) {
+        if self.post.replies.count <= 0 { return }
+        let piece = pan.view!
+        let translation = pan.translation(in: piece.superview)
+        if pan.state == .began {
+            self.initialCenter = translation.y
+        }
+        if pan.state != .cancelled {
+            let movement = (translation.y-initialCenter)*0.2
+            if movement > 0 {
+                if self.replyTableView.indexPathsForVisibleRows?.last?.row == self.post.replies.count-1 { return }
+                if self.replyTableView.frame.origin.y <= 64 {
+                    self.replyTableView.frame.origin.y -= movement
+                    self.replyTableView.frame.size.height += movement
+                }
+            }else {
+                if self.replyTableView.frame.origin.y <= 64 {
+                    self.replyTableView.frame.origin.y += movement
+                    self.replyTableView.frame.size.height -= movement
+                }
+                if self.spacing.constant > 0 { self.spacing.constant = 0 }
+            }
+            self.spacing.constant = self.spacing.constant-movement
+        }
+    }
+
+    
+    
     @objc private func report() {
         let hokusai = Hokusai()
         hokusai.cancelButtonTitle = "Cancel"
@@ -72,13 +99,12 @@ class ViewPostViewController: UIViewController {
     
     private func setUpPost() {
         self.usernameLabel.text = self.post.displayName
-        self.detailLabel.text = "Posted at \(Date(timeIntervalSince1970: self.post.createdAt!))"
+        self.detailLabel.text = "Posted \(timeAgoSince(Date(timeIntervalSince1970: self.post.createdAt!)))"
         self.title = self.post.title
         self.postTitle.text = self.post.title
         self.postContent.text = self.post.content
-//        self.postContent.backgroundColor = .black
         self.postContent.isScrollEnabled = false
-        self.numlikeLabel.text = "\(self.post.like)"
+        self.numlikeLabel.text = self.post.like < 1000 ? "\(self.post.like)" : "\((Double(self.post.like)/1000).rounded())k"
         self.displayPicture.image = #imageLiteral(resourceName: "profileLoad")
     }
     
@@ -104,11 +130,8 @@ extension ViewPostViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! CommentTableViewCell
         cell.reply = self.post.replies[indexPath.row]
+        cell.selectionStyle = .none
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
     }
     
 }

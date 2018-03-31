@@ -114,7 +114,6 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
                             cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
                                 ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
                             })
-                            // cell.profileImg.af_setImage(withURL: URL(string: url)!)
                         }
                     })
                 }
@@ -201,6 +200,7 @@ extension TopPostViewController:PostTableViewCellDelegate {
         
         hokusai.colorScheme = HOKColorScheme.tsubaki
         hokusai.addButton("Report"){
+            
         }
         hokusai.show()
         

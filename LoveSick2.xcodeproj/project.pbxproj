@@ -14,12 +14,14 @@
 		810F7BA5202C653400B523AB /* CommentTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7BA4202C653400B523AB /* CommentTextTableViewCell.swift */; };
 		810F7BA7202C937400B523AB /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810F7BA6202C937400B523AB /* CommentTableViewCell.swift */; };
 		811035EC2035C08300DE4172 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811035EB2035C08300DE4172 /* SearchViewController.swift */; };
+		816C6E72206F7CD6008F3039 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816C6E71206F7CD6008F3039 /* TimeAgo.swift */; };
 		819C9D9E205030B40051729E /* FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C9D9D205030B40051729E /* FriendRequestTableViewCell.swift */; };
 		819C9DA02051A8F20051729E /* SettingHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 819C9D9F2051A8F20051729E /* SettingHeaderView.xib */; };
 		819C9DA22051A9450051729E /* SettingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819C9DA12051A9450051729E /* SettingHeaderView.swift */; };
 		81AAE74020150A1A004D0D31 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */; };
 		81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */; };
 		81B27381202B1B8800DCCA8B /* ExtensionSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */; };
+		81E227D920662FFE00817E25 /* EasyPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E227D820662FFE00817E25 /* EasyPickerView.swift */; };
 		81E674102045C2200003BB85 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E6740F2045C2200003BB85 /* ActivityIndicator.swift */; };
 		81E674122045CA9B0003BB85 /* FriendRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E674112045CA9B0003BB85 /* FriendRequestTableViewController.swift */; };
 		81E674142045CF9C0003BB85 /* ChatRoomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E674132045CF9C0003BB85 /* ChatRoomManager.swift */; };
@@ -144,12 +146,14 @@
 		810F7BA4202C653400B523AB /* CommentTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextTableViewCell.swift; sourceTree = "<group>"; };
 		810F7BA6202C937400B523AB /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		811035EB2035C08300DE4172 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		816C6E71206F7CD6008F3039 /* TimeAgo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeAgo.swift; sourceTree = "<group>"; };
 		819C9D9D205030B40051729E /* FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
 		819C9D9F2051A8F20051729E /* SettingHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingHeaderView.xib; sourceTree = "<group>"; };
 		819C9DA12051A9450051729E /* SettingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingHeaderView.swift; sourceTree = "<group>"; };
 		81AAE73F20150A1A004D0D31 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81B2737E202B17EE00DCCA8B /* ViewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostViewController.swift; sourceTree = "<group>"; };
 		81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSwift.swift; sourceTree = "<group>"; };
+		81E227D820662FFE00817E25 /* EasyPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyPickerView.swift; sourceTree = "<group>"; };
 		81E6740F2045C2200003BB85 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		81E674112045CA9B0003BB85 /* FriendRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestTableViewController.swift; sourceTree = "<group>"; };
 		81E674132045CF9C0003BB85 /* ChatRoomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomManager.swift; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 			isa = PBXGroup;
 			children = (
 				81E6740F2045C2200003BB85 /* ActivityIndicator.swift */,
+				81E227D820662FFE00817E25 /* EasyPickerView.swift */,
+				816C6E71206F7CD6008F3039 /* TimeAgo.swift */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -1026,6 +1032,7 @@
 				EFDD539E2013A32C00817F49 /* LoginViewController.swift in Sources */,
 				EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */,
 				81E674142045CF9C0003BB85 /* ChatRoomManager.swift in Sources */,
+				816C6E72206F7CD6008F3039 /* TimeAgo.swift in Sources */,
 				EFF9A5D8201A2FA700CB4D6D /* SettingViewController.swift in Sources */,
 				EF823874205433F400337AF6 /* ImageCache.swift in Sources */,
 				EF216CDD203EC4E900C13CB7 /* PostImageTableViewCell.swift in Sources */,
@@ -1040,6 +1047,7 @@
 				EFDD54102013B5CC00817F49 /* NewPostViewController.swift in Sources */,
 				EFDD54162014AFEA00817F49 /* NewFeedsViewController.swift in Sources */,
 				81F87C9C20458AA7007E11F9 /* SelfPostPaginator.swift in Sources */,
+				81E227D920662FFE00817E25 /* EasyPickerView.swift in Sources */,
 				EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */,
 				EF216CE2203EECB900C13CB7 /* PostImageViewController.swift in Sources */,
 				EF216CEA203F388000C13CB7 /* UploadPhoto.swift in Sources */,

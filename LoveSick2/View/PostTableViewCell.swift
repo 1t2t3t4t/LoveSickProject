@@ -59,16 +59,15 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
         downvote.setImage(#imageLiteral(resourceName: "downvote"), for: .normal)
         downvote.tintColor = UIColor.lightGray
         downvote.setTitle("", for: .normal)
-        category.text = "Category"
+        category.text = PostCategory.Generic.rawValue
         category.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
         category.textColor = UIColor.gray
         addattributeText(button:comment,image: #imageLiteral(resourceName: "message"),text: " 0")
         comment.tintColor = UIColor.gray
         addattributeText(button:share,image: #imageLiteral(resourceName: "share"),text: " Share")
         share.tintColor = UIColor.gray
-       
-        
     }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.profileImg.image = #imageLiteral(resourceName: "profileLoad")
@@ -76,7 +75,6 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
         self.title.text = ""
         self.category.text = ""
         self.numvote.text = ""
-        
     }
 
     func setUpCell() {
@@ -85,6 +83,7 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
         let numLike = self.post.like >  999 ? "\(self.post.like/1000)k" : "\(self.post.like)"
         addattributeText(button:comment,image: #imageLiteral(resourceName: "message"),text: " \(self.post.replies.count)")
         self.numvote.text = numLike
+        self.category.text = self.post.postcategory
     }
     
     @IBAction func upVote(_ sender: Any) {
