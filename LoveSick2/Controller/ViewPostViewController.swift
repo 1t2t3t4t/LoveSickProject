@@ -60,9 +60,9 @@ class ViewPostViewController: UIViewController {
             self.initialCenter = translation.y
         }
         if pan.state != .cancelled {
-            let movement = (translation.y-initialCenter)*0.2
-            if movement > 0 {
-                if self.replyTableView.indexPathsForVisibleRows?.last?.row == self.post.replies.count-1 { return }
+            let movement = (translation.y-initialCenter)*0.1
+            if movement < 0 {
+                if self.replyTableView.indexPathsForVisibleRows?.last?.row == self.post.replies.count { return }
                 if self.replyTableView.frame.origin.y <= 64 {
                     self.replyTableView.frame.origin.y -= movement
                     self.replyTableView.frame.size.height += movement
@@ -74,7 +74,7 @@ class ViewPostViewController: UIViewController {
                 }
                 if self.spacing.constant > 0 { self.spacing.constant = 0 }
             }
-            self.spacing.constant = self.spacing.constant-movement
+            self.spacing.constant = self.spacing.constant+movement
         }
     }
 
