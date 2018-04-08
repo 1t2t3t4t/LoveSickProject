@@ -19,6 +19,7 @@ class ViewPostViewController: UIViewController {
     @IBOutlet weak var upvote: UIButton!
     @IBOutlet weak var downvote: UIButton!
     @IBOutlet weak var numlikeLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     @IBOutlet weak var spacing: NSLayoutConstraint!
     
@@ -78,6 +79,8 @@ class ViewPostViewController: UIViewController {
         }
     }
 
+    @IBAction func favoriteClicked(_ sender: Any) {
+    }
     
     
     @objc private func report() {
@@ -104,7 +107,7 @@ class ViewPostViewController: UIViewController {
         self.postTitle.text = self.post.title
         self.postContent.text = self.post.content
         self.postContent.isScrollEnabled = false
-        self.numlikeLabel.text = self.post.like < 1000 ? "\(self.post.like)" : "\((Double(self.post.like)/1000).rounded())k"
+        self.numlikeLabel.text = self.post.like < 1000 ? "\(self.post.like)" : String(format: "%.1f", Double(self.post.like)/1000,"k")
         self.displayPicture.image = #imageLiteral(resourceName: "profileLoad")
     }
     

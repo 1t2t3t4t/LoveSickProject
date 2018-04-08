@@ -1179,19 +1179,30 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bWf-1k-WOh">
+                                        <rect key="frame" x="330" y="263" width="25" height="25"/>
+                                        <state key="normal" image="favorite"/>
+                                        <connections>
+                                            <action selector="favoriteClicked:" destination="KbL-9U-Rkh" eventType="touchUpInside" id="RbS-p7-pqr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Sji-yZ-KiD" firstAttribute="leading" secondItem="yeB-L6-3Da" secondAttribute="trailing" constant="8" id="1Zp-Df-7eT"/>
+                                    <constraint firstItem="bWf-1k-WOh" firstAttribute="centerY" secondItem="8G4-ga-WwL" secondAttribute="centerY" id="2XE-Qg-Adq"/>
                                     <constraint firstItem="aws-5c-w6D" firstAttribute="top" secondItem="yeB-L6-3Da" secondAttribute="bottom" constant="8" id="2ro-IC-8AU"/>
+                                    <constraint firstAttribute="trailing" secondItem="bWf-1k-WOh" secondAttribute="trailing" constant="20" id="7NK-R2-P8e"/>
                                     <constraint firstItem="yeB-L6-3Da" firstAttribute="leading" secondItem="sdu-95-Eoz" secondAttribute="leading" constant="8" id="AeP-b4-ZZz"/>
                                     <constraint firstItem="8G4-ga-WwL" firstAttribute="leading" secondItem="sdu-95-Eoz" secondAttribute="leading" constant="16" id="Bnf-R8-F1L"/>
+                                    <constraint firstItem="bWf-1k-WOh" firstAttribute="top" secondItem="8G4-ga-WwL" secondAttribute="top" id="D3q-KB-VJf"/>
                                     <constraint firstAttribute="trailing" secondItem="8G4-ga-WwL" secondAttribute="trailing" constant="200" id="Eon-XP-kMV"/>
                                     <constraint firstAttribute="trailing" secondItem="Sji-yZ-KiD" secondAttribute="trailing" constant="-11" id="ErU-bi-eCH"/>
                                     <constraint firstAttribute="trailing" secondItem="IUP-MB-7gP" secondAttribute="trailing" constant="-11" id="Ha4-5W-Clk"/>
                                     <constraint firstItem="IUP-MB-7gP" firstAttribute="leading" secondItem="yeB-L6-3Da" secondAttribute="trailing" constant="8" id="O3m-yb-3z8"/>
                                     <constraint firstItem="Sji-yZ-KiD" firstAttribute="top" secondItem="sdu-95-Eoz" secondAttribute="top" constant="8" id="WTg-DC-2Fa"/>
                                     <constraint firstItem="IUP-MB-7gP" firstAttribute="top" secondItem="Sji-yZ-KiD" secondAttribute="bottom" constant="8" id="gkB-IP-GLv"/>
+                                    <constraint firstItem="bWf-1k-WOh" firstAttribute="bottom" secondItem="8G4-ga-WwL" secondAttribute="bottom" id="hLf-Ht-EaK"/>
                                     <constraint firstItem="yeB-L6-3Da" firstAttribute="top" secondItem="sdu-95-Eoz" secondAttribute="top" constant="8" id="hfK-9M-TOl"/>
                                     <constraint firstItem="aws-5c-w6D" firstAttribute="leading" secondItem="sdu-95-Eoz" secondAttribute="leading" constant="16" id="nAg-Dd-KYy"/>
                                     <constraint firstAttribute="bottom" secondItem="8G4-ga-WwL" secondAttribute="bottom" id="tZc-Ic-aqe"/>
@@ -1290,6 +1301,7 @@
                         <outlet property="detailLabel" destination="IUP-MB-7gP" id="r1Q-ui-FTN"/>
                         <outlet property="displayPicture" destination="yeB-L6-3Da" id="QJ1-Zs-GFr"/>
                         <outlet property="downvote" destination="jyg-ur-LPo" id="WFv-UL-tPa"/>
+                        <outlet property="favoriteButton" destination="bWf-1k-WOh" id="HI2-Yk-INo"/>
                         <outlet property="numlikeLabel" destination="o6U-DL-Nbr" id="vQy-Zq-PlY"/>
                         <outlet property="postContent" destination="Fi5-8t-Wtg" id="L2h-ei-hxl"/>
                         <outlet property="postTitle" destination="tGZ-e9-27p" id="Pgk-9W-uEI"/>
@@ -2008,7 +2020,7 @@
                                                     <state key="normal" title="Button"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOu-18-jiv">
-                                                    <rect key="frame" x="10" y="99" width="25" height="30"/>
+                                                    <rect key="frame" x="10" y="99" width="21" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="upVote:" destination="Z28-fc-zuq" eventType="touchUpInside" id="p2m-al-EuV"/>
@@ -2025,9 +2037,9 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gyp-uc-SE2">
-                                                    <rect key="frame" x="35" y="104" width="40" height="21"/>
+                                                    <rect key="frame" x="31" y="104" width="44" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="p8d-jf-UT8"/>
+                                                        <constraint firstAttribute="width" constant="44" id="p8d-jf-UT8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -2067,7 +2079,6 @@
                                                 <constraint firstItem="Gyp-uc-SE2" firstAttribute="centerY" secondItem="jOu-18-jiv" secondAttribute="centerY" id="jGV-FK-t03"/>
                                                 <constraint firstItem="uON-du-wsW" firstAttribute="baseline" secondItem="ife-zn-UBf" secondAttribute="baseline" id="jj1-kN-nXY"/>
                                                 <constraint firstItem="jcW-Dj-jEm" firstAttribute="top" secondItem="Jcn-41-pn5" secondAttribute="bottom" constant="19" id="l5g-mh-Gav"/>
-                                                <constraint firstItem="uON-du-wsW" firstAttribute="leading" secondItem="jOu-18-jiv" secondAttribute="trailing" constant="40" id="rm2-rG-wAM"/>
                                                 <constraint firstItem="ZFj-sh-tUJ" firstAttribute="top" secondItem="p2I-Gc-J5d" secondAttribute="top" constant="6" id="ryq-Mg-jdZ"/>
                                                 <constraint firstItem="jOu-18-jiv" firstAttribute="baseline" secondItem="uON-du-wsW" secondAttribute="baseline" id="sD3-54-24L"/>
                                                 <constraint firstItem="ZFj-sh-tUJ" firstAttribute="leading" secondItem="FbB-BY-9L3" secondAttribute="trailing" constant="8" id="vF9-2o-ucw"/>
@@ -2130,7 +2141,7 @@
                                                     <state key="normal" title="Button"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MrG-L8-Bv1">
-                                                    <rect key="frame" x="10" y="309.5" width="25" height="30"/>
+                                                    <rect key="frame" x="10" y="309.5" width="21" height="30"/>
                                                     <state key="normal" title="Button"/>
                                                     <connections>
                                                         <action selector="upVote:" destination="QXv-xL-ms9" eventType="touchUpInside" id="eKN-Vk-ooe"/>
@@ -2147,9 +2158,9 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gur-UD-0Io">
-                                                    <rect key="frame" x="35" y="314.5" width="40" height="20.5"/>
+                                                    <rect key="frame" x="31" y="314.5" width="44" height="20.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="40" id="Mwl-ON-JXz"/>
+                                                        <constraint firstAttribute="width" constant="44" id="Mwl-ON-JXz"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -2214,7 +2225,6 @@
                                                 <constraint firstItem="Z7N-jP-fch" firstAttribute="top" secondItem="XvI-yh-iqQ" secondAttribute="top" constant="6" id="7Zk-Gc-UXk"/>
                                                 <constraint firstItem="YPd-Lu-e0H" firstAttribute="top" secondItem="pd6-Pf-DUv" secondAttribute="top" id="96W-ZM-Kmz"/>
                                                 <constraint firstItem="UB9-vi-Avc" firstAttribute="top" secondItem="8Rb-ef-w45" secondAttribute="bottom" constant="15" id="9eW-j3-lOP"/>
-                                                <constraint firstItem="Uzt-IW-tu6" firstAttribute="leading" secondItem="MrG-L8-Bv1" secondAttribute="trailing" constant="40" id="CJQ-Kc-Gfy"/>
                                                 <constraint firstItem="pd6-Pf-DUv" firstAttribute="leading" secondItem="YPd-Lu-e0H" secondAttribute="trailing" constant="8" id="Cr0-0q-JQE"/>
                                                 <constraint firstItem="8Rb-ef-w45" firstAttribute="top" secondItem="pd6-Pf-DUv" secondAttribute="bottom" constant="1" id="GMR-fT-KJI"/>
                                                 <constraint firstItem="Uzt-IW-tu6" firstAttribute="baseline" secondItem="qQb-ks-qUT" secondAttribute="baseline" id="J65-7X-vKC"/>
@@ -2884,6 +2894,7 @@ DhcOHA4eDiAOJQ4tDjAONQ49DkAOUg5VDloAAAAAAAACAQAAAAAAAABBAAAAAAAAAAAAAAAAAAAOXA
         </image>
         <image name="chat" width="25" height="25"/>
         <image name="downvote" width="25" height="25"/>
+        <image name="favorite" width="25" height="25"/>
         <image name="message" width="14" height="14"/>
         <image name="more" width="25" height="25"/>
         <image name="newsfeed" width="25" height="25"/>
