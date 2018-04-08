@@ -141,6 +141,7 @@ extension PostTextViewController: ChoosingStyleDelegate, EasyPickerDelegate {
     }
     
 }
+
 extension PostTextViewController:UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         let currentOffset = tableView.contentOffset

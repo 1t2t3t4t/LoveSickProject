@@ -24,6 +24,7 @@ class PostImageViewController: UIViewController {
     
     private var anonymously:Bool = false
     private var postImage:UIImage?
+    private var easy:EasyPickerView!
     
     weak var titleDelegate:PostTextViewDelegate?
     
@@ -98,6 +99,9 @@ extension PostImageViewController:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! ChoosingTableViewCell
             cell.style = .category
             cell.delegate = self
+            easy = EasyPickerView(frame: cell.frame)
+            easy.easyDelegate = self
+            self.view.addSubview(easy)
             return cell
             
         case 2:
@@ -142,6 +146,8 @@ extension PostImageViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return 44
+        }else if indexPath.row == 3 {
+            return 120
         }
         else{
             return UITableViewAutomaticDimension
@@ -173,13 +179,18 @@ extension PostImageViewController:ChoosePhotoTableViewCellDelegate {
     
     
 }
-extension PostImageViewController: ChoosingStyleDelegate {
+extension PostImageViewController: ChoosingStyleDelegate, EasyPickerDelegate {
     func anonymousChanged(_ value: Bool) {
         self.anonymously = value
     }
     
     func categorySelected(_ value: String) {
         
+    }
+    
+    func didSelectCell(_ easyPickerView: EasyPickerView, at indexPath: IndexPath) {
+        let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! ChoosingTableViewCell
+        cell.label.text = easyPickerView.selectedValue.rawValue
     }
     
 }
