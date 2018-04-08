@@ -485,6 +485,7 @@
 				EFDD53DC2013A75800817F49 /* PostManager.swift */,
 				81B27380202B1B8800DCCA8B /* ExtensionSwift.swift */,
 				81E674132045CF9C0003BB85 /* ChatRoomManager.swift */,
+				EFDD539B2013A32C00817F49 /* AppDelegate.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -492,7 +493,6 @@
 		EFDD53E42013A76400817F49 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EFDD539B2013A32C00817F49 /* AppDelegate.swift */,
 				EFDD53E52013A76D00817F49 /* LoveSickError.swift */,
 				EFDD53E82013A76D00817F49 /* Post.swift */,
 				EFDD53E62013A76D00817F49 /* Reply.swift */,

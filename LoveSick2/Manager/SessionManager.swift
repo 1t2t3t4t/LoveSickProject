@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FBSDKLoginKit
 
 class SessionManager {
     
@@ -46,6 +47,23 @@ class SessionManager {
                 User.currentUser?.username = displayName
                 Database.database().reference().child("Users/\(uid)").setValue(User.currentUser?.toJSON())
                 completion(true,"")
+            }
+        }
+    }
+    
+    class func registerForFB(email:String, displayName: String, completion: @escaping (Error?) -> Void) {
+        let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if let error = error {
+                completion(error)
+            }else {
+                User.currentUser = User(user!.uid)
+                User.currentUser?.email = email
+                User.currentUser.profileURL = user!.photoURL?.absoluteString
+                User.currentUser?.displayName = displayName
+                User.currentUser?.username = displayName
+                Database.database().reference().child("Users/\(user!.uid)").setValue(User.currentUser?.toJSON())
+                completion(nil)
             }
         }
     }
