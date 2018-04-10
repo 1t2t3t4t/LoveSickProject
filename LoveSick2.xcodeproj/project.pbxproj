@@ -46,10 +46,15 @@
 		EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */; };
 		EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2BF9E92039B6BE0014D38C /* NMessenger.framework */; };
 		EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */; };
+		EF74A775207CEC77005EA7A9 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74A774207CEC77005EA7A9 /* EditProfileViewController.swift */; };
+		EF74A779207CF29E005EA7A9 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74A778207CF29E005EA7A9 /* DetailTableViewCell.swift */; };
+		EF74A77C207D0D24005EA7A9 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74A77B207D0D24005EA7A9 /* FilterViewController.swift */; };
+		EF74A77F207D0D7D005EA7A9 /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74A77E207D0D7D005EA7A9 /* SearchFriendViewController.swift */; };
 		EF823874205433F400337AF6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF823873205433F400337AF6 /* ImageCache.swift */; };
 		EF9300A12054703D00F08DD2 /* TableviewOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9300A02054703D00F08DD2 /* TableviewOffset.swift */; };
 		EF9300A22054746A00F08DD2 /* Pageboy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9300A32054746A00F08DD2 /* Pageboy.framework */; };
 		EF9300A5205474A300F08DD2 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9300A4205474A300F08DD2 /* PageViewController.swift */; };
+		EFD97B48207CA8F50031CC5F /* ObjectMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD97B47207CA8F50031CC5F /* ObjectMapper.framework */; };
 		EFDD539C2013A32C00817F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD539B2013A32C00817F49 /* AppDelegate.swift */; };
 		EFDD539E2013A32C00817F49 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD539D2013A32C00817F49 /* LoginViewController.swift */; };
 		EFDD53A12013A32C00817F49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDD539F2013A32C00817F49 /* Main.storyboard */; };
@@ -185,10 +190,16 @@
 		EF2BF9E72039A9E10014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9E92039B6BE0014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VHMessageContentNode.swift; sourceTree = "<group>"; };
+		EF74A774207CEC77005EA7A9 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		EF74A778207CF29E005EA7A9 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
+		EF74A77B207D0D24005EA7A9 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		EF74A77E207D0D7D005EA7A9 /* SearchFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
+		EF759EA6207D10800049CD22 /* RangeSeekSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RangeSeekSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF823873205433F400337AF6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		EF9300A02054703D00F08DD2 /* TableviewOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableviewOffset.swift; sourceTree = "<group>"; };
 		EF9300A32054746A00F08DD2 /* Pageboy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pageboy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF9300A4205474A300F08DD2 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		EFD97B47207CA8F50031CC5F /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFDD53982013A32C00817F49 /* LoveSick2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoveSick2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFDD539B2013A32C00817F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFDD539D2013A32C00817F49 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +256,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFD97B48207CA8F50031CC5F /* ObjectMapper.framework in Frameworks */,
 				EF9300A22054746A00F08DD2 /* Pageboy.framework in Frameworks */,
 				EF216CEF203FEC9B00C13CB7 /* KDCircularProgress.framework in Frameworks */,
 				EF216CE7203F202600C13CB7 /* KMPlaceholderTextView.framework in Frameworks */,
@@ -351,6 +363,8 @@
 		BC100AB5276A9EB37EE03421 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF759EA6207D10800049CD22 /* RangeSeekSlider.framework */,
+				EFD97B47207CA8F50031CC5F /* ObjectMapper.framework */,
 				EF9300A32054746A00F08DD2 /* Pageboy.framework */,
 				EF216CF0203FEC9B00C13CB7 /* KDCircularProgress.framework */,
 				EF216CEE203F595700C13CB7 /* Nuke.framework */,
@@ -404,6 +418,30 @@
 				EF216CDA203EAB1700C13CB7 /* MessageViewController.swift */,
 			);
 			path = ChatViewController;
+			sourceTree = "<group>";
+		};
+		EF74A773207CEA74005EA7A9 /* EditProfileViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF74A774207CEC77005EA7A9 /* EditProfileViewController.swift */,
+			);
+			path = EditProfileViewController;
+			sourceTree = "<group>";
+		};
+		EF74A77A207D0CFC005EA7A9 /* FilterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF74A77B207D0D24005EA7A9 /* FilterViewController.swift */,
+			);
+			path = FilterViewController;
+			sourceTree = "<group>";
+		};
+		EF74A77D207D0D6E005EA7A9 /* SearchFriendViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF74A77E207D0D7D005EA7A9 /* SearchFriendViewController.swift */,
+			);
+			path = SearchFriendViewController;
 			sourceTree = "<group>";
 		};
 		EFDD538F2013A32C00817F49 = {
@@ -511,6 +549,9 @@
 		EFDD540C2013B5A900817F49 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EF74A77D207D0D6E005EA7A9 /* SearchFriendViewController */,
+				EF74A77A207D0CFC005EA7A9 /* FilterViewController */,
+				EF74A773207CEA74005EA7A9 /* EditProfileViewController */,
 				81F87C9020453879007E11F9 /* ProfileViewController */,
 				EF216CE0203EEC9600C13CB7 /* PostTextViewcontroller */,
 				EF2BF9E32039A8B90014D38C /* ChatViewController */,
@@ -527,6 +568,7 @@
 		EFDD54192014B55C00817F49 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EF74A778207CF29E005EA7A9 /* DetailTableViewCell.swift */,
 				EFDD541C2014B57700817F49 /* PostTableViewCell.swift */,
 				EFDD54222014E14300817F49 /* ChoosingTableViewCell.swift */,
 				EFDD54242014E15100817F49 /* TitleTableViewCell.swift */,
@@ -765,6 +807,7 @@
 				"${BUILT_PRODUCTS_DIR}/KDCircularProgress/KDCircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
+				"${BUILT_PRODUCTS_DIR}/McPicker/McPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/NMessenger/NMessenger.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
@@ -773,10 +816,12 @@
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
 				"${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework",
 				"${BUILT_PRODUCTS_DIR}/UIEmptyState/UIEmptyState.framework",
 				"${BUILT_PRODUCTS_DIR}/Validator/Validator.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
+				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/ZAlertView/ZAlertView.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -803,6 +848,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KDCircularProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/McPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMessenger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
@@ -811,10 +857,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pageboy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tabman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIEmptyState.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Validator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZAlertView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -839,7 +887,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		05AC60770068ACE7B9B1F282 /* [CP] Embed Pods Frameworks */ = {
@@ -920,7 +968,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8BB0A89FE2193497A1C34829 /* [CP] Copy Pods Resources */ = {
@@ -953,7 +1001,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EE788C7A852EEB5F3E6DC610 /* [CP] Copy Pods Resources */ = {
@@ -986,7 +1034,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1012,6 +1060,7 @@
 				EFDD54252014E15100817F49 /* TitleTableViewCell.swift in Sources */,
 				810F7BA3202C652500B523AB /* CommentTitleTableViewCell.swift in Sources */,
 				81B27381202B1B8800DCCA8B /* ExtensionSwift.swift in Sources */,
+				EF74A77C207D0D24005EA7A9 /* FilterViewController.swift in Sources */,
 				EFDD54042013A9FE00817F49 /* LoginCoordinator.swift in Sources */,
 				81E674122045CA9B0003BB85 /* FriendRequestTableViewController.swift in Sources */,
 				81E674102045C2200003BB85 /* ActivityIndicator.swift in Sources */,
@@ -1026,8 +1075,10 @@
 				81F87C92204538BB007E11F9 /* ProfileViewController.swift in Sources */,
 				81B2737F202B17EE00DCCA8B /* ViewPostViewController.swift in Sources */,
 				EFDD54062013B00C00817F49 /* UserManager.swift in Sources */,
+				EF74A779207CF29E005EA7A9 /* DetailTableViewCell.swift in Sources */,
 				81F87C9A2045684C007E11F9 /* ProfileHeaderView.swift in Sources */,
 				81F87C9420456054007E11F9 /* Profile.swift in Sources */,
+				EF74A775207CEC77005EA7A9 /* EditProfileViewController.swift in Sources */,
 				EFDD53E12013A75800817F49 /* PostManager.swift in Sources */,
 				EFDD539E2013A32C00817F49 /* LoginViewController.swift in Sources */,
 				EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */,
@@ -1046,6 +1097,7 @@
 				EF216CDB203EAB1700C13CB7 /* MessageViewController.swift in Sources */,
 				EFDD54102013B5CC00817F49 /* NewPostViewController.swift in Sources */,
 				EFDD54162014AFEA00817F49 /* NewFeedsViewController.swift in Sources */,
+				EF74A77F207D0D7D005EA7A9 /* SearchFriendViewController.swift in Sources */,
 				81F87C9C20458AA7007E11F9 /* SelfPostPaginator.swift in Sources */,
 				81E227D920662FFE00817E25 /* EasyPickerView.swift in Sources */,
 				EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */,

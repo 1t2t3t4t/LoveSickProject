@@ -34,11 +34,15 @@ class SearchViewController: UIViewController {
         self.setUpSearchBar()
         
     }
+    @objc func searchFriend() {
+        
+    }
     
     private func setUpSearchBar() {
         self.searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
         self.searchBar.delegate = self
         self.searchBar.placeholder = "Search here..."
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .done, target: self, action: #selector(SearchViewController.searchFriend))
         self.navigationItem.titleView = self.searchBar
         
     }

@@ -13,6 +13,7 @@ class TabBarController: UITabBarController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+         UIApplication.shared.beginIgnoringInteractionEvents()
         self.tabBar.isTranslucent = false
 
         // Do any advarional setup after loading the view.

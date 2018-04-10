@@ -91,8 +91,10 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
                 let submitAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
                     alert.dismiss(animated: true, completion: nil)
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let view = storyboard.instantiateViewController(withIdentifier: "tabbar")
-                    viewController?.present(view, animated: true, completion: nil)
+                    let view = EditProfileViewController.newInstanceFromStoryboard() as! EditProfileViewController
+                    view.isSetting = true
+                    let nav = UINavigationController(rootViewController: view)
+                    viewController?.present(nav, animated: true, completion: nil)
                 })
                 alert.addAction(submitAction)
                 viewController?.present(alert, animated: true, completion: nil)

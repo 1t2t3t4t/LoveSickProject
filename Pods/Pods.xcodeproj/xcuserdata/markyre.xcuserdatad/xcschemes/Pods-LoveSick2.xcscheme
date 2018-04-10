@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20124A035FECA146B87FBA8E3140392D"
+               BlueprintIdentifier = "B820E0764CCE4F7CCD18C67B71020D99"
                BuildableName = "Pods_LoveSick2.framework"
                BlueprintName = "Pods-LoveSick2"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -26,7 +26,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
@@ -37,7 +36,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -47,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "20124A035FECA146B87FBA8E3140392D"
+            BlueprintIdentifier = "B820E0764CCE4F7CCD18C67B71020D99"
             BuildableName = "Pods_LoveSick2.framework"
             BlueprintName = "Pods-LoveSick2"
             ReferencedContainer = "container:Pods.xcodeproj">

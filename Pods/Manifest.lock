@@ -83,6 +83,7 @@ PODS:
   - Lightbox (2.1.2):
     - Hue (~> 3.0)
     - Imaginary (~> 3.0)
+  - McPicker (1.0.0)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -109,12 +110,15 @@ PODS:
     - PINCache (= 3.0.1-beta.4)
     - PINRemoteImage/Core
   - PureLayout (3.0.2)
+  - SteviaLayout (4.2.0)
   - Tabman (1.2.0):
     - Pageboy (~> 2.2.0)
     - PureLayout (~> 3.0)
   - UIEmptyState (3.1.0)
   - Validator (2.1.1)
   - XLPagerTabStrip (8.0.0)
+  - YPImagePicker (2.7.3):
+    - SteviaLayout (~> 4.2.0)
   - ZAlertView (1.0.4)
 
 DEPENDENCIES:
@@ -135,6 +139,7 @@ DEPENDENCIES:
   - KDCircularProgress
   - KMPlaceholderTextView (~> 1.3.0)
   - Lightbox
+  - McPicker
   - NMessenger
   - Nuke (~> 6.0)
   - ObjectMapper (~> 3.1)
@@ -142,6 +147,7 @@ DEPENDENCIES:
   - Tabman (~> 1.0)
   - UIEmptyState
   - XLPagerTabStrip (~> 8.0)
+  - YPImagePicker
   - ZAlertView
 
 SPEC CHECKSUMS:
@@ -173,6 +179,7 @@ SPEC CHECKSUMS:
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   Lightbox: 2dc267df8be2285bc7724cb11cbbf4aaaf59dced
+  McPicker: 130183cd3d22fc6933ea9e63c5a0d0d1becc0122
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   NMessenger: ca6a89073ca40d3868cf45505f6f8318853afd40
   Nuke: d83812262734dad51e3c498cb1c4f7923f2b78c6
@@ -183,12 +190,14 @@ SPEC CHECKSUMS:
   PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
   PINRemoteImage: c4f9f16932840c597f32e69dd288e10e111a1929
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  SteviaLayout: 0d2112caea45707695e8c718262c8ea3dd37ef17
   Tabman: 5951d9c5bc4e438e1c82b7e59e5cdc9f505c1431
   UIEmptyState: 9b501dc90933ce2743949ecbf18c20ffb33a2be9
   Validator: b1793fbfd0046097551d0edd18e2c30792d69ef5
   XLPagerTabStrip: d1ab378af0923320ec0b5eab11d7b2f803d31261
+  YPImagePicker: 27ad235f8fba0efbd3247c58f1c5dad73475d3db
   ZAlertView: 59fffdb4e37a01df461835566d5101052b8af953
 
-PODFILE CHECKSUM: c3551591093929181cabff009511bf02a069f69d
+PODFILE CHECKSUM: 0d45e56859bd340d3c9724f25905b47f2c8ff474
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1

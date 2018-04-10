@@ -31,6 +31,8 @@ target 'LoveSick2' do
      pod 'GSKStretchyHeaderView'
      pod 'ZAlertView'
      pod 'Tabman', '~> 1.0'
+     pod 'YPImagePicker'
+     pod 'McPicker'
   # Pods for LoveSick2
 
   target 'LoveSick2Tests' do

@@ -19,6 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         SessionManager.checkSignIn(withCompletion: {(success) in
             if success {
+                UserManager.queryUser(withUID: (Auth.auth().currentUser?.uid)!) { (user) in
+                    if user != nil {
+                        User.currentUser = user
+                        let notificationName = NSNotification.Name("removeIgnoreTouch")
+                        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: nil)
+                        if User.currentUser.gender == "" {
+                            let view = EditProfileViewController.newInstanceFromStoryboard() as! EditProfileViewController
+                            view.isSetting = true
+                            let nav = UINavigationController(rootViewController: view)
+                            self.window?.rootViewController = nav
+                            self.window?.makeKeyAndVisible()
+                            return
+                        }
+                        return
+                    }
+                    return
+                }
                 let initialViewController = storyboard.instantiateViewController(withIdentifier: "tabbar")
                 self.window?.rootViewController = initialViewController
             }

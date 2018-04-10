@@ -26,6 +26,7 @@ class UserManager {
             Alamofire.request(url).responseImage { response in
                 if let image = response.result.value {
                     User.currentUser.profileImg = image
+                    ImageCache.cache(image, for: User.currentUser!.uid!)
                 }
             }
         }

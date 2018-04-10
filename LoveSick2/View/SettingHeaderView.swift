@@ -42,13 +42,15 @@ class SettingHeaderView: UIView{
        profileImage.layer.cornerRadius = profileImage.frame.height/2.0
         profileImage.contentMode = .scaleAspectFill
         profileImage.clipsToBounds = true
-        profileImage.image = #imageLiteral(resourceName: "profileLoad")//.af_imageRoundedIntoCircle()
+        profileImage.image = User.currentUser.profileImg != nil ? User.currentUser.profileImg : #imageLiteral(resourceName: "profileLoad")//.af_imageRoundedIntoCircle()
         editProfile.setTitle("Change Profile Picture", for: .normal)
        // editProfile.isHidden = true
         username.isHidden = true
         editProfile.titleLabel?.font =  UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
         if let profileimg = ImageCache.cachedImage(for: Auth.auth().currentUser!.uid) {
             self.profileImage.image = profileimg
+            User.currentUser.profileImg = profileimg
+            
         }
         Database.database().reference().child("Users/\(User.currentUser!.uid!)/profileURL").observeSingleEvent(of: .value, with: {snap in
             if snap.exists() {
@@ -62,6 +64,7 @@ class SettingHeaderView: UIView{
                 self.profileImage.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {response in
                     if let image = response.result.value {
                         self.profileImage.image = image.af_imageRoundedIntoCircle()
+                        User.currentUser.profileImg = image
                             ImageCache.cache(self.profileImage.image!, for: User.currentUser!.uid!)
                     }
                     else{

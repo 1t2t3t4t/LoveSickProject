@@ -23,7 +23,31 @@ class User: Mappable {
     var friendlist:[String]?
     var friendrequest:[User] = []
     var chatRoom:[ChatRoom] = []
-   
+    var _gender:String?
+    var _currentStatus:String?
+    
+    var gender:String {
+        get {
+        guard let value = _gender else {
+            return ""
+        }
+        return value
+        }
+        set {
+            _gender = newValue
+        }
+    }
+    var currentStatus:String {
+        get {
+            guard let value = _currentStatus else {
+                return ""
+            }
+            return value
+        }
+        set {
+            _currentStatus = newValue
+        }
+    }
     private var chatRoomModel:[String:Any]?{
         didSet{
             if chatRoomModel == nil { return }
@@ -64,6 +88,8 @@ class User: Mappable {
         self.profileURL <- map["profileURL"]
         self.friendrequestModel <- map["FriendRequests"]
         self.chatRoomModel <- map["ChatRooms"]
+        self.gender <- map["gender"]
+        self.currentStatus <- map["currentStatus"]
     }
     
     class func getProfilePic(withCompletion completion: @escaping (UIImage) -> Void ) {

@@ -14,11 +14,7 @@ class SessionManager {
     
     class func checkSignIn(withCompletion completion:@escaping (Bool) -> Void) {
         guard let user = Auth.auth().currentUser else { completion(false); return }
-        UserManager.queryUser(withUID: user.uid) { (user) in
-            if user == nil { completion(false); return }
-            User.currentUser = user
-            
-        }
+        
         print("current user email \(Auth.auth().currentUser?.email) \(Auth.auth().currentUser?.uid)")
         completion(true)
         
