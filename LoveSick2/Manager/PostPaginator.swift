@@ -13,14 +13,18 @@ class PostPaginator {
     private var queryValue:Double?
     private var queryType:PostQueryType!
     private var postManager:PostManager = PostManager()
+    private var postCategory:PostCategory!
     
-    
+    var categoryFilter:String? = nil
     var posts:[Post] = []
     
-    init(withType queryType:PostQueryType,_ completion:@escaping ([Post],LoveSickError?) -> Void) {
+    init(withType queryType:PostQueryType,category:PostCategory,_ completion:@escaping ([Post],LoveSickError?) -> Void) {
         self.queryType = queryType
+        self.postCategory = category
         postManager.queryType = queryType
-        self.postManager.queryPostsFirstTen { (posts, error) in
+        postManager.postCategory = category
+        let category = self.categoryFilter == nil ? nil : self.categoryFilter!
+        self.postManager.queryPostsFirstTen(self.categoryFilter) { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.append(contentsOf: posts)
@@ -30,7 +34,7 @@ class PostPaginator {
     }
     
     func refresh(completion: @escaping (LoveSickError?) -> Void) {
-        self.postManager.queryPostsFirstTen { (posts, error) in
+        self.postManager.queryPostsFirstTen(self.categoryFilter) { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.removeAll()
@@ -42,7 +46,7 @@ class PostPaginator {
     }
     
     func nextPage(_ completion:@escaping ([Post],LoveSickError?) -> Void) {
-        self.postManager.queryPosts(withQueryValue: self.queryValue) { (posts, error) in
+        self.postManager.queryPosts(self.categoryFilter ,withQueryValue: self.queryValue) { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.append(contentsOf: posts)

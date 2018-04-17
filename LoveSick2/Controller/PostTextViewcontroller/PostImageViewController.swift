@@ -9,7 +9,7 @@
 import UIKit
 import Fusuma
 import KDCircularProgress
-
+import McPicker
 protocol PostImageViewDelegate:class {
     func getText() -> String
 }
@@ -50,7 +50,20 @@ class PostImageViewController: UIViewController {
     @objc func dismissView() {
         self.dismiss(animated: true, completion: nil)
     }
-    
+    func showCategory() {
+        
+        let data = [[PostCategory.Generic.rawValue,PostCategory.Heartbreak.rawValue]]
+        let mcPicker = McPicker(data: data)
+        mcPicker.toolbarItemsFont = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)
+        mcPicker.toolbarBarTintColor = .white
+        mcPicker.backgroundColor = .white
+        mcPicker.backgroundColorAlpha = 0.50
+        mcPicker.pickerBackgroundColor = .white
+        mcPicker.show(doneHandler: { [weak self] (selections: [Int : String]) -> Void in
+            let cell = self?.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! ChoosingTableViewCell
+            cell.label.text =  selections[0]
+        })
+    }
     @objc func post() {
         guard let title = self.titleDelegate?.getText() else {
             print("title is null")
@@ -99,9 +112,9 @@ extension PostImageViewController:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! ChoosingTableViewCell
             cell.style = .category
             cell.delegate = self
-            easy = EasyPickerView(frame: cell.frame)
-            easy.easyDelegate = self
-            self.view.addSubview(easy)
+           // easy = EasyPickerView(frame: cell.frame)
+           // easy.easyDelegate = self
+           // self.view.addSubview(easy)
             return cell
             
         case 2:
@@ -141,6 +154,12 @@ extension PostImageViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: false)
+        switch indexPath.row {
+        case 1:
+            showCategory()
+        default:
+            return
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

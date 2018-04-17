@@ -12,7 +12,7 @@ target 'LoveSick2' do
     pod 'Firebase/Auth'
     pod 'ObjectMapper', '~> 3.1'
     pod 'AlamofireImage', '~> 3.3'
-    pod 'OneSignal', '>= 2.5.2', '< 3.0'
+#    pod 'OneSignal', '>= 2.5.2', '< 3.0'
     pod 'UIEmptyState'
     pod 'AssistantKit'
     pod 'JGProgressHUD'
@@ -33,6 +33,8 @@ target 'LoveSick2' do
      pod 'Tabman', '~> 1.0'
      pod 'YPImagePicker'
      pod 'McPicker'
+     pod 'AMScrollingNavbar'
+     pod 'RangeSeekSlider'
   # Pods for LoveSick2
 
   target 'LoveSick2Tests' do
@@ -46,10 +48,10 @@ target 'LoveSick2' do
   end
 
 end
-target 'OneSignalNotificationServiceExtension' do
-use_frameworks!
-pod 'OneSignal', '>= 2.5.2', '< 3.0'
-end
+#target 'OneSignalNotificationServiceExtension' do
+#use_frameworks!
+#pod 'OneSignal', '>= 2.5.2', '< 3.0'
+#end
 post_install do |installer|
     installer.pods_project.targets.each do |target|
         if target.name == 'NMessenger'

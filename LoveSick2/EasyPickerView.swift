@@ -22,7 +22,7 @@ class EasyPickerView: UITableView {
     
     var selectedValue:PostCategory = .Generic
     
-    private var categorySet:[PostCategory] = [.Generic,.HealthProblem,.LovingProblem]
+    private var categorySet:[PostCategory] = []//[ [.Generic,.HealthProblem,.LovingProblem]]
     
     override init(frame: CGRect, style: UITableViewStyle) {
         self.fullSizeFrame = CGRect(x: frame.origin.x, y: frame.origin.y+64+(2*frame.height), width: frame.width, height: 44*3)

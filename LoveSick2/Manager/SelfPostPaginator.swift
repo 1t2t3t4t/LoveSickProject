@@ -17,7 +17,7 @@ class SelfPostPaginator {
     
     init(_ completion:@escaping ([Post],LoveSickError?) -> Void) {
         postManager.queryType = .mostRecent
-        self.postManager.queryPostsFirstTen { (posts, error) in
+        self.postManager.querySelfPostsFirstTen { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.append(contentsOf: posts)
@@ -27,7 +27,7 @@ class SelfPostPaginator {
     }
     
     func refresh(completion: @escaping (LoveSickError?) -> Void) {
-        self.postManager.queryPostsFirstTen { (posts, error) in
+        self.postManager.querySelfPostsFirstTen { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.removeAll()
@@ -39,7 +39,7 @@ class SelfPostPaginator {
     }
     
     func nextPage(_ completion:@escaping ([Post],LoveSickError?) -> Void) {
-        self.postManager.queryPosts(withQueryValue: self.queryValue) { (posts, error) in
+        self.postManager.querySelfPosts( withQueryValue: self.queryValue) { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.append(contentsOf: posts)

@@ -38,7 +38,6 @@ enum PostTimeFilter {
 }
 
 extension PostTimeFilter {
-    
     var time: Double {
         switch self {
         case .allTime:
@@ -58,15 +57,16 @@ extension PostTimeFilter {
 class PostManager {
     
     var queryType:PostQueryType!
+    var postCategory:PostCategory!
     
-    class func post(title:String,content:String,isAnonymous: Bool,category: PostCategory) {
+    class func post(title:String,content:String,isAnonymous: Bool,category: String) {
         let post = Post(title: title, content: content)
         post.createdAt = Date().timeIntervalSince1970
         post.like = Int(arc4random_uniform(3000))
         post.isAnonymous = isAnonymous
         post.creatorUID = User.currentUser?.uid
         post.displayName = User.currentUser?.displayName
-        post.postcategory = category.rawValue
+        post.postcategory = category
         let uid = Database.database().reference().child("Posts").childByAutoId().key
         post.postuid = uid
         Database.database().reference().child("Posts/\(uid)").setValue(post.toJSON())
@@ -144,19 +144,7 @@ class PostManager {
         Database.database().reference().child("Posts/\(pid)/Replies").childByAutoId().setValue(reply.toJSON())
     }
     
-    func queryPostsFirstTen(completion:@escaping ([Post],LoveSickError?) -> Void) {
-        Database.database().reference().child("Posts").queryOrdered(byChild: self.queryType.string).queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snap) in
-            guard let value = snap.value as? [String:Any] else { completion([],.PostQueryError); return }
-            var posts:[Post] = []
-            for post in value {
-                posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
-            }
-            self.sort(&posts)
-            completion(posts,nil)
-        }
-    }
-    
-    func querySelfPostsFirstTen(completion:@escaping ([Post],LoveSickError?) -> Void) {
+    func querySelfPostsFirstTen(_ completion:@escaping ([Post],LoveSickError?) -> Void) {
         Database.database().reference().child("Users/\(Auth.auth().currentUser?.uid)/Posts").queryOrdered(byChild: self.queryType.string).queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snap) in
             guard let value = snap.value as? [String:Any] else { completion([],.PostQueryError); return }
             var posts:[Post] = []
@@ -181,8 +169,20 @@ class PostManager {
             completion(posts,nil)
         }
     }
+    
+    func queryPostsFirstTen(_ category: String?,completion:@escaping ([Post],LoveSickError?) -> Void) {
+        Database.database().reference().child("Posts").queryOrdered(byChild: self.queryType.string).queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snap) in
+            guard let value = snap.value as? [String:Any] else { completion([],.PostQueryError); return }
+            var posts:[Post] = []
+            for post in value {
+                posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
+            }
+            self.sort(&posts)
+            completion(posts,nil)
+        }
+    }
 
-    func queryPosts(withQueryValue queryValue:Double?,completion:@escaping ([Post],LoveSickError?) -> Void) {
+    func queryPosts(_ category: String?,withQueryValue queryValue:Double?,completion:@escaping ([Post],LoveSickError?) -> Void) {
         guard queryValue != nil else { completion([],nil); return }
         Database.database().reference().child("Posts").queryOrdered(byChild: self.queryType.string).queryEnding(atValue: queryValue).queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snap) in
             guard let value = snap.value as? [String:Any] else { completion([],.PostQueryError); return }

@@ -193,7 +193,7 @@ extension EditProfileViewController:UITableViewDelegate,UITableViewDataSource {
                     }
                     break
                 case 4:
-                        cell.rightLabel.text = User.currentUser.email
+                        cell.rightLabel.text = Auth.auth().currentUser?.email!
                     break
                 default:
                     break

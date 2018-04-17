@@ -22,14 +22,15 @@ class SettingViewController: UIViewController {
    let settings = [["Edit Profile","Account"],["Invite"],["Contact Us"],["Log Out"]]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Settings"
+        SetupNavigationBar.setupNavigationBar(navController: self.navigationController!, navItem: self.navigationItem, message: "Settings")
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
-        tableView.backgroundColor = UIColor.tableViewBgColor()
-        self.navigationItem.title = "Edit Profile"
+        self.tableView.separatorColor = UIColor(red: 224/255.0, green: 224/255.0, blue: 224/255.0, alpha: 1.0)
+        tableView.backgroundColor = UIColor.white
        // tableView.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)//UIColor.tableViewBackgroundColor()
         nibViews = Bundle.main.loadNibNamed("SettingHeaderView", owner: self, options: nil)?.first as! SettingHeaderView
+        nibViews?.backgroundColor = UIColor.white
         nibViews?.delegate = self
         
         //CGRect(x: 0, y: 0, width: nibViews?.frame.width, height: nibViews?.frame.height)
@@ -117,7 +118,7 @@ extension SettingViewController:UITableViewDelegate,UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if section != 0 {
-        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)
+        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.white//UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1.0)
         }
     }
     
@@ -135,7 +136,13 @@ extension SettingViewController:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "settingcell") as! UITableViewCell
         cell.textLabel?.text = settings[indexPath.section][indexPath.row]
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.bold)
         cell.accessoryType = .disclosureIndicator
+        if (indexPath.row == settings[indexPath.section].count - 1) && (indexPath.section != settings.count - 1) {
+            let line = UIView(frame: CGRect(x: 15, y: cell.frame.size.height - 2.0, width: self.view.frame.height, height: 0.5))
+            line.backgroundColor = UIColor(red: 224/255.0, green: 224/255.0, blue: 224/255.0, alpha: 1.0)
+            cell.addSubview(line)
+        }
         return cell
     }
     

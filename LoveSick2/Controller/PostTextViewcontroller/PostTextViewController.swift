@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import McPicker
 
 protocol PostTextViewDelegate:class {
     func getText() -> String
@@ -20,7 +21,7 @@ class PostTextViewController: UIViewController {
     weak var titleDelegate:PostTextViewDelegate?
     weak var contentDelegate:PostTextViewDelegate?
     
-    private var easy:EasyPickerView!
+    private var category:String = "Generic"
     
     private var anonymously:Bool = false
     
@@ -47,7 +48,7 @@ class PostTextViewController: UIViewController {
         guard let title = self.titleDelegate?.getText(), let content = self.contentDelegate?.getText() else {
             return
         }
-        PostManager.post(title: title, content: content, isAnonymous: anonymously, category: self.easy.selectedValue)
+        PostManager.post(title: title, content: content, isAnonymous: anonymously, category: self.category)
         guard let bar = tabBar else {
             return
         }
@@ -57,6 +58,21 @@ class PostTextViewController: UIViewController {
         let notificationName2 = NSNotification.Name("NewPostReloadData")
         NotificationCenter.default.post(name: notificationName2, object: nil)
         self.dismiss(animated: true, completion: nil)
+    }
+    func showCategory() {
+        
+        let data = [[PostCategory.Generic.rawValue,PostCategory.Heartbreak.rawValue]]
+        let mcPicker = McPicker(data: data)
+        mcPicker.toolbarItemsFont = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.semibold)
+        mcPicker.toolbarBarTintColor = .white
+        mcPicker.backgroundColor = .white
+        mcPicker.backgroundColorAlpha = 0.50
+        mcPicker.pickerBackgroundColor = .white
+        mcPicker.show(doneHandler: { [weak self] (selections: [Int : String]) -> Void in
+            let cell = self?.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! ChoosingTableViewCell
+            cell.label.text = selections[0]
+            self?.category = selections[0]!
+        })
     }
 
 }
@@ -75,10 +91,6 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! ChoosingTableViewCell
             cell.style = .category
-            cell.delegate = self
-            easy = EasyPickerView(frame: cell.frame)
-            easy.easyDelegate = self
-            self.view.addSubview(easy)
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "titleCell", for: indexPath) as!
@@ -96,7 +108,7 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! ChoosingTableViewCell
             cell.style = .anonymous
-            cell.delegate = self
+           // cell.delegate = self
             return cell
         }
     
@@ -106,7 +118,8 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
         self.tableView.deselectRow(at: indexPath, animated: false)
         switch indexPath.row {
         case 1:
-            easy.toggleView()
+            showCategory()
+            //easy.toggleView()
         default:
             return
         }
@@ -126,21 +139,20 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
     
 }
 
-extension PostTextViewController: ChoosingStyleDelegate, EasyPickerDelegate {
-    func anonymousChanged(_ value: Bool) {
-        self.anonymously = value
-    }
-    
-    func categorySelected(_ value: String) {
-    
-    }
-    
-    func didSelectCell(_ easyPickerView: EasyPickerView, at indexPath: IndexPath) {
-        let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! ChoosingTableViewCell
-        cell.label.text = easyPickerView.selectedValue.rawValue
-    }
-    
-}
+//extension PostTextViewController: ChoosingStyleDelegate, EasyPickerDelegate {
+//    func anonymousChanged(_ value: Bool) {
+//        self.anonymously = value
+//    }
+//
+//    func categorySelected(_ value: String) {
+//
+//    }
+//
+//    func didSelectCell(_ easyPickerView: EasyPickerView, at indexPath: IndexPath) {
+//        let cell = self.tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! ChoosingTableViewCell
+//        cell.label.text = easyPickerView.selectedValue.rawValue
+//    }
+//}
 
 extension PostTextViewController:UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {

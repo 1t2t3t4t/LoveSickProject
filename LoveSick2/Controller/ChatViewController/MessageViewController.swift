@@ -18,11 +18,11 @@ class MessageViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        SetupNavigationBar.setupNavigationBar(navController: self.navigationController!, navItem: self.navigationItem, message: "Messages")
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
         //self.edgesForExtendedLayout = UIRectEdge.bottom
-        self.navigationItem.title = "Chats"
         let notificationName = NSNotification.Name("FriendRequestReloadData")
         NotificationCenter.default.addObserver(self, selector: #selector(MessageViewController.notiRefresh(notification:)), name: notificationName, object: nil)
     }

@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.6.0)
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
+  - AMScrollingNavbar (4.3.0)
   - AssistantKit (0.4.1)
   - AsyncDisplayKit (2.2):
     - AsyncDisplayKit/PINRemoteImage (= 2.2)
@@ -93,7 +94,6 @@ PODS:
     - AsyncDisplayKit (= 2.2)
   - Nuke (6.0)
   - ObjectMapper (3.1.0)
-  - OneSignal (2.6.1)
   - Pageboy (2.2.0)
   - PINCache (3.0.1-beta.4):
     - PINCache/Arc-exception-safe (= 3.0.1-beta.4)
@@ -110,6 +110,7 @@ PODS:
     - PINCache (= 3.0.1-beta.4)
     - PINRemoteImage/Core
   - PureLayout (3.0.2)
+  - RangeSeekSlider (1.7.0)
   - SteviaLayout (4.2.0)
   - Tabman (1.2.0):
     - Pageboy (~> 2.2.0)
@@ -123,6 +124,7 @@ PODS:
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.3)
+  - AMScrollingNavbar
   - AssistantKit
   - FBSDKCoreKit
   - FBSDKLoginKit
@@ -143,7 +145,7 @@ DEPENDENCIES:
   - NMessenger
   - Nuke (~> 6.0)
   - ObjectMapper (~> 3.1)
-  - OneSignal (< 3.0, >= 2.5.2)
+  - RangeSeekSlider
   - Tabman (~> 1.0)
   - UIEmptyState
   - XLPagerTabStrip (~> 8.0)
@@ -153,6 +155,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
+  AMScrollingNavbar: bd4959aafddf653ec53109f099fc002f2a2644b7
   AssistantKit: 9ee71039dffa9dc050de945258e50e3e6bb20d5c
   AsyncDisplayKit: 1585f6cd0531ae9b30476f5912f577b73ebcb0e4
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -184,12 +187,12 @@ SPEC CHECKSUMS:
   NMessenger: ca6a89073ca40d3868cf45505f6f8318853afd40
   Nuke: d83812262734dad51e3c498cb1c4f7923f2b78c6
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
-  OneSignal: 5143194173b05027f89ce5c4481943ce000c87cd
   Pageboy: 50db8fffaa6d4d004249b7b6b19e33464dd7505b
   PINCache: a89c8f609232afac77128557bd12c861844423d7
   PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
   PINRemoteImage: c4f9f16932840c597f32e69dd288e10e111a1929
   PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
+  RangeSeekSlider: 0386c5a9aa5ebcb2fa5238e8a627280cf46c7c0a
   SteviaLayout: 0d2112caea45707695e8c718262c8ea3dd37ef17
   Tabman: 5951d9c5bc4e438e1c82b7e59e5cdc9f505c1431
   UIEmptyState: 9b501dc90933ce2743949ecbf18c20ffb33a2be9
@@ -198,6 +201,6 @@ SPEC CHECKSUMS:
   YPImagePicker: 27ad235f8fba0efbd3247c58f1c5dad73475d3db
   ZAlertView: 59fffdb4e37a01df461835566d5101052b8af953
 
-PODFILE CHECKSUM: 0d45e56859bd340d3c9724f25905b47f2c8ff474
+PODFILE CHECKSUM: 97c89082ef5b4583a6aaecfb050f28cc5a1a02f7
 
 COCOAPODS: 1.3.1

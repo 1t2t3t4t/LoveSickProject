@@ -14,17 +14,19 @@ import Firebase
 import AlamofireImage
 import Alamofire
 import JGProgressHUD
+import AMScrollingNavbar
+
 class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptyStateDelegate {
     
     @IBOutlet weak var tableView:UITableView!
+    
     var type:PostQueryType!
     var rowHeights:[Int:CGFloat] = [:]
     var currentTypeIndex:Int!
     var viewHeight:CGFloat?
     var hud:JGProgressHUD?
     
-    
-    private var paginator:PostPaginator?
+    var paginator:PostPaginator?
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -45,7 +47,7 @@ class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
                      NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22)]
         return NSAttributedString(string: "There are no post!", attributes: attrs)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.bottom
@@ -68,8 +70,7 @@ class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
     }
     @objc func beginTouch(notification:NSNotification) {
         hud?.dismiss()
-        
-        self.paginator = PostPaginator(withType:.mostLiked , { (posts, error) in
+        self.paginator = PostPaginator(withType:.mostLiked ,category:Post.postType, { (posts, error) in
             UIApplication.shared.endIgnoringInteractionEvents()
             self.tableView.reloadData()
         })
@@ -79,6 +80,7 @@ class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
         refreshControl.beginRefreshing()
         refresh()
     }
+    
     @objc func refresh() {
         self.paginator?.refresh { (error) in
             if error == nil {
@@ -87,7 +89,6 @@ class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
             self.refreshControl.endRefreshing()
         }
     }
-    
 }
 
 extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
@@ -208,12 +209,10 @@ extension TopPostViewController:PostTableViewCellDelegate {
         
         hokusai.colorScheme = HOKColorScheme.tsubaki
         hokusai.addButton("Report"){
-            
         }
         hokusai.show()
         
     }
-    
     
 }
 

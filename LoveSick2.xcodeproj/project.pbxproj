@@ -32,7 +32,6 @@
 		81F87C9620456683007E11F9 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81F87C9520456683007E11F9 /* ProfileHeaderView.xib */; };
 		81F87C9A2045684C007E11F9 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F87C992045684C007E11F9 /* ProfileHeaderView.swift */; };
 		81F87C9C20458AA7007E11F9 /* SelfPostPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F87C9B20458AA7007E11F9 /* SelfPostPaginator.swift */; };
-		D89EA06470EE340E6181478C /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75367EB21DE57AB668E35AA2 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		EF216CD9203EAACF00C13CB7 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CD8203EAACF00C13CB7 /* ChatTableViewCell.swift */; };
 		EF216CDB203EAB1700C13CB7 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CDA203EAB1700C13CB7 /* MessageViewController.swift */; };
 		EF216CDD203EC4E900C13CB7 /* PostImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CDC203EC4E900C13CB7 /* PostImageTableViewCell.swift */; };
@@ -51,6 +50,9 @@
 		EF74A77C207D0D24005EA7A9 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74A77B207D0D24005EA7A9 /* FilterViewController.swift */; };
 		EF74A77F207D0D7D005EA7A9 /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74A77E207D0D7D005EA7A9 /* SearchFriendViewController.swift */; };
 		EF823874205433F400337AF6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF823873205433F400337AF6 /* ImageCache.swift */; };
+		EF8C08572085AA9300FE1182 /* SetupNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C08562085AA9300FE1182 /* SetupNavigationBar.swift */; };
+		EF8C085F2085F78500FE1182 /* FindFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C085E2085F78500FE1182 /* FindFriendViewController.swift */; };
+		EF8C08672086371F00FE1182 /* AgeRangeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C08662086371E00FE1182 /* AgeRangeTableViewCell.swift */; };
 		EF9300A12054703D00F08DD2 /* TableviewOffset.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9300A02054703D00F08DD2 /* TableviewOffset.swift */; };
 		EF9300A22054746A00F08DD2 /* Pageboy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9300A32054746A00F08DD2 /* Pageboy.framework */; };
 		EF9300A5205474A300F08DD2 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9300A4205474A300F08DD2 /* PageViewController.swift */; };
@@ -62,8 +64,6 @@
 		EFDD53A62013A32C00817F49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFDD53A42013A32C00817F49 /* LaunchScreen.storyboard */; };
 		EFDD53B12013A32D00817F49 /* LoveSick2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53B02013A32D00817F49 /* LoveSick2Tests.swift */; };
 		EFDD53BC2013A32D00817F49 /* LoveSick2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53BB2013A32D00817F49 /* LoveSick2UITests.swift */; };
-		EFDD53D02013A57500817F49 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53CF2013A57500817F49 /* NotificationService.swift */; };
-		EFDD53D42013A57500817F49 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EFDD53CD2013A57500817F49 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EFDD53DF2013A75800817F49 /* MapperManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53DA2013A75800817F49 /* MapperManager.swift */; };
 		EFDD53E02013A75800817F49 /* PostPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53DB2013A75800817F49 /* PostPaginator.swift */; };
 		EFDD53E12013A75800817F49 /* PostManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDD53DC2013A75800817F49 /* PostManager.swift */; };
@@ -115,31 +115,9 @@
 			remoteGlobalIDString = EFDD53972013A32C00817F49;
 			remoteInfo = LoveSick2;
 		};
-		EFDD53D22013A57500817F49 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EFDD53902013A32C00817F49 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EFDD53CC2013A57500817F49;
-			remoteInfo = OneSignalNotificationServiceExtension;
-		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		EFDD53D82013A57500817F49 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				EFDD53D42013A57500817F49 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		0DBC520EADA1117BC29EEDC9 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		0F1EA47E73CA4ED843E4F962 /* Pods-LoveSick2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2UITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2UITests/Pods-LoveSick2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		32F14CF221BE47464F9017F9 /* Pods-LoveSick2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2UITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2UITests/Pods-LoveSick2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		3D13B41F4F0F6877D59141BF /* Pods_LoveSick2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveSick2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,7 +150,6 @@
 		878AC48364DF84E2B968C1DD /* Pods-LoveSick2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2.release.xcconfig"; sourceTree = "<group>"; };
 		8F4B915B520EBBFE64C26622 /* Pods_LoveSick2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveSick2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A27461F1B4E25C92A7ADB186 /* Pods_LoveSick2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoveSick2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA4D1593277B8AE0AFFABE27 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		DD1EDA92ADBEC42B5B23CAC2 /* Pods-LoveSick2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoveSick2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2.debug.xcconfig"; sourceTree = "<group>"; };
 		EF216CD8203EAACF00C13CB7 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		EF216CDA203EAB1700C13CB7 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +173,9 @@
 		EF74A77E207D0D7D005EA7A9 /* SearchFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
 		EF759EA6207D10800049CD22 /* RangeSeekSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RangeSeekSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF823873205433F400337AF6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		EF8C08562085AA9300FE1182 /* SetupNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupNavigationBar.swift; sourceTree = "<group>"; };
+		EF8C085E2085F78500FE1182 /* FindFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendViewController.swift; sourceTree = "<group>"; };
+		EF8C08662086371E00FE1182 /* AgeRangeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeRangeTableViewCell.swift; sourceTree = "<group>"; };
 		EF9300A02054703D00F08DD2 /* TableviewOffset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableviewOffset.swift; sourceTree = "<group>"; };
 		EF9300A32054746A00F08DD2 /* Pageboy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pageboy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF9300A4205474A300F08DD2 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -214,8 +194,6 @@
 		EFDD53BB2013A32D00817F49 /* LoveSick2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveSick2UITests.swift; sourceTree = "<group>"; };
 		EFDD53BD2013A32D00817F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFDD53CD2013A57500817F49 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		EFDD53CF2013A57500817F49 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		EFDD53D12013A57500817F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFDD53DA2013A75800817F49 /* MapperManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapperManager.swift; sourceTree = "<group>"; };
 		EFDD53DB2013A75800817F49 /* PostPaginator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPaginator.swift; sourceTree = "<group>"; };
 		EFDD53DC2013A75800817F49 /* PostManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostManager.swift; sourceTree = "<group>"; };
@@ -298,7 +276,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D89EA06470EE340E6181478C /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,13 +421,20 @@
 			path = SearchFriendViewController;
 			sourceTree = "<group>";
 		};
+		EF8C085D2085F76D00FE1182 /* FindFriendViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF8C085E2085F78500FE1182 /* FindFriendViewController.swift */,
+			);
+			path = FindFriendViewController;
+			sourceTree = "<group>";
+		};
 		EFDD538F2013A32C00817F49 = {
 			isa = PBXGroup;
 			children = (
 				EFDD539A2013A32C00817F49 /* LoveSick2 */,
 				EFDD53AF2013A32D00817F49 /* LoveSick2Tests */,
 				EFDD53BA2013A32D00817F49 /* LoveSick2UITests */,
-				EFDD53CE2013A57500817F49 /* OneSignalNotificationServiceExtension */,
 				EFDD53992013A32C00817F49 /* Products */,
 				F2547B410D3E288731033044 /* Pods */,
 				BC100AB5276A9EB37EE03421 /* Frameworks */,
@@ -503,15 +487,6 @@
 			path = LoveSick2UITests;
 			sourceTree = "<group>";
 		};
-		EFDD53CE2013A57500817F49 /* OneSignalNotificationServiceExtension */ = {
-			isa = PBXGroup;
-			children = (
-				EFDD53CF2013A57500817F49 /* NotificationService.swift */,
-				EFDD53D12013A57500817F49 /* Info.plist */,
-			);
-			path = OneSignalNotificationServiceExtension;
-			sourceTree = "<group>";
-		};
 		EFDD53D92013A75800817F49 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +524,7 @@
 		EFDD540C2013B5A900817F49 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EF8C085D2085F76D00FE1182 /* FindFriendViewController */,
 				EF74A77D207D0D6E005EA7A9 /* SearchFriendViewController */,
 				EF74A77A207D0CFC005EA7A9 /* FilterViewController */,
 				EF74A773207CEA74005EA7A9 /* EditProfileViewController */,
@@ -568,6 +544,8 @@
 		EFDD54192014B55C00817F49 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EF8C08662086371E00FE1182 /* AgeRangeTableViewCell.swift */,
+				EF8C08562085AA9300FE1182 /* SetupNavigationBar.swift */,
 				EF74A778207CF29E005EA7A9 /* DetailTableViewCell.swift */,
 				EFDD541C2014B57700817F49 /* PostTableViewCell.swift */,
 				EFDD54222014E14300817F49 /* ChoosingTableViewCell.swift */,
@@ -599,8 +577,6 @@
 				414F3316BFC8B5BC9DF1AA60 /* Pods-LoveSick2Tests.release.xcconfig */,
 				32F14CF221BE47464F9017F9 /* Pods-LoveSick2UITests.debug.xcconfig */,
 				0F1EA47E73CA4ED843E4F962 /* Pods-LoveSick2UITests.release.xcconfig */,
-				0DBC520EADA1117BC29EEDC9 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
-				DA4D1593277B8AE0AFFABE27 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -616,14 +592,12 @@
 				EFDD53942013A32C00817F49 /* Sources */,
 				EFDD53952013A32C00817F49 /* Frameworks */,
 				EFDD53962013A32C00817F49 /* Resources */,
-				EFDD53D82013A57500817F49 /* Embed App Extensions */,
 				01D03167A3D3322F2F0AA696 /* [CP] Embed Pods Frameworks */,
 				4E88976AEE74C7675F49AF32 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EFDD53D32013A57500817F49 /* PBXTargetDependency */,
 			);
 			name = LoveSick2;
 			productName = LoveSick2;
@@ -676,11 +650,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EFDD53D72013A57500817F49 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
 			buildPhases = (
-				D9E2E7E61A6956861D6FA3FF /* [CP] Check Pods Manifest.lock */,
 				EFDD53C92013A57500817F49 /* Sources */,
 				EFDD53CA2013A57500817F49 /* Frameworks */,
 				EFDD53CB2013A57500817F49 /* Resources */,
-				EE788C7A852EEB5F3E6DC610 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -787,6 +759,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AMScrollingNavbar/AMScrollingNavbar.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AssistantKit/AssistantKit.framework",
@@ -816,6 +789,7 @@
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/RangeSeekSlider/RangeSeekSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
 				"${BUILT_PRODUCTS_DIR}/Tabman/Tabman.framework",
 				"${BUILT_PRODUCTS_DIR}/UIEmptyState/UIEmptyState.framework",
@@ -828,6 +802,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMScrollingNavbar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AssistantKit.framework",
@@ -857,6 +832,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pageboy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RangeSeekSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Tabman.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIEmptyState.framework",
@@ -986,39 +962,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2Tests/Pods-LoveSick2Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D9E2E7E61A6956861D6FA3FF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EE788C7A852EEB5F3E6DC610 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F1968A2BA2A9320EC7EC4F8E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1049,6 +992,7 @@
 				81E674162045D0070003BB85 /* ChatRoom.swift in Sources */,
 				EFDD53EC2013A76D00817F49 /* Post.swift in Sources */,
 				EFDD53E92013A76D00817F49 /* LoveSickError.swift in Sources */,
+				EF8C08572085AA9300FE1182 /* SetupNavigationBar.swift in Sources */,
 				EFDD54272014E15C00817F49 /* ContentTableViewCell.swift in Sources */,
 				EFDD541F2014BC4500817F49 /* TabBarController.swift in Sources */,
 				EFDD53DF2013A75800817F49 /* MapperManager.swift in Sources */,
@@ -1058,6 +1002,7 @@
 				EFDD540E2013B5BF00817F49 /* TopPostViewController.swift in Sources */,
 				810F7BA1202C643300B523AB /* CommentViewController.swift in Sources */,
 				EFDD54252014E15100817F49 /* TitleTableViewCell.swift in Sources */,
+				EF8C08672086371F00FE1182 /* AgeRangeTableViewCell.swift in Sources */,
 				810F7BA3202C652500B523AB /* CommentTitleTableViewCell.swift in Sources */,
 				81B27381202B1B8800DCCA8B /* ExtensionSwift.swift in Sources */,
 				EF74A77C207D0D24005EA7A9 /* FilterViewController.swift in Sources */,
@@ -1067,6 +1012,7 @@
 				EFDD54212014E0A000817F49 /* PostTextViewController.swift in Sources */,
 				810F7BA5202C653400B523AB /* CommentTextTableViewCell.swift in Sources */,
 				EFDD54142014826300817F49 /* SessionManager.swift in Sources */,
+				EF8C085F2085F78500FE1182 /* FindFriendViewController.swift in Sources */,
 				819C9DA22051A9450051729E /* SettingHeaderView.swift in Sources */,
 				EFDD54232014E14300817F49 /* ChoosingTableViewCell.swift in Sources */,
 				EFDD541D2014B57700817F49 /* PostTableViewCell.swift in Sources */,
@@ -1126,7 +1072,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFDD53D02013A57500817F49 /* NotificationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1142,11 +1087,6 @@
 			isa = PBXTargetDependency;
 			target = EFDD53972013A32C00817F49 /* LoveSick2 */;
 			targetProxy = EFDD53B82013A32D00817F49 /* PBXContainerItemProxy */;
-		};
-		EFDD53D32013A57500817F49 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EFDD53CC2013A57500817F49 /* OneSignalNotificationServiceExtension */;
-			targetProxy = EFDD53D22013A57500817F49 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1281,7 +1221,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DD1EDA92ADBEC42B5B23CAC2 /* Pods-LoveSick2.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N6VW4SKG74;
@@ -1299,7 +1238,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 878AC48364DF84E2B968C1DD /* Pods-LoveSick2.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N6VW4SKG74;
@@ -1385,11 +1323,12 @@
 		};
 		EFDD53D52013A57500817F49 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0DBC520EADA1117BC29EEDC9 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N6VW4SKG74;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stella.LoveSick2.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1401,11 +1340,12 @@
 		};
 		EFDD53D62013A57500817F49 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA4D1593277B8AE0AFFABE27 /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N6VW4SKG74;
 				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stella.LoveSick2.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

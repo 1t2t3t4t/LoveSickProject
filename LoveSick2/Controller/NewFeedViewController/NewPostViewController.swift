@@ -13,19 +13,18 @@ import KDCircularProgress
 import Firebase
 import AlamofireImage
 import Alamofire
+import AMScrollingNavbar
 
 class NewPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptyStateDelegate {
     
     @IBOutlet weak var tableView:UITableView!
-    
     
     var type:PostQueryType!
     var rowHeights:[Int:CGFloat] = [:]
     var currentTypeIndex:Int!
     var viewHeight:CGFloat?
    
-    
-    private var paginator:PostPaginator!
+    var paginator:PostPaginator!
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -52,7 +51,7 @@ class NewPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
 //        return IndicatorInfo(title: "New")
 //
 //    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.bottom
@@ -67,7 +66,7 @@ class NewPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
         NotificationCenter.default.addObserver(self, selector: #selector(NewPostViewController.notiRefresh(notification:)), name: notificationName, object: nil)
         
         self.reloadEmptyStateForTableView(tableView)
-        self.paginator = PostPaginator(withType:.mostRecent , { (posts, error) in
+        self.paginator = PostPaginator(withType:.mostRecent,category:Post.postType, { (posts, error) in
             self.tableView.reloadData()
         })
         

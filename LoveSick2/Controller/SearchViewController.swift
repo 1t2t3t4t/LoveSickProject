@@ -41,8 +41,17 @@ class SearchViewController: UIViewController {
     private func setUpSearchBar() {
         self.searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50))
         self.searchBar.delegate = self
-        self.searchBar.placeholder = "Search here..."
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .done, target: self, action: #selector(SearchViewController.searchFriend))
+        self.searchBar.placeholder = "Search"
+        self.searchBar.tintColor = UIColor.darkGray
+        for view in searchBar.subviews {
+            for subview in view.subviews {
+                if subview.isKind(of: UITextField.self) {
+                    let textField: UITextField = subview as! UITextField
+                    textField.backgroundColor = UIColor(red: 224/255.0, green: 224/255.0, blue: 224/255.0, alpha: 1.0)
+                }
+            }
+        }
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "filter"), style: .done, target: self, action: #selector(SearchViewController.searchFriend))
         self.navigationItem.titleView = self.searchBar
         
     }

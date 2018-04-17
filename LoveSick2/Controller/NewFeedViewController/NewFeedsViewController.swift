@@ -13,8 +13,8 @@ class NewFeedsViewController: ButtonBarPagerTabStripViewController {
     
     override func viewDidLoad() {
         // set up style before super view did load is executed
-        self.view.backgroundColor = UIColor.red
-        settings.style.buttonBarBackgroundColor = .clear
+
+        //settings.style.buttonBarBackgroundColor = .clear
         settings.style.selectedBarBackgroundColor = .blue
         //-
         super.viewDidLoad()

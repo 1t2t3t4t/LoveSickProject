@@ -12,18 +12,22 @@ import ObjectMapper
 import AlamofireImage
 
 enum PostCategory:String {
-    case HealthProblem = "Health problem category"
-    case LovingProblem = "Loving problem category"
-    case Generic = "Generic category"
+   // case HealthProblem = "Health problem category"
+    case Heartbreak = "Heartbreak"
+    case Generic = "Generic"
+    case AnyType = "Any"
 }
 
 extension PostCategory {
+    
     static func getCategory(_ string:String?) -> PostCategory {
         switch string {
-        case self.HealthProblem.rawValue? :
-            return .HealthProblem
-        case self.LovingProblem.rawValue?:
-            return .LovingProblem
+//        case self.HealthProblem.rawValue? :
+//            return .HealthProblem
+        case self.AnyType.rawValue?:
+            return .AnyType
+        case self.Heartbreak.rawValue?:
+            return .Heartbreak
         default:
             return .Generic
         }
@@ -48,6 +52,7 @@ class Post: Mappable {
             self.displayName = oldValue ? "Anonymous" : self.displayName
         }
     }
+    static var postType:PostCategory = PostCategory.Generic
     
     var replies: [Reply] = []
     private var repliesModel:[String:Any]?{
