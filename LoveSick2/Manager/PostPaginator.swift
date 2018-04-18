@@ -15,7 +15,6 @@ class PostPaginator {
     private var postManager:PostManager = PostManager()
     private var postCategory:PostCategory!
     
-    var categoryFilter:String? = nil
     var posts:[Post] = []
     
     init(withType queryType:PostQueryType,category:PostCategory,_ completion:@escaping ([Post],LoveSickError?) -> Void) {
@@ -23,8 +22,7 @@ class PostPaginator {
         self.postCategory = category
         postManager.queryType = queryType
         postManager.postCategory = category
-        let category = self.categoryFilter == nil ? nil : self.categoryFilter!
-        self.postManager.queryPostsFirstTen(self.categoryFilter) { (posts, error) in
+        self.postManager.queryPostsFirstTen { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.append(contentsOf: posts)
@@ -34,7 +32,7 @@ class PostPaginator {
     }
     
     func refresh(completion: @escaping (LoveSickError?) -> Void) {
-        self.postManager.queryPostsFirstTen(self.categoryFilter) { (posts, error) in
+        self.postManager.queryPostsFirstTen { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.removeAll()
@@ -46,12 +44,23 @@ class PostPaginator {
     }
     
     func nextPage(_ completion:@escaping ([Post],LoveSickError?) -> Void) {
-        self.postManager.queryPosts(self.categoryFilter ,withQueryValue: self.queryValue) { (posts, error) in
+        self.postManager.queryPosts(withQueryValue: self.queryValue) { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.append(contentsOf: posts)
                 completion(posts,error)
             }
+        }
+    }
+    
+    func queryPosts(withFilter category:String,_ completion:@escaping (LoveSickError?) -> Void) {
+        self.postManager.queryPosts(withFilter: category) { (posts, error) in
+            if error == nil {
+                self.posts.removeAll()
+                self.posts.append(contentsOf: posts)
+                completion(nil)
+            }
+            completion(error)
         }
     }
     

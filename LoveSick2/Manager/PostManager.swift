@@ -170,7 +170,7 @@ class PostManager {
         }
     }
     
-    func queryPostsFirstTen(_ category: String?,completion:@escaping ([Post],LoveSickError?) -> Void) {
+    func queryPostsFirstTen(completion:@escaping ([Post],LoveSickError?) -> Void) {
         Database.database().reference().child("Posts").queryOrdered(byChild: self.queryType.string).queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snap) in
             guard let value = snap.value as? [String:Any] else { completion([],.PostQueryError); return }
             var posts:[Post] = []
@@ -182,7 +182,7 @@ class PostManager {
         }
     }
 
-    func queryPosts(_ category: String?,withQueryValue queryValue:Double?,completion:@escaping ([Post],LoveSickError?) -> Void) {
+    func queryPosts(withQueryValue queryValue:Double?,completion:@escaping ([Post],LoveSickError?) -> Void) {
         guard queryValue != nil else { completion([],nil); return }
         Database.database().reference().child("Posts").queryOrdered(byChild: self.queryType.string).queryEnding(atValue: queryValue).queryLimited(toLast: 10).observeSingleEvent(of: .value) { (snap) in
             guard let value = snap.value as? [String:Any] else { completion([],.PostQueryError); return }
@@ -196,6 +196,17 @@ class PostManager {
         }
     }
 
+    func queryPosts(withFilter category:String,_ completion:@escaping ([Post],LoveSickError?) -> Void) {
+        Database.database().reference().child("Posts").queryOrdered(byChild: "postcategory").queryEqual(toValue: category).observeSingleEvent(of: .value) { (snap) in
+            guard let value = snap.value as? [String:Any] else { completion([],.PostQueryError); return }
+            var posts:[Post] = []
+            for post in value {
+                posts.append(MapperManager.mapObject(dictionary: post.value as! [String:Any]))
+            }
+            self.sort(&posts)
+            completion(posts,nil)
+        }
+    }
     
     private func sort(_ posts:inout [Post]) {
         switch self.queryType {

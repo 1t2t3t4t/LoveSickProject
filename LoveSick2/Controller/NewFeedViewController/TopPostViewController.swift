@@ -55,7 +55,9 @@ class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
         self.tableView.dataSource = self
         self.tableView.addSubview(self.refreshControl)
         let notificationName = NSNotification.Name("NewPostReloadData")
-        NotificationCenter.default.addObserver(self, selector: #selector(TopPostViewController.notiRefresh(notification:)), name: notificationName, object: nil)
+        let filterNoti = NSNotification.Name("NewFilter")
+        NotificationCenter.default.addObserver(self, selector: #selector(notiRefresh), name: filterNoti, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(notiRefresh(notification:)), name: notificationName, object: nil)
         self.hud = JGProgressHUD(style: .dark)
         hud?.show(in:self.view)
         self.reloadEmptyStateForTableView(tableView)
@@ -64,8 +66,7 @@ class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
         self.emptyStateDataSource = self
         self.emptyStateDelegate = self
         let notificationName2 = NSNotification.Name("removeIgnoreTouch")
-        NotificationCenter.default.addObserver(self, selector: #selector(TopPostViewController.beginTouch(notification:)), name: notificationName2, object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(beginTouch(notification:)), name: notificationName2, object: nil)
         
     }
     @objc func beginTouch(notification:NSNotification) {
@@ -78,7 +79,17 @@ class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
     }
     @objc func notiRefresh(notification: NSNotification) {
         refreshControl.beginRefreshing()
-        refresh()
+        if notification.name.rawValue == "NewPostReloadData" {
+            refresh()
+        }else if notification.name.rawValue == "NewFilter" {
+            let filter = notification.userInfo!["filter"] as! String
+            self.paginator?.queryPosts(withFilter: filter, { (error) in
+                if error == nil {
+                    self.tableView.reloadData()
+                }
+                self.refreshControl.endRefreshing()
+            })
+        }
     }
     
     @objc func refresh() {
@@ -89,6 +100,8 @@ class TopPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
             self.refreshControl.endRefreshing()
         }
     }
+    
+    
 }
 
 extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
@@ -189,8 +202,8 @@ extension TopPostViewController:UITableViewDelegate,UITableViewDataSource{
         
     }
     
-    
 }
+
 extension TopPostViewController:PostTableViewCellDelegate {
     
     func showProfile(uid:String) {
@@ -202,7 +215,6 @@ extension TopPostViewController:PostTableViewCellDelegate {
     }
     
     func report() {
-        
         let hokusai = Hokusai()
         hokusai.cancelButtonTitle = "Cancel"
         hokusai.fontName = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.bold).fontName
@@ -211,7 +223,6 @@ extension TopPostViewController:PostTableViewCellDelegate {
         hokusai.addButton("Report"){
         }
         hokusai.show()
-        
     }
     
 }

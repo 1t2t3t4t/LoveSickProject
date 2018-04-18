@@ -46,11 +46,6 @@ class NewPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
                      NSAttributedStringKey.font: UIFont.systemFont(ofSize: 22)]
         return NSAttributedString(string: "There are no post!", attributes: attrs)
     }
-    
-//    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-//        return IndicatorInfo(title: "New")
-//
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +58,9 @@ class NewPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
         self.tableView.dataSource = self
         self.tableView.addSubview(self.refreshControl)
         let notificationName = NSNotification.Name("NewPostReloadData")
-        NotificationCenter.default.addObserver(self, selector: #selector(NewPostViewController.notiRefresh(notification:)), name: notificationName, object: nil)
-        
+        let filterNoti = NSNotification.Name("NewFilter")
+        NotificationCenter.default.addObserver(self, selector: #selector(notiRefresh), name: filterNoti, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(notiRefresh), name: notificationName, object: nil)
         self.reloadEmptyStateForTableView(tableView)
         self.paginator = PostPaginator(withType:.mostRecent,category:Post.postType, { (posts, error) in
             self.tableView.reloadData()
@@ -77,10 +73,23 @@ class NewPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
         
         
     }
+    
     @objc func notiRefresh(notification: NSNotification) {
         refreshControl.beginRefreshing()
-        refresh()
+        if notification.name.rawValue == "NewPostReloadData" {
+            refresh()
+        }else if notification.name.rawValue == "NewFilter" {
+            let filter = notification.userInfo!["filter"] as! String
+            self.paginator?.queryPosts(withFilter: filter, { (error) in
+                if error == nil {
+                    self.tableView.reloadData()
+                }
+                self.refreshControl.endRefreshing()
+            })
+        }
     }
+
+    
     @objc func refresh() {
         self.paginator.refresh { (error) in
             if error == nil {

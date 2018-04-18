@@ -51,10 +51,8 @@ class PageViewController: TabmanViewController, PageboyViewControllerDataSource 
         mcPicker.pickerBackgroundColor = .white
         mcPicker.show(doneHandler: { [weak self] (selections: [Int : String]) -> Void in
                 // selections[0]
-            let filter = selections.first?.value
-            self?.child_1.paginator?.categoryFilter = filter
-            self?.child_2.paginator?.categoryFilter = filter
-            self?.child_1.refresh()
+            let info = ["filter" : selections.first?.value]
+            NotificationCenter.default.post(name: Notification.Name("NewFilter"), object: nil, userInfo: info)
         })
 //        let view = CategoryTableViewController.newInstanceFromStoryboard() as! CategoryTableViewController
 //        self.navigationController?.pushViewController(view, animated: true)
