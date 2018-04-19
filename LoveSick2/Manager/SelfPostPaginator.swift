@@ -19,6 +19,7 @@ class SelfPostPaginator {
         postManager.queryType = .mostRecent
         self.postManager.querySelfPostsFirstTen { (posts, error) in
             if error == nil {
+                self.posts.removeAll()
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.append(contentsOf: posts)
                 completion(posts,error)

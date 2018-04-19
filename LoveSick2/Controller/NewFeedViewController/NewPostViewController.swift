@@ -24,7 +24,7 @@ class NewPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
     var currentTypeIndex:Int!
     var viewHeight:CGFloat?
    
-    var paginator:PostPaginator!
+    var paginator:PostPaginator?
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -82,11 +82,21 @@ class NewPostViewController: UIViewController, UIEmptyStateDataSource, UIEmptySt
         refresh()
     }
     @objc func refresh() {
-        self.paginator.refresh { (error) in
+        if self.paginator != nil {
+            self.paginator?.refresh { (error) in
+                if error == nil {
+                    self.tableView.reloadData()
+                }
+                self.refreshControl.endRefreshing()
+            }
+        }
+        else {
+            self.paginator?.refresh { (error) in
             if error == nil {
                 self.tableView.reloadData()
             }
             self.refreshControl.endRefreshing()
+        }
         }
     }
     
@@ -99,35 +109,52 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.paginator.posts.count
+        return self.paginator!.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let post = self.paginator.posts[indexPath.row]
-        if post.isImagePost! {
+        let post = self.paginator?.posts[indexPath.row]
+        if (post?.isImagePost!)! {
             let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
             cell.post = post
             cell.delegate = self
             if cell.post.displayName != "Anonymous"{
-                if let img = ImageCache.cachedImage(for: post.creatorUID!) {
+                if let img = ImageCache.cachedImage(for: (post?.creatorUID!)!) {
                     cell.progressView.isHidden = true
                     cell.profileImg.image = img
                 }else {
-                    Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
-                        if snap.exists() {
+                    Firestore.firestore().collection("Users").document((post?.creatorUID!)!).getDocument(completion: {(document,error) in
+                        if !(document?.exists)! || error != nil {
+                            return
+                        }
+                        else {
                             print("snap exist man")
-                            guard let url = snap.value as? String else {
+                            let data = document?.data()
+                            guard let url = data!["profileURL"] as? String else {
                                 print("snap exist man url fail")
                                 cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
                                 return
                             }
-                            print("snap exist man url fin")
                             cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
-                                ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+                                ImageCache.cache(cell.profileImg.image!, for: (post?.creatorUID!)!)
                             })
-                            // cell.profileImg.af_setImage(withURL: URL(string: url)!)
                         }
                     })
+//                    Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+//                        if snap.exists() {
+//                            print("snap exist man")
+//                            guard let url = snap.value as? String else {
+//                                print("snap exist man url fail")
+//                                cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+//                                return
+//                            }
+//                            print("snap exist man url fin")
+//                            cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+//                                ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+//                            })
+//                            // cell.profileImg.af_setImage(withURL: URL(string: url)!)
+//                        }
+//                    })
                 }
                 return cell
             }
@@ -138,23 +165,40 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
             cell.post = post
             cell.delegate = self
             if cell.post.displayName != "Anonymous"{
-                if let img = ImageCache.cachedImage(for: post.creatorUID!) {
+                if let img = ImageCache.cachedImage(for: (post?.creatorUID!)!) {
                     cell.profileImg.image = img
                 } else {
-                    Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
-                        if snap.exists() {
+                    Firestore.firestore().collection("Users").document((post?.creatorUID!)!).getDocument(completion: {(document,error) in
+                        if !(document?.exists)! || error != nil {
+                            return
+                        }
+                        else {
                             print("snap exist man")
-                            guard let url = snap.value as? String else {
-                                cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+                            let data = document?.data()
+                            guard let url = data!["profileURL"] as? String else {
                                 print("snap exist man url fail")
+                                cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
                                 return
                             }
-                            print("snap exist man url fin")
                             cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
-                                ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+                                ImageCache.cache(cell.profileImg.image!, for: (post?.creatorUID!)!)
                             })
                         }
                     })
+//                    Database.database().reference().child("Users/\(post.creatorUID!)/profileURL").observeSingleEvent(of: .value, with: {snap in
+//                        if snap.exists() {
+//                            print("snap exist man")
+//                            guard let url = snap.value as? String else {
+//                                cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+//                                print("snap exist man url fail")
+//                                return
+//                            }
+//                            print("snap exist man url fin")
+//                            cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+//                                ImageCache.cache(cell.profileImg.image!, for: post.creatorUID!)
+//                            })
+//                        }
+//                    })
                 }
                 return cell
             }
@@ -163,8 +207,8 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == paginator.posts.count - 5 {
-            self.paginator.nextPage { (posts, error) in
+        if indexPath.row == (paginator?.posts.count)! - 5 {
+            self.paginator?.nextPage { (posts, error) in
                 if posts.count != 0 {
                     self.reloadEmptyStateForTableView(tableView)
                     self.tableView.reloadData()
@@ -176,7 +220,7 @@ extension NewPostViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         let viewController = ViewPostViewController.newInstanceFromStoryboard() as! ViewPostViewController
-        viewController.post = self.paginator.posts[indexPath.row]
+        viewController.post = self.paginator?.posts[indexPath.row]
         self.navigationController?.pushViewController(viewController, animated: true)
         
     }

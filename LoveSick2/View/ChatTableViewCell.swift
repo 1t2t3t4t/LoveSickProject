@@ -42,25 +42,42 @@ class ChatTableViewCell: UITableViewCell {
         guard let uid = (chatRoom?.fuid == User.currentUser?.uid ? self.chatRoom?.suid:self.chatRoom?.fuid) else {
             return
         }
-        Database.database().reference().child("Users/\(uid)/profileURL").observeSingleEvent(of: .value, with: {snap in
-            if snap.exists() {
-                print("snap exist man")
-                guard let url = snap.value as? String else {
-                    print("snap exist man url fail")
-                    return
-                }
-                print("snap exist man url fin")
-                        self.profileImage.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "grayBackground"), filter: nil, progress: {progress in
-                        }
-                            , imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true, completion: {(response) in
-                                if let image = response.result.value{
-                                    User.currentUser.chatRoom[ChatRoom.getIndex(uid: self.chatRoom.chatRoomUID!)].simg = image
-                                    }
-                                     //self.chatRoom.sprofileImg = image
-                                })
-                self.profileImage.af_setImage(withURL: URL(string: url)!)
+        Firestore.firestore().collection("Users").document(uid).getDocument(completion: {(document,error) in
+            if error != nil || !(document?.exists)! {return}
+            let data = document?.data()
+            guard let url = data!["profileURL"] as? String else {
+                return
             }
+            self.profileImage.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "grayBackground"), filter: nil, progress: {progress in
+            }
+                , imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true, completion: {(response) in
+                    if let image = response.result.value{
+                        User.currentUser.chatRoom[ChatRoom.getIndex(uid: self.chatRoom.chatRoomUID!)].simg = image
+                    }
+                    //self.chatRoom.sprofileImg = image
+            })
+            self.profileImage.af_setImage(withURL: URL(string: url)!)
+            
         })
+//        Database.database().reference().child("Users/\(uid)/profileURL").observeSingleEvent(of: .value, with: {snap in
+//            if snap.exists() {
+//                print("snap exist man")
+//                guard let url = snap.value as? String else {
+//                    print("snap exist man url fail")
+//                    return
+//                }
+//                print("snap exist man url fin")
+//                        self.profileImage.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "grayBackground"), filter: nil, progress: {progress in
+//                        }
+//                            , imageTransition: .crossDissolve(0.3), runImageTransitionIfCached: true, completion: {(response) in
+//                                if let image = response.result.value{
+//                                    User.currentUser.chatRoom[ChatRoom.getIndex(uid: self.chatRoom.chatRoomUID!)].simg = image
+//                                    }
+//                                     //self.chatRoom.sprofileImg = image
+//                                })
+//                self.profileImage.af_setImage(withURL: URL(string: url)!)
+//            }
+//        })
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -30,7 +30,7 @@ class ChoosingTableViewCell: UITableViewCell {
     weak var delegate:ChoosingStyleDelegate?
     
     private func setUp() {
-        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.bold)
+        label.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)
         if self.style == .anonymous {
             label.text = "Post anonymously"
             switcher.isOn = false

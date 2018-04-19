@@ -82,6 +82,7 @@ class PostImageTableViewCell: UITableViewCell {
         self.category.text = ""
         self.numvote.text = ""
         self.contentImg.image = nil
+        self.category.text = ""
     }
     internal var aspectConstraint : NSLayoutConstraint? {
         didSet {
@@ -112,11 +113,13 @@ class PostImageTableViewCell: UITableViewCell {
         let numLike = self.post.like >  999 ? "\(self.post.like/1000)k" : "\(self.post.like)"
         addattributeText(button:comment,image: #imageLiteral(resourceName: "message"),text: " \(self.post.replies.count)")
         self.numvote.text = numLike
+        print("there's no category? \(self.post.postcategory)")
+        self.category.text = self.post.postcategory
         setCustomImage(image: #imageLiteral(resourceName: "grayBackground"))
+
         if let img = ImageCache.cachedImage(for: self.post.imageURL!) {
             self.contentImg.image = img
             self.setCustomImage(image: img)
-            return
         }
         self.contentImg.af_setImage(withURL: URL(string:self.post.imageURL!)!, placeholderImage: #imageLiteral(resourceName: "grayBackground"), filter: nil, progress: {progress in
                             self.progressView.angle = progress.fractionCompleted*360.0

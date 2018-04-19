@@ -44,7 +44,7 @@ class Post: Mappable {
     var isImagePost:Bool?
     var like: Int = 0
     var creatorUID: String?
-    var postcategory:String? = PostCategory.Generic.rawValue
+    var postcategory:String? = PostCategory.AnyType.rawValue
     var displayName: String?
     var postuid:String?
     var isAnonymous: Bool = false {
@@ -52,7 +52,7 @@ class Post: Mappable {
             self.displayName = oldValue ? "Anonymous" : self.displayName
         }
     }
-    static var postType:PostCategory = PostCategory.Generic
+    static var postType:PostCategory = PostCategory.AnyType
     
     var replies: [Reply] = []
     private var repliesModel:[String:Any]?{

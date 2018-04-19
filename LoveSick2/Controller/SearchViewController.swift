@@ -87,22 +87,49 @@ extension SearchViewController: UISearchBarDelegate {
     @objc private func fetchPost() {
         self.posts.removeAll()
         guard let searchText = self.searchBar.text else { return }
-        Database.database().reference().child("Posts").queryOrdered(byChild: "createdAt").observeSingleEvent(of: .value) { (snap) in
-            guard let value = snap.value as? [String:Any] else {
+        Firestore.firestore().collection("Posts").order(by: "createdAt").getDocuments(completion: { (snap,error) in
+            if error != nil || (snap?.isEmpty)!{
                 self.tableView.reloadData()
                 return
             }
-            for post in value {
-                let post = MapperManager<Post>.mapObject(dictionary: post.value as! [String:Any])
+            
+//            guard let value = snap. as? [String:Any] else {
+//                self.tableView.reloadData()
+//                return
+//            }
+            for post in (snap?.documents)! {
+                let post = MapperManager<Post>.mapObject(dictionary: post.data() as! [String:Any])
                 if post.title!.lowercased().contains(searchText.lowercased()) {
                     self.posts.append(post)
                 }
             }
+//            for post in value {
+//                let post = MapperManager<Post>.mapObject(dictionary: post.value as! [String:Any])
+//                if post.title!.lowercased().contains(searchText.lowercased()) {
+//                    self.posts.append(post)
+//                }
+//            }
             self.tableView.reloadData()
             self.refreshControl.endRefreshing()
             self.typeCount = 0
             return
-        }
+        })
+//        Database.database().reference().child("Posts").queryOrdered(byChild: "createdAt").observeSingleEvent(of: .value) { (snap) in
+//            guard let value = snap.value as? [String:Any] else {
+//                self.tableView.reloadData()
+//                return
+//            }
+//            for post in value {
+//                let post = MapperManager<Post>.mapObject(dictionary: post.value as! [String:Any])
+//                if post.title!.lowercased().contains(searchText.lowercased()) {
+//                    self.posts.append(post)
+//                }
+//            }
+//            self.tableView.reloadData()
+//            self.refreshControl.endRefreshing()
+//            self.typeCount = 0
+//            return
+//        }
     }
 }
 

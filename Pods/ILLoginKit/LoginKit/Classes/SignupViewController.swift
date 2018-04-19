@@ -34,7 +34,10 @@ class SignupViewController: UIViewController, KeyboardMovable, BackgroundMovable
     }
 
     // MARK: Keyboard Movable
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+      
+        self.view.endEditing(true)
+    }
     var selectedField: UITextField?
 
     var offset: CGFloat = 0.0
@@ -124,11 +127,11 @@ class SignupViewController: UIViewController, KeyboardMovable, BackgroundMovable
     }
 
     func setupFonts() {
-        nameTextField.font = Font.montserratRegular.get(size: 13)
-        emailTextField.font = Font.montserratRegular.get(size: 13)
-        passwordTextField.font = Font.montserratRegular.get(size: 13)
-        repeatPasswordTextField.font = Font.montserratRegular.get(size: 13)
-        signupButton.titleLabel?.font = Font.montserratRegular.get(size: 15)
+        nameTextField.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)//Font.montserratRegular.get(size: 13)
+        emailTextField.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)//Font.montserratRegular.get(size: 13)
+        passwordTextField.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)//Font.montserratRegular.get(size: 13)
+        repeatPasswordTextField.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)//Font.montserratRegular.get(size: 13)
+        signupButton.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.bold)//Font.montserratRegular.get(size: 15)
     }
 
     // MARK: - Action's
@@ -238,7 +241,7 @@ extension SignupViewController : UITextFieldDelegate {
             nextResponder?.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
-            didSelectSignup(self)
+            //didSelectSignup(self)
         }
         
         return false

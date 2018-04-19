@@ -42,13 +42,15 @@
 		EF216CEA203F388000C13CB7 /* UploadPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CE9203F388000C13CB7 /* UploadPhoto.swift */; };
 		EF216CEC203F3E2500C13CB7 /* PreviewImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF216CEB203F3E2500C13CB7 /* PreviewImageTableViewCell.swift */; };
 		EF216CEF203FEC9B00C13CB7 /* KDCircularProgress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF216CF0203FEC9B00C13CB7 /* KDCircularProgress.framework */; };
+		EF239A402088AF05000C80C8 /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF239A3F2088AF05000C80C8 /* DiscoverTableViewCell.swift */; };
 		EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */; };
 		EF2BF9E82039B6BE0014D38C /* NMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2BF9E92039B6BE0014D38C /* NMessenger.framework */; };
 		EF2BF9EB2039BC780014D38C /* VHMessageContentNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */; };
+		EF4C220B20887E5200C389CE /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4C220A20887E5100C389CE /* DiscoverViewController.swift */; };
+		EF4C220D208884B800C389CE /* UserFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4C220C208884B800C389CE /* UserFilter.swift */; };
 		EF74A775207CEC77005EA7A9 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74A774207CEC77005EA7A9 /* EditProfileViewController.swift */; };
 		EF74A779207CF29E005EA7A9 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74A778207CF29E005EA7A9 /* DetailTableViewCell.swift */; };
 		EF74A77C207D0D24005EA7A9 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74A77B207D0D24005EA7A9 /* FilterViewController.swift */; };
-		EF74A77F207D0D7D005EA7A9 /* SearchFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74A77E207D0D7D005EA7A9 /* SearchFriendViewController.swift */; };
 		EF823874205433F400337AF6 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF823873205433F400337AF6 /* ImageCache.swift */; };
 		EF8C08572085AA9300FE1182 /* SetupNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C08562085AA9300FE1182 /* SetupNavigationBar.swift */; };
 		EF8C085F2085F78500FE1182 /* FindFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8C085E2085F78500FE1182 /* FindFriendViewController.swift */; };
@@ -163,14 +165,16 @@
 		EF216CEB203F3E2500C13CB7 /* PreviewImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageTableViewCell.swift; sourceTree = "<group>"; };
 		EF216CEE203F595700C13CB7 /* Nuke.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nuke.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF216CF0203FEC9B00C13CB7 /* KDCircularProgress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KDCircularProgress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF239A3F2088AF05000C80C8 /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
 		EF2BF9E42039A8CD0014D38C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EF2BF9E72039A9E10014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9E92039B6BE0014D38C /* NMessenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NMessenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF2BF9EA2039BC780014D38C /* VHMessageContentNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VHMessageContentNode.swift; sourceTree = "<group>"; };
+		EF4C220A20887E5100C389CE /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		EF4C220C208884B800C389CE /* UserFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFilter.swift; sourceTree = "<group>"; };
 		EF74A774207CEC77005EA7A9 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		EF74A778207CF29E005EA7A9 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		EF74A77B207D0D24005EA7A9 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
-		EF74A77E207D0D7D005EA7A9 /* SearchFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFriendViewController.swift; sourceTree = "<group>"; };
 		EF759EA6207D10800049CD22 /* RangeSeekSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RangeSeekSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF823873205433F400337AF6 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		EF8C08562085AA9300FE1182 /* SetupNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupNavigationBar.swift; sourceTree = "<group>"; };
@@ -397,6 +401,14 @@
 			path = ChatViewController;
 			sourceTree = "<group>";
 		};
+		EF4C220920887E3A00C389CE /* DiscoverViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EF4C220A20887E5100C389CE /* DiscoverViewController.swift */,
+			);
+			path = DiscoverViewController;
+			sourceTree = "<group>";
+		};
 		EF74A773207CEA74005EA7A9 /* EditProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,14 +423,6 @@
 				EF74A77B207D0D24005EA7A9 /* FilterViewController.swift */,
 			);
 			path = FilterViewController;
-			sourceTree = "<group>";
-		};
-		EF74A77D207D0D6E005EA7A9 /* SearchFriendViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EF74A77E207D0D7D005EA7A9 /* SearchFriendViewController.swift */,
-			);
-			path = SearchFriendViewController;
 			sourceTree = "<group>";
 		};
 		EF8C085D2085F76D00FE1182 /* FindFriendViewController */ = {
@@ -517,6 +521,7 @@
 				81F87C9320456054007E11F9 /* Profile.swift */,
 				EF823873205433F400337AF6 /* ImageCache.swift */,
 				EF9300A02054703D00F08DD2 /* TableviewOffset.swift */,
+				EF4C220C208884B800C389CE /* UserFilter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -524,8 +529,8 @@
 		EFDD540C2013B5A900817F49 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EF4C220920887E3A00C389CE /* DiscoverViewController */,
 				EF8C085D2085F76D00FE1182 /* FindFriendViewController */,
-				EF74A77D207D0D6E005EA7A9 /* SearchFriendViewController */,
 				EF74A77A207D0CFC005EA7A9 /* FilterViewController */,
 				EF74A773207CEA74005EA7A9 /* EditProfileViewController */,
 				81F87C9020453879007E11F9 /* ProfileViewController */,
@@ -544,6 +549,7 @@
 		EFDD54192014B55C00817F49 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				EF239A3F2088AF05000C80C8 /* DiscoverTableViewCell.swift */,
 				EF8C08662086371E00FE1182 /* AgeRangeTableViewCell.swift */,
 				EF8C08562085AA9300FE1182 /* SetupNavigationBar.swift */,
 				EF74A778207CF29E005EA7A9 /* DetailTableViewCell.swift */,
@@ -759,12 +765,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-LoveSick2/Pods-LoveSick2-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AAPickerView/AAPickerView.framework",
 				"${BUILT_PRODUCTS_DIR}/AMScrollingNavbar/AMScrollingNavbar.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/AssistantKit/AssistantKit.framework",
 				"${BUILT_PRODUCTS_DIR}/AsyncDisplayKit/AsyncDisplayKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -788,6 +796,7 @@
 				"${BUILT_PRODUCTS_DIR}/PINOperation/PINOperation.framework",
 				"${BUILT_PRODUCTS_DIR}/PINRemoteImage/PINRemoteImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Pageboy/Pageboy.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/RangeSeekSlider/RangeSeekSlider.framework",
 				"${BUILT_PRODUCTS_DIR}/SteviaLayout/Stevia.framework",
@@ -797,17 +806,23 @@
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
 				"${BUILT_PRODUCTS_DIR}/YPImagePicker/YPImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/ZAlertView/ZAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AAPickerView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMScrollingNavbar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AssistantKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AsyncDisplayKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -831,6 +846,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINOperation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PINRemoteImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pageboy.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RangeSeekSlider.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stevia.framework",
@@ -840,6 +856,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YPImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -1043,10 +1063,12 @@
 				EF216CDB203EAB1700C13CB7 /* MessageViewController.swift in Sources */,
 				EFDD54102013B5CC00817F49 /* NewPostViewController.swift in Sources */,
 				EFDD54162014AFEA00817F49 /* NewFeedsViewController.swift in Sources */,
-				EF74A77F207D0D7D005EA7A9 /* SearchFriendViewController.swift in Sources */,
 				81F87C9C20458AA7007E11F9 /* SelfPostPaginator.swift in Sources */,
+				EF4C220B20887E5200C389CE /* DiscoverViewController.swift in Sources */,
 				81E227D920662FFE00817E25 /* EasyPickerView.swift in Sources */,
 				EF2BF9E52039A8CD0014D38C /* ChatViewController.swift in Sources */,
+				EF239A402088AF05000C80C8 /* DiscoverTableViewCell.swift in Sources */,
+				EF4C220D208884B800C389CE /* UserFilter.swift in Sources */,
 				EF216CE2203EECB900C13CB7 /* PostImageViewController.swift in Sources */,
 				EF216CEA203F388000C13CB7 /* UploadPhoto.swift in Sources */,
 			);

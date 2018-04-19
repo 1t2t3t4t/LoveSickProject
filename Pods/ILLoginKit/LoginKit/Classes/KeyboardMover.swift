@@ -108,8 +108,9 @@ extension KeyboardMovable where Self: UIViewController {
             textfieldCenter = superView.convert(selectedField.center, to: view)
         }
 
-        let fieldPoint = CGPoint(x: 0, y: textfieldFrame.origin.y + textfieldFrame.size.height)
-        let visibleRect = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - keyboardHeight)
+        let fieldPoint = CGPoint(x: 0, y: textfieldFrame.origin.y + textfieldFrame.size.height + 72.0)
+        let visibleRect = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height -  keyboardHeight)
+        print("FIELD \(fieldPoint) \(visibleRect)")
 
         if visibleRect.contains(fieldPoint) {
             print("FIELD VISIBLE: NOT MOVING")

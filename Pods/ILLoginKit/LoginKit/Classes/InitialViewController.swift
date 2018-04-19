@@ -99,9 +99,9 @@ class InitialViewController: UIViewController, BackgroundMovable {
     }
 
     func setupFonts() {
-        loginButton.titleLabel?.font = Font.montserratRegular.get(size: 13)
-        signupButton.titleLabel?.font = Font.montserratRegular.get(size: 13)
-        facebookButton.titleLabel?.font = Font.montserratRegular.get(size: 15)
+        loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)//Font.montserratRegular.get(size: 13)
+        signupButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)//Font.montserratRegular.get(size: 13)
+        facebookButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.bold)//Font.montserratRegular.get(size: 15)
     }
 
     func addShadows() {

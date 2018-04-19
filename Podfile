@@ -10,6 +10,7 @@ target 'LoveSick2' do
     pod 'Firebase/Database'
     pod 'Firebase/Storage'
     pod 'Firebase/Auth'
+    pod 'Firebase/Firestore'
     pod 'ObjectMapper', '~> 3.1'
     pod 'AlamofireImage', '~> 3.3'
 #    pod 'OneSignal', '>= 2.5.2', '< 3.0'
@@ -35,6 +36,7 @@ target 'LoveSick2' do
      pod 'McPicker'
      pod 'AMScrollingNavbar'
      pod 'RangeSeekSlider'
+     pod 'AAPickerView', '~> 0.1.2'
   # Pods for LoveSick2
 
   target 'LoveSick2Tests' do

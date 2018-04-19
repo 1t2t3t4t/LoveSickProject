@@ -270,7 +270,16 @@ extension SettingViewController:SettingHeaderViewDelegate {
     actionSheet.addAction(UIAlertAction(title: "Delete image", style: .destructive, handler: {_ in
         self.nibViews?.profileImage.image = #imageLiteral(resourceName: "profileLoad")
         self.tableView.reloadData()
-        Database.database().reference().child("Users/\(User.currentUser?.uid)/profileURL").removeValue()
+        Firestore.firestore().collection("Users").document((User.currentUser?.uid!)!).updateData([
+            "profileURL": FieldValue.delete(),
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    print("Document successfully updated")
+                }
+        }
+//        Database.database().reference().child("Users/\(User.currentUser?.uid)/profileURL").removeValue()
     }))
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in
             self.dismiss(animated: true, completion: nil)
@@ -312,7 +321,9 @@ extension SettingViewController:FusumaDelegate {
             activity.stopAnimating()
             return
         }
-        let autoid = Database.database().reference().childByAutoId().key
+       // let autoid = Database.database().reference().childByAutoId().key
+         let query = Firestore.firestore().collection("Users").document((User.currentUser?.uid!)!)
+        let autoid = query.documentID
         let reference = Storage.storage().reference().child("ProfilePicture/\(User.currentUser!.uid!).png")
         reference.putData(imageData, metadata: nil, completion: { (metadata, error) in
             
@@ -322,14 +333,22 @@ extension SettingViewController:FusumaDelegate {
                 assertionFailure(error.localizedDescription)
             }
             else{
-                Database.database().reference().child("Users/\(User.currentUser!.uid!)/profileURL").setValue(metadata?.downloadURL()?.absoluteString, withCompletionBlock: {(error,ref) in
+                query.updateData(["profileURL":metadata?.downloadURL()?.absoluteString], completion: { error in
                     activity.stopAnimating()
                     if error == nil {
                         
                         self.nibViews?.profileImage.image = newimg
-                         self.tableView.reloadData()
+                        self.tableView.reloadData()
                     }
-                })//setValue(metadata?.downloadURL()?.absoluteString)
+                })
+//                Database.database().reference().child("Users/\(User.currentUser!.uid!)/profileURL").setValue(metadata?.downloadURL()?.absoluteString, withCompletionBlock: {(error,ref) in
+//                    activity.stopAnimating()
+//                    if error == nil {
+//
+//                        self.nibViews?.profileImage.image = newimg
+//                         self.tableView.reloadData()
+//                    }
+//                })//setValue(metadata?.downloadURL()?.absoluteString)
                
             }
         })

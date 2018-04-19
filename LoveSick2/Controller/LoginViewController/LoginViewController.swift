@@ -14,7 +14,6 @@ class LoginViewController: UIViewController {
     lazy var loginCoordinator: LoginCoordinator = {
         return LoginCoordinator(rootViewController: self)
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

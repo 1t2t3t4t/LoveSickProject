@@ -94,7 +94,8 @@ extension FriendRequestTableViewController:FriendRequestTableViewCellDelegate {
         self.view.addSubview(activity)
         self.view.bringSubview(toFront: activity)
         activity.startAnimating()
-        Database.database().reference().child("Users/\(User.currentUser!.uid)/FriendRequests/\(self.friendrequest[row].uid!)").removeValue(completionBlock: {(error,ref) in
+        Firestore.firestore().collection("Users").document(User.currentUser!.uid!).collection("FriendRequests").document(self.friendrequest[row].uid!).delete(completion: {(error) in 
+//        Database.database().reference().child("Users/\(User.currentUser!.uid)/FriendRequests/\(self.friendrequest[row].uid!)").removeValue(completionBlock: {(error,ref) in
             activity.stopAnimating()
             if error != nil {
                 let alert = UIAlertController(title: "Error", message: "Cannot cancel friend request, please try again", preferredStyle: .alert)

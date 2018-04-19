@@ -16,11 +16,10 @@ class PageViewController: TabmanViewController, PageboyViewControllerDataSource 
     var child_1 :TopPostViewController!
     var child_2:NewPostViewController!
     var viewControllers:[UIViewController] = []
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        SetupNavigationBar.setupNavigationBar(navController: self.navigationController!, navItem: self.navigationItem, message: "New Feeds")
-        self.navigationController?.hidesBarsOnSwipe = true
+        SetupNavigationBar.setupNavigationBar(navController: self.navigationController!, navItem: self.navigationItem, message: "News Feed")
+        
       let filter = UIBarButtonItem(image: UIImage(named: "filter"), style: .done, target: self, action: #selector(PageViewController.showCategory))
       let search = UIBarButtonItem(image: UIImage(named: "search"), style: .done, target: self, action: #selector(PageViewController.showSearch))
     self.navigationItem.rightBarButtonItems = [search,filter]
@@ -51,10 +50,11 @@ class PageViewController: TabmanViewController, PageboyViewControllerDataSource 
         mcPicker.pickerBackgroundColor = .white
         mcPicker.show(doneHandler: { [weak self] (selections: [Int : String]) -> Void in
                 // selections[0]
-            let filter = selections.first?.value
+            let filter = selections[0]
             self?.child_1.paginator?.categoryFilter = filter
             self?.child_2.paginator?.categoryFilter = filter
             self?.child_1.refresh()
+            self?.child_2.refresh()
         })
 //        let view = CategoryTableViewController.newInstanceFromStoryboard() as! CategoryTableViewController
 //        self.navigationController?.pushViewController(view, animated: true)

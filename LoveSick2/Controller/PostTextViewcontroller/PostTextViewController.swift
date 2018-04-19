@@ -37,17 +37,48 @@ class PostTextViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightBtn
         self.navigationItem.title = "Text Post"
          tableView.tableFooterView = UIView()
+        tableView.keyboardDismissMode = .onDrag
+        
+    }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
     }
 
     @objc func dismissView() {
+        self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc func post() {
-        guard let title = self.titleDelegate?.getText(), let content = self.contentDelegate?.getText() else {
+        let cell = tableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! ChoosingTableViewCell
+        print("check text \(self.titleDelegate?.getText()) \(self.contentDelegate?.getText()) \(cell.label?.text)")
+        guard let title = self.titleDelegate?.getText(), let content = self.contentDelegate?.getText(), let categoryTitle = cell.label?.text else {
+            let alert = UIAlertController(title: "Error",
+                                          message: "Please fill all the information.",
+                                          preferredStyle: .alert)
+            let submitAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            alert.addAction(submitAction)
+            self.present(alert, animated: true, completion: nil)
             return
         }
+        
+       
+        if categoryTitle == "Choose Category" || title == "" || content == "" {
+            let alert = UIAlertController(title: "Error",
+                                          message: "Please fill all the information.",
+                                          preferredStyle: .alert)
+            let submitAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            alert.addAction(submitAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
         PostManager.post(title: title, content: content, isAnonymous: anonymously, category: self.category)
         guard let bar = tabBar else {
             return
@@ -57,6 +88,7 @@ class PostTextViewController: UIViewController {
         NotificationCenter.default.post(name: notificationName1, object: nil)
         let notificationName2 = NSNotification.Name("NewPostReloadData")
         NotificationCenter.default.post(name: notificationName2, object: nil)
+        self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
     func showCategory() {
@@ -90,6 +122,7 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
         switch indexPath.row {
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! ChoosingTableViewCell
+            
             cell.style = .category
             return cell
         case 2:
@@ -118,6 +151,7 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
         self.tableView.deselectRow(at: indexPath, animated: false)
         switch indexPath.row {
         case 1:
+            self.view.endEditing(true)
             showCategory()
             //easy.toggleView()
         default:
@@ -126,8 +160,8 @@ extension PostTextViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            return 44
+        if indexPath.row == 0 || indexPath.row == 1 {
+            return 60
         }
         else{
             return UITableViewAutomaticDimension

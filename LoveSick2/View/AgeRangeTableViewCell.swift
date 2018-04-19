@@ -16,10 +16,10 @@ class AgeRangeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         title.font = UIFont.systemFont(ofSize: 16.0, weight: UIFont.Weight.heavy)
-        ageRangeSlider.colorBetweenHandles = UIColor.blue
+        ageRangeSlider.colorBetweenHandles = UIColor.defaultTintColor()
         
         ageRangeSlider.handleDiameter = 24.0
-        ageRangeSlider.handleColor = UIColor.blue
+        ageRangeSlider.handleColor = UIColor.defaultTintColor()
         ageRangeSlider.lineHeight = 6.0
         ageRangeSlider.minLabelColor = UIColor.gray
         ageRangeSlider.maxLabelColor = UIColor.gray
@@ -30,11 +30,11 @@ class AgeRangeTableViewCell: UITableViewCell {
         // Initialization code
     }
     func setupCell() {
-            ageRangeSlider.minValue = 20
+            ageRangeSlider.minValue = 18
             ageRangeSlider.maxValue = 60
             ageRangeSlider.minDistance = 2.0
             ageRangeSlider.selectedMaxValue = 35
-            ageRangeSlider.selectedMinValue = 20
+            ageRangeSlider.selectedMinValue = 18
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

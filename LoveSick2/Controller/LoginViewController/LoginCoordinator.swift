@@ -18,6 +18,7 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
 
     override func start() {
         super.start()
+        
         configureAppearance()
     }
 
@@ -26,7 +27,7 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
     }
 
     // MARK: - Setup
-
+   
     func configureAppearance() {
         // Customize LoginKit. All properties have defaults, only set the ones you want.
 
@@ -41,30 +42,53 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
 
         // Change placeholder & button texts, useful for different marketing style or language.
         loginButtonText = "Sign In"
-        signupButtonText = "Create Account"
+        signupButtonText = "Sign Up"
         facebookButtonText = "Login with Facebook"
         forgotPasswordButtonText = "Forgot password?"
         recoverPasswordButtonText = "Recover"
-        namePlaceholder = "Name"
+        namePlaceholder = "Username"
         emailPlaceholder = "E-Mail"
         passwordPlaceholder = "Password"
         repeatPasswordPlaceholder = "Confirm password"
     }
-    
+
     override func login(email: String, password: String) {
         let hud = JGProgressHUD(style: .dark)
         let viewController = self.visibleViewController()
         hud.textLabel.text = "Logging in.."
         hud.show(in:viewController!.view)
         
+        
         SessionManager.logIn(email: email, password: password, completion: {(success) in
-            hud.dismiss()
+            
             if success {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                UserManager.queryUser(withUID: (Auth.auth().currentUser?.uid)!) { (user) in
+                    if user != nil {
+                        User.currentUser = user
+                        let notificationName = NSNotification.Name("removeIgnoreTouch")
+                        NotificationCenter.default.post(name: notificationName, object: nil, userInfo: nil)
+                        print("want to enter edit view \(User.currentUser.currentStatus) \(User.currentUser.email)")
+                        if User.currentUser.gender == "" || User.currentUser.birthday == "" || User.currentUser.currentStatus == "" {
+                            print("did approve")
+                            let view = EditProfileViewController.newInstanceFromStoryboard() as! EditProfileViewController
+                            view.isSetting = true
+                            let nav = UINavigationController(rootViewController: view)
+                            self.window?.rootViewController = nav
+                            hud.dismiss()
+                            self.visibleViewController()?.present(nav, animated: true, completion: nil)
+                            
+                            return
+                        }
+                        return
+                    }
+                    return
+                }
+                let storyboard = UIStoryboard(name:  "Main", bundle: nil)
                 let view = storyboard.instantiateViewController(withIdentifier: "tabbar")
                 viewController?.present(view, animated: true, completion: nil)
             }
             else{
+                hud.dismiss()
                 let alert = UIAlertController(title: "Error",
                                               message: "Cannot log in, please try again",
                                               preferredStyle: .alert)
@@ -82,7 +106,7 @@ class LoginCoordinator: ILLoginKit.LoginCoordinator {
         let viewController = self.visibleViewController()
         hud.textLabel.text = "Signing up.."
         hud.show(in:viewController!.view)
-        SessionManager.register(email: email, password: password, displayName: name, completion: {(success,error) in
+        SessionManager.register(email: email, password: password, displayName: name.lowercased(), completion: {(success,error) in
             hud.dismiss()
             if success {
                 let alert = UIAlertController(title: "Success",

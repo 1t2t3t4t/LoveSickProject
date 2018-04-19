@@ -26,6 +26,8 @@ class ProfileViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.hidesBarsOnSwipe = false
        // self.tabBarController?.tabBar.isHidden = true
         
         
@@ -53,20 +55,33 @@ class ProfileViewController: UIViewController {
         addBtn = view
         if userid != User.currentUser?.uid {
             print("check name \(User.currentUser!.uid!) \(userid!)")
-            Database.database().reference().child("Users/\(userid!)/FriendRequests/\(User.currentUser!.uid!)").observeSingleEvent(of: .value, with: {snap in
-                if snap.exists() {
-                    print("have friend request")
-                    view.setTitle("Added", for: .normal)
-                    view.backgroundColor = UIColor.gray
-                
-                }
-                else {
+            Firestore.firestore().collection("Users").document(userid!).collection("FriendRequest").document(User.currentUser!.uid!).getDocument(completion: {(document,error) in
+                if error != nil || !(document?.exists)! {
                     print("not have friend req")
                     view.setTitle("+ Add", for: .normal)
                     view.backgroundColor = UIColor.red
                 }
+                else {
+                    print("have friend request")
+                    view.setTitle("Added", for: .normal)
+                    view.backgroundColor = UIColor.gray
+                }
                 self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: view)
             })
+//            Database.database().reference().child("Users/\(userid!)/FriendRequests/\(User.currentUser!.uid!)").observeSingleEvent(of: .value, with: {snap in
+//                if snap.exists() {
+//                    print("have friend request")
+//                    view.setTitle("Added", for: .normal)
+//                    view.backgroundColor = UIColor.gray
+//
+//                }
+//                else {
+//                    print("not have friend req")
+//                    view.setTitle("+ Add", for: .normal)
+//                    view.backgroundColor = UIColor.red
+//                }
+//                self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: view)
+//            })
         }
         nibViews = Bundle.main.loadNibNamed("ProfileHeaderView", owner: self, options: nil)?.first as! ProfileHeaderView
         
@@ -82,7 +97,7 @@ class ProfileViewController: UIViewController {
         
         //ProfileHeaderView
         self.paginator = SelfPostPaginator({ (posts, error) in
-            
+            self.nibViews?.totalPost.text = "\(self.paginator.posts.count) Posts"
             self.tableView.reloadData()
         })
         if #available(iOS 11.0, *) {
@@ -90,13 +105,16 @@ class ProfileViewController: UIViewController {
         }
         Profile.getUserProfile(uid: userid!, withCompletion: { result in
             if result != nil {
+            
                 self.userProfile = result
+                print("userprofile \(self.userProfile)")
                 let username = self.userProfile!["displayName"] as! String
-                self.navigationItem.title = username
+                SetupNavigationBar.setupNavTitle(navController: self.navigationController!, navItem: self.navigationItem, message: username)
                 self.nibViews?.username.text = username
-                self.nibViews?.totalPost.text = "\(self.paginator.posts.count) Posts"
+                
             }
         })
+        queryPhoto()
     }
     
     @objc func addFriend() {
@@ -137,7 +155,7 @@ class ProfileViewController: UIViewController {
 //                    self.present(view, animated: true, completion: nil)
 //                })
                 activity.startAnimating()
-                Database.database().reference().child("Users/\(self.userid!)/FriendRequests/\(User.currentUser!.uid!)").removeValue(completionBlock: {(error,ref) in
+                Firestore.firestore().collection("Users").document(self.userid!).collection("FriendRequest").document(User.currentUser!.uid!).delete(completion: {error in
                     activity.stopAnimating()
                     if error != nil {
                         let alert = UIAlertController(title: "Error", message: "Cannot remove friend request, please try again", preferredStyle: .alert)
@@ -149,8 +167,21 @@ class ProfileViewController: UIViewController {
                         self.addBtn.setTitle("+ Add", for: .normal)
                         self.addBtn.backgroundColor = UIColor.red
                     }
-            
                 })
+//                Database.database().reference().child("Users/\(self.userid!)/FriendRequests/\(User.currentUser!.uid!)").removeValue(completionBlock: {(error,ref) in
+//                    activity.stopAnimating()
+//                    if error != nil {
+//                        let alert = UIAlertController(title: "Error", message: "Cannot remove friend request, please try again", preferredStyle: .alert)
+//                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in
+//                            alert.dismiss(animated: true, completion: nil)}))
+//                        self.present(alert, animated: true, completion: nil)
+//                    }
+//                    else {
+//                        self.addBtn.setTitle("+ Add", for: .normal)
+//                        self.addBtn.backgroundColor = UIColor.red
+//                    }
+//
+//                })
                 
                 self.dismiss(animated: true, completion: nil)
             }))
@@ -161,8 +192,29 @@ class ProfileViewController: UIViewController {
         }
        // activity.stopAnimating()
     }
+    func queryPhoto() {
+        if let img = ImageCache.cachedImage(for: userid!) {
+            self.nibViews?.imageView.image = img
+        }
+        Firestore.firestore().collection("Users").document(userid!).getDocument(completion: {(document,error) in
+                if !(document?.exists)! || error != nil {
+                    return
+                }
+                else {
+                    let data = document?.data()
+                    guard let url = data!["profileURL"] as? String else {
+                        self.nibViews?.imageView.image = #imageLiteral(resourceName: "profileLoad")
+                        return
+                    }
+                    self.nibViews?.imageView.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                        ImageCache.cache((self.nibViews?.imageView.image!)!, for: self.userid!)
+                    })
+                }
+            })
+        }
+    }
 
-}
+
 extension ProfileViewController:UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -179,12 +231,53 @@ extension ProfileViewController:UITableViewDelegate,UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "topimagepostCell", for: indexPath) as! PostImageTableViewCell
             cell.post = post
             cell.delegate = self
+            if let img = ImageCache.cachedImage(for: (post.creatorUID)!) {
+                cell.progressView.isHidden = true
+                cell.profileImg.image = img
+                return cell
+            }else{
+                Firestore.firestore().collection("Users").document((post.creatorUID!)).getDocument(completion: {(document,error) in
+                    if !(document?.exists)! || error != nil {
+                        return
+                    }
+                    else {
+                        let data = document?.data()
+                        guard let url = data!["profileURL"] as? String else {
+                            cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+                            return
+                        }
+                        cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                            ImageCache.cache(cell.profileImg.image!, for: (post.creatorUID!))
+                        })
+                    }
+                })
+            }
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "toppostCell", for: indexPath) as! PostTableViewCell
             cell.post = post
             cell.delegate = self
+            if let img = ImageCache.cachedImage(for: (post.creatorUID)!) {
+                cell.profileImg.image = img
+                return cell
+            }else{
+                Firestore.firestore().collection("Users").document((post.creatorUID!)).getDocument(completion: {(document,error) in
+                    if !(document?.exists)! || error != nil {
+                        return
+                    }
+                    else {
+                        let data = document?.data()
+                        guard let url = data!["profileURL"] as? String else {
+                            cell.profileImg.image = #imageLiteral(resourceName: "profileLoad")
+                            return
+                        }
+                        cell.profileImg.af_setImage(withURL: URL(string: url)!, placeholderImage: #imageLiteral(resourceName: "profileLoad"), filter: nil, progress: nil, imageTransition: .noTransition, runImageTransitionIfCached: true, completion: {image in
+                            ImageCache.cache(cell.profileImg.image!, for: (post.creatorUID!))
+                        })
+                    }
+                })
+            }
             return cell
         }
     }

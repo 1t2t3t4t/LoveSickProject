@@ -25,6 +25,31 @@ class User: Mappable {
     var chatRoom:[ChatRoom] = []
     var _gender:String?
     var _currentStatus:String?
+    var _birthday:String?
+    var _ageInterval:Double?
+    
+    var ageInterval:Double {
+        get {
+            guard let value = _ageInterval else {
+                return 0.0
+            }
+            return value
+        }
+        set {
+            _ageInterval = newValue
+        }
+    }
+    var birthday:String {
+        get {
+            guard let value = _birthday else {
+                return ""
+            }
+            return value
+        }
+        set {
+            _birthday = newValue
+        }
+    }
     
     var gender:String {
         get {
@@ -90,6 +115,8 @@ class User: Mappable {
         self.chatRoomModel <- map["ChatRooms"]
         self.gender <- map["gender"]
         self.currentStatus <- map["currentStatus"]
+        self.birthday <- map["birthday"]
+        self.ageInterval <- map["ageInterval"]
     }
     
     class func getProfilePic(withCompletion completion: @escaping (UIImage) -> Void ) {

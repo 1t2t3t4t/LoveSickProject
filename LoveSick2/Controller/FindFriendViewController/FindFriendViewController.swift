@@ -8,22 +8,48 @@
 
 import UIKit
 import McPicker
+import RangeSeekSlider
 class FindFriendViewController: UIViewController {
     @IBOutlet weak var tableView:UITableView!
     let filterArr = ["Gender","Age Range","Current Status"]
+    let filter = UserFilter()
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        filter.minAge = 18
+        filter.maxAge = 35
         self.tableView.tableFooterView = UIView()
         SetupNavigationBar.setupNavigationBar(navController: self.navigationController!, navItem: self.navigationItem, message: "Discovery")
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(getter: FindFriendViewController.next))
+        let rightBth = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(FindFriendViewController.nextView))
+        rightBth.setTitleTextAttributes([NSAttributedStringKey.font:UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)], for: .normal)
+        self.navigationItem.rightBarButtonItem = rightBth
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    @objc func next(){
+    @objc func nextView(){
+        let gender = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as! DetailTableViewCell
+        let currentStatus = tableView.cellForRow(at: IndexPath(row: 2, section: 0)) as! DetailTableViewCell
+        if gender.rightLabel.text == "" || currentStatus.rightLabel.text == "" {
+            let alert = UIAlertController(title: "Please enter all the information",
+                                          message: nil,
+                preferredStyle: .alert)
+            let submitAction = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            alert.addAction(submitAction)
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        filter.gender = gender.rightLabel?.text!
+        filter.currentStatus = currentStatus.rightLabel?.text!
+        let view = DiscoverViewController.newInstanceFromStoryboard() as! DiscoverViewController
+        print("check filter0 \(self.filter.currentStatus) \(self.filter.maxAge) \(self.filter.gender) \(self.filter.minAge)")
+        view.filter = self.filter
+        self.navigationController?.pushViewController(view, animated: true)
         
     }
     func showPicker(cell:DetailTableViewCell,data:[[String]]) {
@@ -76,12 +102,15 @@ extension FindFriendViewController:UITableViewDelegate,UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! DetailTableViewCell
+        tableView.deselectRow(at: indexPath, animated: false)
+        
         switch indexPath.row {
         case 0:
-            showPicker(cell:cell , data: [["Male","Female","Others"]])
+            let cell = tableView.cellForRow(at: indexPath) as! DetailTableViewCell
+            showPicker(cell:cell , data: [["Male","Female","Others","Any"]])
             break
         case 2:
+            let cell = tableView.cellForRow(at: indexPath) as! DetailTableViewCell
             showPicker(cell:cell , data: [["HeartBreak", "Stress","Feeling down","Others"]])
             break
         default:
@@ -89,3 +118,18 @@ extension FindFriendViewController:UITableViewDelegate,UITableViewDataSource {
         }
     }
 }
+extension FindFriendViewController:RangeSeekSliderDelegate {
+    func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
+            filter.minAge = Int(minValue)
+            filter.maxAge = Int(maxValue)
+        }
+    
+    func rangeSeekSlider(_ slider: RangeSeekSlider, stringForMaxValue: CGFloat) -> String? {
+        if stringForMaxValue == slider.maxValue {
+            return "\(Int(stringForMaxValue))+"
+        }
+        return "\(Int(stringForMaxValue))"
+    }
+}
+
+

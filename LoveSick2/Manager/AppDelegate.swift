@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+//        do {
+//            try! Auth.auth().signOut()
+//        }
+//        catch {}
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         SessionManager.checkSignIn(withCompletion: {(success) in
@@ -24,15 +28,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         User.currentUser = user
                         let notificationName = NSNotification.Name("removeIgnoreTouch")
                         NotificationCenter.default.post(name: notificationName, object: nil, userInfo: nil)
-                        if User.currentUser.gender == "" {
+                        if User.currentUser.gender == "" || User.currentUser.birthday == "" || User.currentUser.currentStatus == "" {
+                            print("did approve")
                             let view = EditProfileViewController.newInstanceFromStoryboard() as! EditProfileViewController
                             view.isSetting = true
                             let nav = UINavigationController(rootViewController: view)
-                            self.window?.rootViewController = nav
-                            self.window?.makeKeyAndVisible()
+                           self.window?.rootViewController = nav
                             return
                         }
                         return
+                    }
+                    else {
+                        SessionManager.logOut({(success) in
+                            let view = LoginViewController.newInstanceFromStoryboard() as! LoginViewController
+                            let window = UIWindow(frame: UIScreen.main.bounds)
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+                            window.rootViewController = initialViewController
+                            window.makeKeyAndVisible()
+                            //self.dismiss(animated: true, completion: nil)
+                        })
                     }
                     return
                 }
@@ -42,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             else{
                 let initialViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
                 self.window?.rootViewController = initialViewController
+                
             }
         })
         self.window?.makeKeyAndVisible()

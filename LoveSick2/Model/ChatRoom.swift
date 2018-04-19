@@ -76,8 +76,10 @@ class ChatRoom: Mappable {
     func sendMessage(_ text:String) {
         let chat = Chat(message: text, senderUID: (User.currentUser?.uid)!, timestamp: Date().timeIntervalSince1970)
         self.messages.append(chat)
-        Database.database().reference().child("ChatRooms/\(self.chatRoomUID!)").updateChildValues(self.toJSON())
-         Database.database().reference().child("ChatRooms/\(self.chatRoomUID!)/timestamp").setValue("\(Date().timeIntervalSince1970)")
+        Firestore.firestore().collection("ChatRooms").document(self.chatRoomUID!).updateData(self.toJSON())
+        Firestore.firestore().collection("ChatRooms").document(self.chatRoomUID!).updateData(["timestamp":"\(Date().timeIntervalSince1970)"])
+//        Database.database().reference().child("ChatRooms/\(self.chatRoomUID!)").updateChildValues(self.toJSON())
+//         Database.database().reference().child("ChatRooms/\(self.chatRoomUID!)/timestamp").setValue("\(Date().timeIntervalSince1970)")
     }
     class func getIndex(uid:String) -> Int {
         var i = 0

@@ -59,7 +59,7 @@ class PostTableViewCell: UITableViewCell,UITextViewDelegate{
         downvote.setImage(#imageLiteral(resourceName: "downvote"), for: .normal)
         downvote.tintColor = UIColor.lightGray
         downvote.setTitle("", for: .normal)
-        category.text = PostCategory.Generic.rawValue
+        //category.text = PostCategory.Generic.rawValue
         category.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
         category.textColor = UIColor.gray
         addattributeText(button:comment,image: #imageLiteral(resourceName: "message"),text: " 0")

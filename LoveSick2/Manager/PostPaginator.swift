@@ -23,8 +23,10 @@ class PostPaginator {
         self.postCategory = category
         postManager.queryType = queryType
         postManager.postCategory = category
-        let category = self.categoryFilter == nil ? nil : self.categoryFilter!
+        self.categoryFilter = category.rawValue
+        //let category = self.categoryFilter == nil ? nil : self.categoryFilter!
         self.postManager.queryPostsFirstTen(self.categoryFilter) { (posts, error) in
+            
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)
                 self.posts.append(contentsOf: posts)
@@ -34,6 +36,7 @@ class PostPaginator {
     }
     
     func refresh(completion: @escaping (LoveSickError?) -> Void) {
+        print("check filter \(self.categoryFilter)")
         self.postManager.queryPostsFirstTen(self.categoryFilter) { (posts, error) in
             if error == nil {
                 self.updateQueryValue(withLastPost: posts.last)

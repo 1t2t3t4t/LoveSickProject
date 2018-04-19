@@ -16,6 +16,7 @@ class ContentTableViewCell: UITableViewCell, UITextViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         textView.tag = 2
+        textView.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular)
         textView.textColor = UIColor.black
         textView.isScrollEnabled = false
         textView.delegate = self

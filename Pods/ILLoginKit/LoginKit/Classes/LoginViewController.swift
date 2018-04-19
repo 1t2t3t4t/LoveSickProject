@@ -57,7 +57,10 @@ class LoginViewController: UIViewController, BackgroundMovable, KeyboardMovable 
     @IBOutlet weak var stackViewHeight: NSLayoutConstraint!
 
     // MARK: - UIViewController
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.view.endEditing(true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,10 +118,10 @@ class LoginViewController: UIViewController, BackgroundMovable, KeyboardMovable 
     }
 
     func setupFonts() {
-        emailTextField.font = Font.montserratRegular.get(size: 13)
-        passwordTextField.font = Font.montserratRegular.get(size: 13)
-        forgotPasswordButton.titleLabel?.font = Font.montserratLight.get(size: 13)
-        loginButton.titleLabel?.font = Font.montserratRegular.get(size: 15)
+        emailTextField.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)//Font.montserratRegular.get(size: 13)
+        passwordTextField.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)//Font.montserratRegular.get(size: 13)
+        forgotPasswordButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)//Font.montserratLight.get(size: 13)
+        loginButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.bold)//Font.montserratRegular.get(size: 15)
     }
 
     // MARK: - Action's
@@ -218,7 +221,7 @@ extension LoginViewController : UITextFieldDelegate {
             nextResponder?.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
-            didSelectLogin(self)
+            //didSelectLogin(self)
         }
         
         return false

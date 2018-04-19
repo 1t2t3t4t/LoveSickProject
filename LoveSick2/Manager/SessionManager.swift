@@ -32,16 +32,20 @@ class SessionManager {
     }
     
     class func register(email:String, password:String,displayName: String, completion:@escaping (Bool,String) -> Void) {
+        print("enter register")
         UserManager.queryUser(withUsername: displayName) { (user) in
+            print("query user \(user)")
             if user != nil { completion(false,"Username Already Taken"); return }
             Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                 if error != nil { completion(false,(error?.localizedDescription)!) }
+                print("can register")
                 guard let uid = user?.uid else { completion(false,""); return }
                 User.currentUser = User(uid)
                 User.currentUser?.email = email
                 User.currentUser?.displayName = displayName
                 User.currentUser?.username = displayName
-                Database.database().reference().child("Users/\(uid)").setValue(User.currentUser?.toJSON())
+                Firestore.firestore().collection("Users").document(uid).setData((User.currentUser?.toJSON())!)
+              //  Database.database().reference().child("Users/\(uid)").setValue(User.currentUser?.toJSON())
                 completion(true,"")
             }
         }
@@ -58,7 +62,8 @@ class SessionManager {
                 User.currentUser.profileURL = user!.photoURL?.absoluteString
                 User.currentUser?.displayName = displayName
                 User.currentUser?.username = displayName
-                Database.database().reference().child("Users/\(user!.uid)").setValue(User.currentUser?.toJSON())
+                Firestore.firestore().collection("Users").document(user!.uid).setData((User.currentUser?.toJSON())!)
+//                Database.database().reference().child("Users/\(user!.uid)").setValue(User.currentUser?.toJSON())
                 completion(nil)
             }
         }

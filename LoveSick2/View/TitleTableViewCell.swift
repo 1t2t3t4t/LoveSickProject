@@ -16,6 +16,7 @@ class TitleTableViewCell: UITableViewCell,UITextViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         textView.textColor = UIColor.black
+        textView.font = UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.semibold)
         //textView.delegate = self
         textView.isScrollEnabled = false
         

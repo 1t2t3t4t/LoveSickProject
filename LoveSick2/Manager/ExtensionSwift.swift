@@ -15,6 +15,28 @@ extension UInt64 {
     }
     
 }
+extension UIColor {
+    class func defaultTintColor() -> UIColor {
+        return UIColor(red: 0, green: 122/255.0, blue: 1.0, alpha: 1.0)
+    }
+}
+extension Date {
+    func asString(style: DateFormatter.Style) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = style
+        return dateFormatter.string(from: self)
+    }
+}
+extension String {
+    func toDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-d HH:mm:ss Z"
+        let date = dateFormatter.date(from:self)
+        dateFormatter.dateFormat = "dd/MM/YYYY"
+        let dateString = dateFormatter.string(from: date!)
+        return dateString
+    }
+}
 extension UIViewController {
     class func newInstanceFromStoryboard() -> UIViewController {
         let identifier = String(describing: self)

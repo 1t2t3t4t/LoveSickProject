@@ -28,7 +28,11 @@ class ViewPostViewController: UIViewController {
     private var initialCenter = CGFloat()
     
     var post:Post!
-    
+    var profileImage:UIImage = #imageLiteral(resourceName: "profileLoad")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -92,8 +96,14 @@ class ViewPostViewController: UIViewController {
         }
         if self.post.creatorUID == User.currentUser?.uid {
             hokusai.addButton("Delete post"){
-                Database.database().reference().child("Posts/\(self.post.postuid)").removeValue()
-                Database.database().reference().child("Users/\(self.post.creatorUID)/\(self.post.postuid)").removeValue()
+                Firestore.firestore().collection("Posts").document(self.post.postuid!).delete()
+                Firestore.firestore().collection("Posts").document(self.post.postuid!).updateData([self.post.postuid!:FieldValue.delete()])
+                Firestore.firestore().collection("Users").document(User.currentUser.uid!).collection("Posts").document(self.post.postuid!).delete()
+//                Database.database().reference().child("Posts/\(self.post.postuid)").removeValue()
+//
+//                Database.database().reference().child("Users/\(self.post.creatorUID)/\(self.post.postuid)").removeValue()
+                let notificationName = NSNotification.Name("NewPostReloadData")
+                NotificationCenter.default.post(name: notificationName, object: nil)
                 self.navigationController?.popViewController(animated: true)
             }
         }
@@ -108,7 +118,7 @@ class ViewPostViewController: UIViewController {
         self.postContent.text = self.post.content
         self.postContent.isScrollEnabled = false
         self.numlikeLabel.text = self.post.like < 1000 ? "\(self.post.like)" : String(format: "%.1f", Double(self.post.like)/1000,"k")
-        self.displayPicture.image = #imageLiteral(resourceName: "profileLoad")
+        self.displayPicture.image = profileImage.af_imageRoundedIntoCircle()
     }
     
     @IBAction func gotoComment() {
